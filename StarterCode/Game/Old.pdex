@@ -1,0 +1,13 @@
+Grid grid = new Grid(6,8);
+PImage bg;
+
+public void setup()
+{
+    size(800, 600);
+    bg = loadImage("images/FinalEscapeEXEStaticLeft.png"); 
+}
+
+public void draw(){
+    fill(250,0,50);
+    circle(400,300,450);
+}
