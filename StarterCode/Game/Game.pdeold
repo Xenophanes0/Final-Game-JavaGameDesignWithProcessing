@@ -1,0 +1,9 @@
+public void setup(){
+    size(800,600);
+}
+
+public void draw(){
+    circle(400,300,50);
+    fill(255,0,120);
+    triangle(0, 0, 100, 10, 300, 300);
+}
