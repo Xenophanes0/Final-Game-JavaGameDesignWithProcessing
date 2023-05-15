@@ -1,6 +1,6 @@
 /* Game Class Starter File
  * Last Edit: 12/13/2022
- * Authors: _____________________
+ * Authors: Dean Carabajo & Mikyle O.
  */
 
 //GAME VARIABLES
@@ -8,8 +8,9 @@ Grid grid = new Grid(6,8);
 PImage bg;
 PImage player1;
 PImage endScreen;
-String titleText = "NameOfYourGame";
 String extraText = "Havea a Good Day.";
+//PImage sonicEXE;
+String titleText = "Too Far";
 AnimatedSprite exampleSprite;
 boolean doAnimation;
 
@@ -28,7 +29,9 @@ void setup() {
   player1 = loadImage("images/x_wood.png");
   player1.resize(100,100);
   endScreen = loadImage("images/youwin.png");
-  
+  //sonicEXE = loadImage("images/FinalEscapeStaticLeft.png");
+  //sonicEXE.resize(100,100);
+
   //Animation & Sprite setup
   exampleAnimationSetup();
 
