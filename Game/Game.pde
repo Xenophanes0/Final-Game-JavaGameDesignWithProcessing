@@ -14,6 +14,12 @@ String titleText = "Too Far";
 AnimatedSprite exampleSprite;
 boolean doAnimation;
 
+//HexGrid hGrid = new HexGrid(3);
+//import processing.sound.*;
+//SoundFile song;
+
+int player1Row = 3;
+
 
 //Required Processing method that gets run once
 void setup() {
@@ -25,16 +31,20 @@ void setup() {
   surface.setTitle(titleText);
 
   //Load images used
-  bg = loadImage("images/chess.jpg");
+  //bg = loadImage("images/chess.jpg");
+  bg = loadImage("images/x_wood.png");
+  bg.resize(800,600);
   player1 = loadImage("images/x_wood.png");
-  player1.resize(100,100);
+  player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
   endScreen = loadImage("images/youwin.png");
-  //sonicEXE = loadImage("images/FinalEscapeStaticLeft.png");
-  //sonicEXE.resize(100,100);
 
+  // Load a soundfile from the /data folder of the sketch and play it back
+  // song = new SoundFile(this, "sounds/Lenny_Kravitz_Fly_Away.mp3");
+  // song.play();
+
+  
   //Animation & Sprite setup
   exampleAnimationSetup();
-
 
   println("Game started...");
 
@@ -46,44 +56,57 @@ void setup() {
 void draw() {
 
   updateTitleBar();
-  
   updateScreen();
-
   populateSprites();
   moveSprites();
-
-  checkExampleAnimation();
   
   if(isGameOver()){
     endGame();
   }
 
-}
+  checkExampleAnimation();
 
-
-//Known Processing method that automatically will run when a mouse click triggers it
-void mouseClicked(){
-  
-  //check if click was successful
-  System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
-  System.out.println("Grid location: " + grid.getGridLocation());
-
-  //what to do if clicked?
-  doAnimation = !doAnimation;
-  System.out.println("doAnimation: " + doAnimation);
-  grid.setMark("X",grid.getGridLocation());
-  
 }
 
 //Known Processing method that automatically will run whenever a key is pressed
 void keyPressed(){
 
   //check what key was pressed
-  System.out.println("Key pressed: " + key); //keyCode gives you an integer for the key
+  System.out.println("Key pressed: " + keyCode); //keyCode gives you an integer for the key
 
-  //What to do when a key is pressed
-
+  //What to do when a key is pressed?
   
+  //set "w" key to move the player1 up
+  if(keyCode == 87){
+    //check case where out of bounds
+    
+    //change the field for player1Row
+    player1Row--;
+
+    //shift the player1 picture up in the 2D array
+    GridLocation loc = new GridLocation(player1Row, 0);
+    grid.setTileImage(loc, player1);
+
+    //eliminate the picture from the old location
+
+  }
+
+  //Known Processing method that automatically will run when a mouse click triggers it
+  void mouseClicked(){
+  
+    //check if click was successful
+    System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
+    System.out.println("Grid location: " + grid.getGridLocation());
+
+    //what to do if clicked? (Make player1 disappear?)
+
+
+    //Toggle the animation on & off
+    doAnimation = !doAnimation;
+    System.out.println("doAnimation: " + doAnimation);
+    grid.setMark("X",grid.getGridLocation());
+    
+  }
 
 }
 
@@ -95,13 +118,11 @@ void keyPressed(){
 public void updateTitleBar(){
 
   if(!isGameOver()) {
-
     //set the title each loop
     surface.setTitle(titleText + "    " + extraText);
 
     //adjust the extra text as desired
-    
-
+  
   }
 
 }
@@ -111,9 +132,12 @@ public void updateScreen(){
 
   //update the background
   background(bg);
+
+  //Display the Player1 image
+  GridLocation player1Loc = new GridLocation(player1Row,0);
+  grid.setTileImage(player1Loc, player1);
   
   //update other screen elements
-  image(player1,100,100); //draws the player1 image at coordinates 100,100
 
 
 }
