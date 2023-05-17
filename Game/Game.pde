@@ -7,6 +7,7 @@
 Grid grid = new Grid(16,9); //Screen 
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
+PImage player1;
 
 PImage player1example;
 
@@ -36,13 +37,13 @@ void setup() {
   surface.setTitle(titleText);
 
   //Load images used
-  //bg = loadImage("images/chess.jpg");
-  //firstBG;
   songBG = loadImage("images/BackgroundFinalEscape.png");
+  songBG.resize(900,1600);  //BG must be same dims as size()
+  
+  player1 = loadImage("images/FinalEscapeEXEStaticLeft.png");
+  player1.resize(200,150);
+  //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
-  player1example.resize(200,100);
-  player1example = loadImage("images/FinalEscapeEXEStaticLeft.png");
-  player1example.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
   endScreen = loadImage("images/youwin.png");
 
   // Load a soundfile from the /data folder of the sketch and play it back
@@ -136,7 +137,7 @@ public void updateTitleBar(){
 public void updateScreen(){
 
   //update the background
-  background(bg);
+  background(songBG);
 
   //Display the Player1 image
   GridLocation player1Loc = new GridLocation(player1Row,0);
