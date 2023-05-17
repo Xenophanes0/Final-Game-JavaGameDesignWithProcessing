@@ -4,6 +4,13 @@ import processing.data.*;
 import processing.event.*;
 import processing.opengl.*;
 
+import java.awt.Color;
+import java.awt.Polygon;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.awt.Polygon;
+import java.awt.Point;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.io.File;
@@ -13,6 +20,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 
+public class Game extends PApplet {
+
 /* Game Class Starter File
  * Last Edit: 12/13/2022
  * Authors: Dean Carabajo & Mikyle O.
@@ -20,8 +29,8 @@ import java.io.IOException;
 
 //GAME VARIABLES
 Grid grid = new Grid(16,9); //Screen 
-PImage player1Torso; // BF's waist and above
-PImage player1Legs //BF's waist and below
+//PImage player1Torso; // BF's waist and above
+//PImage player1Legs; //BF's waist and below
 
 PImage player1example;
 
@@ -42,10 +51,10 @@ int player1Row = 3;
 
 
 //Required Processing method that gets run once
-void setup() {
+public void setup() {
 
   //Match the screen size to the background image size
-  size(900, 1600);
+  /* size commented out by preprocessor */;
 
   //Set the title on the title bar
   surface.setTitle(titleText);
@@ -75,7 +84,7 @@ void setup() {
 
 //Required Processing method that automatically loops
 //(Anything drawn on the screen should be called from here)
-void draw() {
+public void draw() {
 
   updateTitleBar();
   updateScreen();
@@ -91,7 +100,7 @@ void draw() {
 }
 
 //Known Processing method that automatically will run whenever a key is pressed
-void keyPressed(){
+public void keyPressed(){
 
   //check what key was pressed
   System.out.println("Key pressed: " + keyCode); //keyCode gives you an integer for the key
@@ -114,7 +123,7 @@ void keyPressed(){
   }
 }
 //Known Processing method that automatically will run when a mouse click triggers it
-void mouseClicked(){
+public void mouseClicked(){
   
   //check if click was successful
   System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
@@ -198,13 +207,13 @@ public void endGame(){
 //example method that creates 5 horses along the screen
 public void exampleAnimationSetup(){  
   int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/horse_run.png", 50.0, i*75.0, "sprites/horse_run.json");
+  exampleSprite = new AnimatedSprite("sprites/horse_run.png", 50.0f, i*75.0f, "sprites/horse_run.json");
 }
 
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
   if(doAnimation){
-    exampleSprite.animateVertical(1.0, 0.1, true);
+    exampleSprite.animateVertical(1.0f, 0.1f, true);
   }
 }
 /* Animated Sprite class - useful to have Sprites move around
@@ -238,7 +247,7 @@ public class AnimatedSprite extends Sprite{
   // Constructor for AnimatedSprite with Spritesheet (Must use the TexturePacker to make the JSON)
   // https://www.codeandweb.com/texturepacker
   public AnimatedSprite(String png, float x, float y, String json) {
-    super("none", x, y, 1.0, true);
+    super("none", x, y, 1.0f, true);
 
     this.animation = new ArrayList<PImage>();
  
@@ -513,17 +522,17 @@ public class GridLocation{
  * Edited to be superclass of HexTile
  */
 
-import java.awt.Color;
+
 
 public class GridTile{
   
   private GridLocation location;
   private PImage pi;
   private boolean coveredPic;
-  private color fillColor;
-  final color defaultFillColor = #FFFFFF; //WHITE
-  private color outlineColor;
-  final color defaultOutlineColor = #000000; //BLACK
+  private int fillColor;
+  final int defaultFillColor = 0xFFFFFFFF; //WHITE
+  private int outlineColor;
+  final int defaultOutlineColor = 0xFF000000; //BLACK
   private String mark;
   final private static String noMark = " ";
   private boolean isCaptured;
@@ -587,7 +596,7 @@ public class GridTile{
   }
 
   //method to "capture" a tile by changing its color
-  public void captureTile(color clr){
+  public void captureTile(int clr){
     this.isCaptured = false;
     this.fillColor = clr;
   }
@@ -609,20 +618,20 @@ public class GridTile{
   }
 
   //method to change the color of the tile
-  public void setColor(color clr) {
+  public void setColor(int clr) {
     this.fillColor = clr;
   }
 
   //method to access the color of the tile
-  public color getColor() {
+  public int getColor() {
     return fillColor;
   }
 
-  public void setOutlineColor(color oclr){
+  public void setOutlineColor(int oclr){
     this.outlineColor = oclr;
   }
 
-  public color getOutlineColor(){
+  public int getOutlineColor(){
     return this.outlineColor;
   }
 
@@ -650,9 +659,9 @@ public class GridTile{
  * NOT FULLY FUNCTIONAL YET
  */
 
-import java.awt.Polygon;
-import java.awt.Point;
-import java.util.ArrayList;
+
+
+
 
 public class HexGrid {
 
@@ -660,9 +669,9 @@ public class HexGrid {
 	ArrayList<HexLocation> unclaimedLocations;
 	
     private HexTile[][] map;
-    private color defaultOutlineColor = #FFFFFF;	//WHITE
-    private color defaultFillColor = #000000; 		//BLACK
-	private color defaultBgColor = color(164,200,218);
+    private int defaultOutlineColor = 0xFFFFFFFF;	//WHITE
+    private int defaultFillColor = 0xFF000000; 		//BLACK
+	private int defaultBgColor = color(164,200,218);
 	
 	private boolean bgSet = false;
 
@@ -673,7 +682,7 @@ public class HexGrid {
 	private int hexagonSide;
 	private int heightMargin = 100;
 	private int widthMargin;
-	private final double sqrt3div2 = 0.86602540378;
+	private final double sqrt3div2 = 0.86602540378f;
 
     //HexGrid Constructor
     public HexGrid(int hexGen){
@@ -828,7 +837,7 @@ public class HexGrid {
 		
         //FILL IN SOLID COLOR - fill in hexTile with a solid color if no picture
         if(!hasImage){
-			color fillClr = hTile.getColor();
+			int fillClr = hTile.getColor();
 			
 			// ???
 
@@ -840,7 +849,7 @@ public class HexGrid {
 			
 			try{
 				//resize the image to fit in the hex
-				int iSize = (int) (hexagonSide * 1.25);
+				int iSize = (int) (hexagonSide * 1.25f);
 				photo.resize(iSize, iSize);
 
 				//mask the image to the hex shape
@@ -874,9 +883,9 @@ public class HexGrid {
 
 	//method to draw the outline around a hex tile
     public void outlineOneHex(HexTile hTile){
-		color oClr = hTile.defaultOutlineColor;
-		float stroke = 3.0;
-		color tileOutlineColor = hTile.getOutlineColor();
+		int oClr = hTile.defaultOutlineColor;
+		float stroke = 3.0f;
+		int tileOutlineColor = hTile.getOutlineColor();
 		
 		if(tileOutlineColor != oClr){
 			PGraphics pg = getHexPGraphics(hTile);
@@ -919,7 +928,7 @@ public class HexGrid {
 		- (int) ((y - 1) * hexagonSide * sqrt3div2);
 		
 		int yCenter = (heightMargin + hexagonSide 
-		+ (int) ((y - 1) * hexagonSide * 1.5));
+		+ (int) ((y - 1) * hexagonSide * 1.5f));
 
 		return new Point(xCenter,yCenter);
 	}
@@ -927,7 +936,7 @@ public class HexGrid {
 
 
     //MUTATOR METHODS
-    public void setAllTileColors(color tileColor){
+    public void setAllTileColors(int tileColor){
         this.defaultFillColor = tileColor;
           for (int r = 0; r < map.length; r++) {
             for (int c = 0; c < map[0].length; c++) {
@@ -938,7 +947,7 @@ public class HexGrid {
         }
     }
 
-	public void setAllTileOutlines(color outlineColor){
+	public void setAllTileOutlines(int outlineColor){
         this.defaultFillColor = outlineColor;
           for (int r = 0; r < map.length; r++) {
             for (int c = 0; c < map[0].length; c++) {
@@ -959,16 +968,16 @@ public class HexGrid {
         return map[x][y];
     }
 
-    public color setTileColor(HexLocation loc, color tileColor){
+    public int setTileColor(HexLocation loc, int tileColor){
 		HexTile hTile = getHexTile(loc);
-        color oldColor = hTile.getColor();
+        int oldColor = hTile.getColor();
         hTile.setColor(tileColor);
         return oldColor;
     }
 
 	public void highlightTile(HexLocation loc) {
 		HexTile hTile = getHexTile(loc);
-		color highlightColor = #FFFFFF;
+		int highlightColor = 0xFFFFFFFF;
 
 		Point p = hTile.getCenterPixels();
 
@@ -1034,14 +1043,14 @@ public class HexGrid {
 
 
 
-	public void setFillColor(final HexLocation loc, final color clr) {
+	public void setFillColor(final HexLocation loc, final int clr) {
 		if (!isValid(loc))
 			throw new RuntimeException("cannot set color of invalid location " + loc + " to color " + clr);
 		map[loc.getXCoord()][loc.getYCoord()].setColor(clr);
 		//repaint();
 	}
 
-	public color getFillColor(final HexLocation loc) {
+	public int getFillColor(final HexLocation loc) {
 		if (!isValid(loc))
 			throw new RuntimeException("cannot get color from invalid location " + loc);
 		return map[loc.getYCoord()][loc.getXCoord()].getColor();
@@ -1061,20 +1070,20 @@ public class HexGrid {
 	// 	return map[loc.getYCoord()][loc.getXCoord()].getImageFileName();
 	// }
 
-	public void setTileOutlineColor(final HexLocation loc, final color oclr) {
+	public void setTileOutlineColor(final HexLocation loc, final int oclr) {
 		if (!isValid(loc))
 			throw new RuntimeException("cannot set outline for invalid location " + loc);
             map[loc.getXCoord()][loc.getYCoord()].setOutlineColor(oclr);
 		//repaint();
 	}
 
-	public color getTileOutlineColor(final HexLocation loc) {
+	public int getTileOutlineColor(final HexLocation loc) {
 		if (!isValid(loc))
 			throw new RuntimeException("cannot get outline color for invalid location " + loc);
 		return map[loc.getXCoord()][loc.getYCoord()].getOutlineColor();
 	}
 
-	public void setAllOutlinesColor(final color oclr) {
+	public void setAllOutlinesColor(final int oclr) {
 		for (int r = 0; r < getNumRows(); r++) {
 			for (int c = 0; c < getNumCols(); c++) {
 				map[r][c].setOutlineColor(oclr);
@@ -1282,11 +1291,11 @@ public class HexGrid {
 
 		Polygon output = new Polygon();
 		output.addPoint(xCenter + 1, yCenter + hexagonSide + 1);
-		output.addPoint(xCenter + (int) (hexagonSide * sqrt3div2) + 1, yCenter + (int) (.5 * hexagonSide) + 1);
-		output.addPoint(xCenter + (int) (hexagonSide * sqrt3div2) + 1, yCenter - (int) (.5 * hexagonSide) - 1);
+		output.addPoint(xCenter + (int) (hexagonSide * sqrt3div2) + 1, yCenter + (int) (.5f * hexagonSide) + 1);
+		output.addPoint(xCenter + (int) (hexagonSide * sqrt3div2) + 1, yCenter - (int) (.5f * hexagonSide) - 1);
 		output.addPoint(xCenter + 1, yCenter - hexagonSide - 1);
-		output.addPoint(xCenter - (int) (hexagonSide * sqrt3div2) - 1, yCenter - (int) (.5 * hexagonSide) - 1);
-		output.addPoint(xCenter - (int) (hexagonSide * sqrt3div2) - 1, yCenter + (int) (.5 * hexagonSide) + 1);
+		output.addPoint(xCenter - (int) (hexagonSide * sqrt3div2) - 1, yCenter - (int) (.5f * hexagonSide) - 1);
+		output.addPoint(xCenter - (int) (hexagonSide * sqrt3div2) - 1, yCenter + (int) (.5f * hexagonSide) + 1);
 
 		return output;
 	}
@@ -1352,8 +1361,8 @@ public class HexLocation extends GridLocation{
  * Edited to be a subclass of GridTile pde file
  */
 
-import java.awt.Polygon;
-import java.awt.Point;
+
+
 
 public class HexTile extends GridTile{
   
@@ -1417,7 +1426,7 @@ public class HexTile extends GridTile{
 public class Platform {//extends Sprite {
 
 	//Platform defined by it's center-x and top-Y positions
-	public Platform(float posXCenter, float posYTop, float platWidth, float platHeight, color clr) {
+	public Platform(float posXCenter, float posYTop, float platWidth, float platHeight, int clr) {
 
 		//pass along the center-x and center-y to Sprite super
 		//super(posXCenter, posYTop + (platHeight/2), clr);
@@ -1467,7 +1476,7 @@ public class Sprite {
 
   // Simpler Constructor for Non-Animated Sprite
   public Sprite(String spriteImg, float x, float y) {
-    this(spriteImg, 1.0, x, y, false);
+    this(spriteImg, 1.0f, x, y, false);
   }
 
 
@@ -1534,31 +1543,43 @@ public class Sprite {
     -- Used from Long Bao Nguyen
     -- https://longbaonguyen.github.io/courses/platformer/platformer.html
   */
-  void setLeft(float left){
+  public void setLeft(float left){
     center_x = left + w/2;
   }
-  float getLeft(){
+  public float getLeft(){
     return center_x - w/2;
   }
-  void setRight(float right){
+  public void setRight(float right){
     center_x = right - w/2;
   }
-  float getRight(){
+  public float getRight(){
     return center_x + w/2;
   }
-  void setTop(float top){
+  public void setTop(float top){
     center_y = top + h/2;
   }
-  float getTop(){
+  public float getTop(){
     return center_y - h/2;
   }
-  void setBottom(float bottom){
+  public void setBottom(float bottom){
     center_y = bottom - h/2;
   }
-  float getBottom(){
+  public float getBottom(){
     return center_y + h/2;
   }
   
 
 }
 
+
+  public void settings() { size(900, 1600); }
+
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Game" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}

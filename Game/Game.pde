@@ -1,12 +1,12 @@
 /* Game Class Starter File
- * Last Edit: 12/13/2022
+ * Last Edit: 12/17/2022
  * Authors: Dean Carabajo & Mikyle O.
  */
 
 //GAME VARIABLES
 Grid grid = new Grid(16,9); //Screen 
-PImage player1Torso; // BF's waist and above
-PImage player1Legs //BF's waist and below
+//PImage player1Torso; // BF's waist and above
+//PImage player1Legs; //BF's waist and below
 
 PImage player1example;
 
