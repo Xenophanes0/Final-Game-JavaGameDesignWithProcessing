@@ -28,12 +28,15 @@ public class Game extends PApplet {
  */
 
 //GAME VARIABLES
-Grid grid = new Grid(6,8);
-PImage bg;
-PImage player1;
+Grid grid = new Grid(16,9); //Screen 
+//PImage player1Torso; // BF's waist and above
+//PImage player1Legs; //BF's waist and below
+
+PImage player1example;
+
 PImage endScreen;
-PImage firstBG;
-PImage songBG;
+PImage firstBG; //Intro Background
+PImage songBG;  //Running Banner in Space Background
 String extraText = "Havea a Good Day.";
 //PImage sonicEXE;
 String titleText = "Too Far";
@@ -61,9 +64,9 @@ public void setup() {
   //firstBG;
   songBG = loadImage("images/BackgroundFinalEscape.png");
 
-  bg.resize(800,600);
-  player1 = loadImage("images/x_wood.png");
-  player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
+  player1example.resize(200,100);
+  player1example = loadImage("images/FinalEscapeEXEStaticLeft.png");
+  player1example.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
   endScreen = loadImage("images/youwin.png");
 
   // Load a soundfile from the /data folder of the sketch and play it back
@@ -1569,7 +1572,7 @@ public class Sprite {
 }
 
 
-  public void settings() { size(800, 600); }
+  public void settings() { size(900, 1600); }
 
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Game" };
