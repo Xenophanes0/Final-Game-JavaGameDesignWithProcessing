@@ -32,6 +32,8 @@ Grid grid = new Grid(6,8);
 PImage bg;
 PImage player1;
 PImage endScreen;
+PImage firstBG;
+PImage songBG;
 String extraText = "Havea a Good Day.";
 //PImage sonicEXE;
 String titleText = "Too Far";
@@ -56,7 +58,9 @@ public void setup() {
 
   //Load images used
   //bg = loadImage("images/chess.jpg");
-  bg = loadImage("images/sonic-bg.jpg");
+  //firstBG;
+  songBG = loadImage("images/BackgroundFinalEscape.png");
+
   bg.resize(800,600);
   player1 = loadImage("images/x_wood.png");
   player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
