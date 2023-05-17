@@ -56,7 +56,7 @@ public void setup() {
 
   //Load images used
   //bg = loadImage("images/chess.jpg");
-  bg = loadImage("images/chess.jpg");
+  bg = loadImage("images/sonic-bg.jpg");
   bg.resize(800,600);
   player1 = loadImage("images/x_wood.png");
   player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
