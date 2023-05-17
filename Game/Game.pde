@@ -32,7 +32,7 @@ void setup() {
 
   //Load images used
   //bg = loadImage("images/chess.jpg");
-  bg = loadImage("images/x_wood.png");
+  bg = loadImage("images/chess.jpg");
   bg.resize(800,600);
   player1 = loadImage("images/x_wood.png");
   player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
@@ -90,24 +90,22 @@ void keyPressed(){
     //eliminate the picture from the old location
 
   }
-
-  //Known Processing method that automatically will run when a mouse click triggers it
-  void mouseClicked(){
+}
+//Known Processing method that automatically will run when a mouse click triggers it
+void mouseClicked(){
   
-    //check if click was successful
-    System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
-    System.out.println("Grid location: " + grid.getGridLocation());
+  //check if click was successful
+  System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
+  System.out.println("Grid location: " + grid.getGridLocation());
 
-    //what to do if clicked? (Make player1 disappear?)
+  //what to do if clicked? (Make player1 disappear?)
 
 
-    //Toggle the animation on & off
-    doAnimation = !doAnimation;
-    System.out.println("doAnimation: " + doAnimation);
-    grid.setMark("X",grid.getGridLocation());
+  //Toggle the animation on & off
+  doAnimation = !doAnimation;
+  System.out.println("doAnimation: " + doAnimation);
+  grid.setMark("X",grid.getGridLocation());
     
-  }
-
 }
 
 
