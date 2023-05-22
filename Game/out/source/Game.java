@@ -23,7 +23,7 @@ import java.io.IOException;
 public class Game extends PApplet {
 
 /* Game Class Starter File
- * Last Edit: 12/17/2022
+ * Last Edit: 5/22/2023
  * Authors: Dean Carabajo & Mikyle O.
  */
 
@@ -46,7 +46,7 @@ boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
 //import processing.sound.*;
-//SoundFile song;
+//SoundFile tfSong;
 
 int player1Row = 3;
 int player1Col = 3;
@@ -64,8 +64,12 @@ public void setup() {
   //Load images used
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
+
+  //tfSong = new SoundFile(this, "Too_Far_Final_Escape_Remix.mp3");
+  //tfSong.play();
+
   
-  player1 = loadImage("images/Faker_Neutral_Icon.png");
+  player1 = loadImage("images/BF_Neutral_Icon.png");
   player1.resize(200,150);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
