@@ -90,7 +90,7 @@ void keyPressed(){
   //What to do when a key is pressed?
 
   //set "w" key to move player1 up
-  if (player1Row != grid.getRows() - 1 && keyCode == 87){
+  if (player1Row != 0 && keyCode == 87){
     player1Row--;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
@@ -107,7 +107,7 @@ void keyPressed(){
   }
 
   //set "a" key
-  if (player1Col != grid.getCols() - 1 && keyCode == 65){
+  if (player1Col != 0 && keyCode == 65){
     player1Col--;
     GridLocation loc = new GridLocation(player1Row, player1Col);
     grid.setTileImage(loc, player1);
