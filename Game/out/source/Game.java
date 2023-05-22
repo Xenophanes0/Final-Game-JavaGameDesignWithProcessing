@@ -38,7 +38,7 @@ PImage player1example;
 PImage endScreen;
 PImage firstBG; //Intro Background
 PImage songBG;  //Running Banner in Space Background
-String extraText = "Havea a Good Day.";
+String extraText = "Have a Good Day.";
 //PImage sonicEXE;
 String titleText = "Too Far";
 AnimatedSprite exampleSprite;
@@ -64,7 +64,7 @@ public void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(900,1600);  //BG must be same dims as size()
   
-  player1 = loadImage("images/FinalEscapeEXEStaticLeft.png");
+  player1 = loadImage("images/Faker_Neutral_Icon.png");
   player1.resize(200,150);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
