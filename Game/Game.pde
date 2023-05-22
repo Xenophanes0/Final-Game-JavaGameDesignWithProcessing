@@ -4,7 +4,7 @@
  */
 
 //GAME VARIABLES
-Grid grid = new Grid(9,16); //Screen 
+Grid grid = new Grid(12,7); //Screen 
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
 PImage player1;
@@ -31,14 +31,14 @@ int player1Row = 3;
 void setup() {
 
   //Match the screen size to the background image size
-  size(1600, 900);
+  size(1200, 700);
 
   //Set the title on the title bar
   surface.setTitle(titleText);
 
   //Load images used
   songBG = loadImage("images/BackgroundFinalEscape.png");
-  songBG.resize(1600,900);  //BG must be same dims as size()
+  songBG.resize(1200,700);  //BG must be same dims as size()
   
   player1 = loadImage("images/Faker_Neutral_Icon.png");
   player1.resize(200,150);
