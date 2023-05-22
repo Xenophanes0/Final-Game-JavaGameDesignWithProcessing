@@ -68,7 +68,7 @@ public void setup() {
   //tfSong.play();
 
   
-  player1 = loadImage("images/Faker_Neutral_Icon.png");
+  player1 = loadImage("images/BF_Neutral_Icon.png");
   player1.resize(200,150);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
