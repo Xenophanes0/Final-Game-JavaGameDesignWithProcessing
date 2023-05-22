@@ -29,7 +29,7 @@ public class Game extends PApplet {
  */
 
 //GAME VARIABLES
-Grid grid = new Grid(16,9); //Screen 
+Grid grid = new Grid(12,7); //Screen 
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
 PImage player1;
@@ -63,11 +63,15 @@ public void setup() {
 
   //Load images used
   songBG = loadImage("images/BackgroundFinalEscape.png");
+<<<<<<< HEAD
   songBG.resize(900,1600);  //BG must be same dims as size()
 
   tfSong = new SoundFile(this, "Too_Far_Final_Escape_Remix.mp3");
   tfSong.play();
 
+=======
+  songBG.resize(1200,700);  //BG must be same dims as size()
+>>>>>>> 801b2e1074411b0602bec8e220fc6c97ad6d28c1
   
   player1 = loadImage("images/Faker_Neutral_Icon.png");
   player1.resize(200,150);
@@ -1578,7 +1582,11 @@ public class Sprite {
 }
 
 
+<<<<<<< HEAD
   public void settings() { size(1600, 900); }
+=======
+  public void settings() { size(1200, 700); }
+>>>>>>> 801b2e1074411b0602bec8e220fc6c97ad6d28c1
 
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Game" };

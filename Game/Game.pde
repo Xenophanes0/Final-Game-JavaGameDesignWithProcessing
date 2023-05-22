@@ -4,7 +4,7 @@
  */
 
 //GAME VARIABLES
-Grid grid = new Grid(16,9); //Screen 
+Grid grid = new Grid(12,7); //Screen 
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
 PImage player1;
@@ -31,14 +31,14 @@ int player1Row = 3;
 void setup() {
 
   //Match the screen size to the background image size
-  size(1600, 900);
+  size(1200, 700);
 
   //Set the title on the title bar
   surface.setTitle(titleText);
 
   //Load images used
   songBG = loadImage("images/BackgroundFinalEscape.png");
-  songBG.resize(900,1600);  //BG must be same dims as size()
+  songBG.resize(1200,700);  //BG must be same dims as size()
 
   //tfSong = new SoundFile(this, "Too_Far_Final_Escape_Remix.mp3");
   //tfSong.play();
