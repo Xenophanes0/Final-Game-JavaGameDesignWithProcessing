@@ -25,6 +25,7 @@ boolean doAnimation;
 //SoundFile song;
 
 int player1Row = 3;
+int player1Col = 3;
 
 
 //Required Processing method that gets run once
@@ -83,16 +84,40 @@ void keyPressed(){
   System.out.println("Key pressed: " + keyCode); //keyCode gives you an integer for the key
 
   //What to do when a key is pressed?
+
+  //set "w" key to move player1 up
+  if (player1Row != grid.getRows() - 1 && keyCode == 87){
+    player1Row--;
+
+    GridLocation loc = new GridLocation(player1Row, player1Col);
+    grid.setTileImage(loc, player1);
+
+  }
+
+  //set "s" key
+  if (player1Row != grid.getRows() - 1 && keyCode == 83){
+    player1Row++;
+
+    GridLocation loc = new GridLocation(player1Row, player1Col);
+    grid.setTileImage(loc, player1);
+  }
+
+  //set "a" key
+  if (player1Col != grid.getCols() - 1 && keyCode == 65){
+    player1Col--;
+    GridLocation loc = new GridLocation(player1Row, player1Col);
+    grid.setTileImage(loc, player1);
+  }
   
-  //set "w" key to move the player1 up
-  if(keyCode == 87){
+  //set "d" key to move the player1 right
+  if(player1Col != grid.getCols() - 1 && keyCode == 68){
     //check case where out of bounds
     
     //change the field for player1Row
-    player1Row--;
+    player1Col++;
 
     //shift the player1 picture up in the 2D array
-    GridLocation loc = new GridLocation(player1Row, 0);
+    GridLocation loc = new GridLocation(player1Row, player1Col);
     grid.setTileImage(loc, player1);
 
     //eliminate the picture from the old location
@@ -107,6 +132,8 @@ void mouseClicked(){
   System.out.println("Grid location: " + grid.getGridLocation());
 
   //what to do if clicked? (Make player1 disappear?)
+  GridLocation clickedLoc = grid.getGridLocation();
+  GridLocation player1Loc = new GridLocation(player1Row, player1Col);
 
 
   //Toggle the animation on & off
@@ -140,7 +167,7 @@ public void updateScreen(){
   background(songBG);
 
   //Display the Player1 image
-  GridLocation player1Loc = new GridLocation(player1Row,0);
+  GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
   //update other screen elements
