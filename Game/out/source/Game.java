@@ -28,7 +28,7 @@ public class Game extends PApplet {
  */
 
 //GAME VARIABLES
-Grid grid = new Grid(16,9); //Screen 
+Grid grid = new Grid(9,16); //Screen 
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
 PImage player1;
@@ -62,7 +62,7 @@ public void setup() {
 
   //Load images used
   songBG = loadImage("images/BackgroundFinalEscape.png");
-  songBG.resize(900,1600);  //BG must be same dims as size()
+  songBG.resize(1600,900);  //BG must be same dims as size()
   
   player1 = loadImage("images/Faker_Neutral_Icon.png");
   player1.resize(200,150);
@@ -1573,7 +1573,7 @@ public class Sprite {
 }
 
 
-  public void settings() { size(900, 1600); }
+  public void settings() { size(1600, 900); }
 
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Game" };
