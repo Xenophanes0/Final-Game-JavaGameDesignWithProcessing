@@ -4,6 +4,7 @@ import processing.data.*;
 import processing.event.*;
 import processing.opengl.*;
 
+import processing.sound.*;
 import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.Point;
@@ -45,8 +46,8 @@ AnimatedSprite exampleSprite;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
-//import processing.sound.*;
-//SoundFile tfSong;
+
+SoundFile tfSong;
 
 int player1Row = 3;
 int player1Col = 3;
@@ -65,8 +66,8 @@ public void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  //tfSong = new SoundFile(this, "Too_Far_Final_Escape_Remix.mp3");
-  //tfSong.play();
+  tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  tfSong.play();
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
@@ -74,7 +75,7 @@ public void setup() {
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
   endScreen = loadImage("images/youwin.png");
-
+  
   // Load a soundfile from the /data folder of the sketch and play it back
   // song = new SoundFile(this, "sounds/Lenny_Kravitz_Fly_Away.mp3");
   // song.play();
@@ -114,7 +115,7 @@ public void keyPressed(){
   //What to do when a key is pressed?
 
   //set "w" key to move player1 up
-  if (player1Row != grid.getRows() - 1 && keyCode == 87){
+  if (player1Row != 0 && keyCode == 87){
     player1Row--;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
@@ -131,7 +132,7 @@ public void keyPressed(){
   }
 
   //set "a" key
-  if (player1Col != grid.getCols() - 1 && keyCode == 65){
+  if (player1Col != 0 && keyCode == 65){
     player1Col--;
     GridLocation loc = new GridLocation(player1Row, player1Col);
     grid.setTileImage(loc, player1);
