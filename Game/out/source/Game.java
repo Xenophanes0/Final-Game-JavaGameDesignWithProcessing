@@ -296,7 +296,7 @@ public void endGame(){
 //example method that creates 5 horses along the screen
 public void exampleAnimationSetup(){  
   int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/horse_run.png", 50.0f, i*75.0f, "sprites/horse_run.json");
+  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0f, i*75.0f, "sprites/Majin_Sonic_Idle_Animation.json");
 }
 
 //example method that animates the horse Sprites
