@@ -160,9 +160,9 @@ public void keyPressed(){
 
     //shift the player1 picture up in the 2D array
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
 
     //eliminate the picture from the old location
+    grid.clearTileImage(loc);
 
   }
 }

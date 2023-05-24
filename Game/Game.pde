@@ -221,8 +221,27 @@ public void populateSprites(){
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
+  //Loop through all of the rows & cols in the grid
+  for (int r = 0; r < grid.getNumRows(); r++){
+    for (int c = 0; c < grid.getNumCols(); c++){
 
-//Loop through all of the rows & cols in the grid
+      //Store the 2 tile locations to move
+      GridLocation loc = new GridLocation(r, c);
+
+      //Don't move if player's loc isn't in first column
+      if (c != 0){
+        GridLocation newLoc = new GridLocation(r-1, c);
+
+        //Check if there is spirte in r,c
+        if (grid.hasTileSprite(loc)){
+          grid.setTileSprite(newLoc, grid.getTileSprite(loc));
+          
+          //clear sprite from old loc
+          grid.clearTileSprite(loc);
+        }
+      }
+    }
+  }
   
       //Store the 2 tile locations to move
 
@@ -272,7 +291,7 @@ public void endGame(){
 //example method that creates 5 horses along the screen
 public void exampleAnimationSetup(){  
   int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
+  exampleSprite = new AnimatedSprite("sprites/horse_run.png", 50.0, i*75.0, "sprites/horse_run.json");
 }
 
 //example method that animates the horse Sprites
