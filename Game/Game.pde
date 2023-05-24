@@ -42,8 +42,8 @@ void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  // tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
-  // tfSong.play();
+  tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  tfSong.play();
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");

@@ -78,8 +78,8 @@ public void setup() {
   endScreen = loadImage("images/youwin.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
-  // song = new SoundFile(this, "sounds/Lenny_Kravitz_Fly_Away.mp3");
-  // song.play();
+  //song = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  //song.play();
 
   
   //Animation & Sprite setup
