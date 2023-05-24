@@ -22,8 +22,8 @@ AnimatedSprite exampleSprite;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
-import processing.sound.*;
-SoundFile tfSong;
+//import processing.sound.*;
+//SoundFile tfSong;
 
 int player1Row = 3;
 int player1Col = 3;
@@ -42,8 +42,8 @@ void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
-  tfSong.play();
+  // tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  // tfSong.play();
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
@@ -116,14 +116,15 @@ void keyPressed(){
     player1Row++;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
+    grid.clearTileImage(loc);
   }
 
   //set "a" key
   if (player1Col != 0 && keyCode == 65){
     player1Col--;
+
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
+    grid.clearTileImage(loc);
   }
   
   //set "d" key to move the player1 right
@@ -135,9 +136,9 @@ void keyPressed(){
 
     //shift the player1 picture up in the 2D array
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
 
     //eliminate the picture from the old location
+    grid.clearTileImage(loc);
 
   }
 }
