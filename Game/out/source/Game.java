@@ -85,6 +85,7 @@ public void setup() {
   //Animation & Sprite setup
   exampleAnimationSetup();
 
+
     imageMode(CORNER);    //Set Images to read coordinates at corners
   //fullScreen();   //only use if not using a specfic bg image
   
@@ -314,7 +315,8 @@ public void endGame(){
 }
 
 //example method that creates 5 horses along the screen
-public void exampleAnimationSetup(){  
+public void exampleAnimationSetup()
+{  
   int i = 2;
   exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0f, i*75.0f, "sprites/Majin_Sonic_Idle_Animation.json");
 } 
