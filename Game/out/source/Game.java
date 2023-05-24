@@ -4,6 +4,7 @@ import processing.data.*;
 import processing.event.*;
 import processing.opengl.*;
 
+import processing.sound.*;
 import java.awt.Color;
 import java.awt.Polygon;
 import java.awt.Point;
@@ -46,8 +47,8 @@ AnimatedSprite exampleSprite;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
-//import processing.sound.*;
-//SoundFile tfSong;
+
+SoundFile tfSong;
 
 int player1Row = 3;
 int player1Col = 3;
@@ -66,8 +67,8 @@ public void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  // tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
-  // tfSong.play();
+  tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  tfSong.play();
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
@@ -245,8 +246,27 @@ public void populateSprites(){
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
+  //Loop through all of the rows & cols in the grid
+  for (int r = 0; r < grid.getNumRows(); r++){
+    for (int c = 0; c < grid.getNumCols(); c++){
 
-//Loop through all of the rows & cols in the grid
+      //Store the 2 tile locations to move
+      GridLocation loc = new GridLocation(r, c);
+
+      //Don't move if player's loc isn't in first column
+      if (c != 0){
+        GridLocation newLoc = new GridLocation(r-1, c);
+
+        //Check if there is spirte in r,c
+        if (grid.hasTileSprite(loc)){
+          grid.setTileSprite(newLoc, grid.getTileSprite(loc));
+          
+          //clear sprite from old loc
+          grid.clearTileSprite(loc);
+        }
+      }
+    }
+  }
   
       //Store the 2 tile locations to move
 
@@ -297,7 +317,7 @@ public void endGame(){
 public void exampleAnimationSetup(){  
   int i = 2;
   exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0f, i*75.0f, "sprites/Majin_Sonic_Idle_Animation.json");
-}
+} 
 
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
