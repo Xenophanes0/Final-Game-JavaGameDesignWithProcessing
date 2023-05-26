@@ -25,7 +25,7 @@ boolean doAnimation;
 import processing.sound.*;
 SoundFile tfSong;
 
-int player1Row = 3;
+int player1Row = 9;
 int player1Col = 3;
 
 
@@ -99,8 +99,8 @@ void keyPressed(){
 
   //What to do when a key is pressed?
 
-  //set "w" key to move player1 up
-  if (player1Row != 0 && keyCode == 87){
+  //set "d" key to move left arrow 2
+  if (keyCode == 68){
     
     //Store old GridLocation
     GridLocation oldLoc = new GridLocation(player1Row, player1Col);
@@ -109,31 +109,31 @@ void keyPressed(){
     grid.clearTileImage(oldLoc);
 
     //change the field for player1Row
-    player1Row--;
+    player1Col = 2;
   }
 
-  //set "s" key
-  if (player1Row != grid.getNumRows() - 1 && keyCode == 83){
-    player1Row++;
+  //set "f" key to move down column 3
+  if (keyCode == 70){
+    player1Col = 3;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
     grid.clearTileImage(loc);
   }
 
-  //set "a" key
-  if (player1Col != 0 && keyCode == 65){
-    player1Col--;
+  //set "j" key to move up column 4
+  if (keyCode == 74){
+    player1Col = 4;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
     grid.clearTileImage(loc);
   }
   
-  //set "d" key to move the player1 right
-  if(player1Col != grid.getNumCols() - 1 && keyCode == 68){
+  //set "k" key to move right column 5
+  if(keyCode == 75){
     //check case where out of bounds
     
     //change the field for player1Row
-    player1Col++;
+    player1Col = 5;
 
     //shift the player1 picture up in the 2D array
     GridLocation loc = new GridLocation(player1Row, player1Col);
