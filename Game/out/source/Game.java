@@ -324,7 +324,7 @@ public void exampleAnimationSetup()
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
   if(doAnimation){
-    exampleSprite.animateVertical(5.0f, 1.0f, true);
+    exampleSprite.animate(1.0f);
   }
 }
 /* Animated Sprite class - useful to have Sprites move around
