@@ -1,0 +1,140 @@
+{
+  "frames": [
+    {
+      "filename": "Majin_Sonic_Left_1.PNG",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 130,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 130,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 130,
+        "h": 118
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Left_0.png",
+      "frame": {
+        "x": 130,
+        "y": 0,
+        "w": 122,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 122,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 122,
+        "h": 116
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Left_3.png",
+      "frame": {
+        "x": 252,
+        "y": 0,
+        "w": 118,
+        "h": 105
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 118,
+        "h": 105
+      },
+      "sourceSize": {
+        "w": 118,
+        "h": 105
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Left_4.png",
+      "frame": {
+        "x": 370,
+        "y": 0,
+        "w": 117,
+        "h": 108
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 117,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 117,
+        "h": 108
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Left_2.png",
+      "frame": {
+        "x": 252,
+        "y": 105,
+        "w": 115,
+        "h": 115
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 115,
+        "h": 115
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 115
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Majin_Sonic_Left_Animation.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 487,
+      "h": 220
+    },
+    "scale": 1
+  }
+}

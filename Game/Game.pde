@@ -19,13 +19,14 @@ String extraText = "Have a Good Day.";
 //PImage sonicEXE;
 String titleText = "Too Far";
 AnimatedSprite exampleSprite;
+AnimatedSprite majinCharacter;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
 import processing.sound.*;
 SoundFile tfSong;
 
-int player1Row = 3;
+int player1Row = 9;
 int player1Col = 3;
 
 
@@ -53,14 +54,14 @@ void setup() {
   endScreen = loadImage("images/youwin.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
-  // song = new SoundFile(this, "sounds/Lenny_Kravitz_Fly_Away.mp3");
-  // song.play();
-
   
   //Animation & Sprite setup
-  exampleAnimationSetup();
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50, 150, "sprites/Majin_Sonic_Idle_Animation.json");
 
-    imageMode(CORNER);    //Set Images to read coordinates at corners
+  //exampleAnimationSetup();
+
+
+  imageMode(CORNER);    //Set Images to read coordinates at corners
   //fullScreen();   //only use if not using a specfic bg image
   
   println("Game started...");
@@ -84,7 +85,10 @@ void draw() {
     endGame();
   }
 
-  checkExampleAnimation();
+  majinCharacter.show();
+  majinCharacter.animate(20.0);
+
+  //checkExampleAnimation();
   
   msElapsed +=100;
   grid.pause(100);
@@ -98,8 +102,8 @@ void keyPressed(){
 
   //What to do when a key is pressed?
 
-  //set "w" key to move player1 up
-  if (player1Row != 0 && keyCode == 87){
+  //set "d" key to move left arrow 2
+  if (keyCode == 68){
     
     //Store old GridLocation
     GridLocation oldLoc = new GridLocation(player1Row, player1Col);
@@ -108,36 +112,37 @@ void keyPressed(){
     grid.clearTileImage(oldLoc);
 
     //change the field for player1Row
-    player1Row--;
+    player1Col = 2;
   }
 
-  //set "s" key
-  if (player1Row != grid.getNumRows() - 1 && keyCode == 83){
-    player1Row++;
+  //set "f" key to move down column 3
+  if (keyCode == 70){
+    player1Col = 3;
 
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
+    grid.clearTileImage(loc);
   }
 
-  //set "a" key
-  if (player1Col != 0 && keyCode == 65){
-    player1Col--;
+  //set "j" key to move up column 4
+  if (keyCode == 74){
+    player1Col = 4;
+
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
+    grid.clearTileImage(loc);
   }
   
-  //set "d" key to move the player1 right
-  if(player1Col != grid.getNumCols() - 1 && keyCode == 68){
+  //set "k" key to move right column 5
+  if(keyCode == 75){
     //check case where out of bounds
     
     //change the field for player1Row
-    player1Col++;
+    player1Col = 5;
 
     //shift the player1 picture up in the 2D array
     GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.setTileImage(loc, player1);
 
     //eliminate the picture from the old location
+    grid.clearTileImage(loc);
 
   }
 }
@@ -220,8 +225,27 @@ public void populateSprites(){
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
+  //Loop through all of the rows & cols in the grid
+  for (int r = 0; r < grid.getNumRows(); r++){
+    for (int c = 0; c < grid.getNumCols(); c++){
 
-//Loop through all of the rows & cols in the grid
+      //Store the 2 tile locations to move
+      GridLocation loc = new GridLocation(r, c);
+
+      //Don't move if player's loc isn't in first column
+      if (c != 0){
+        GridLocation newLoc = new GridLocation(r-1, c);
+
+        //Check if there is spirte in r,c
+        if (grid.hasTileSprite(loc)){
+          grid.setTileSprite(newLoc, grid.getTileSprite(loc));
+          
+          //clear sprite from old loc
+          grid.clearTileSprite(loc);
+        }
+      }
+    }
+  }
   
       //Store the 2 tile locations to move
 
@@ -269,14 +293,15 @@ public void endGame(){
 }
 
 //example method that creates 5 horses along the screen
-public void exampleAnimationSetup(){  
+public void exampleAnimationSetup()
+{  
   int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/horse_run.png", 50.0, i*75.0, "sprites/horse_run.json");
-}
+  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
+} 
 
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
   if(doAnimation){
-    exampleSprite.animateVertical(5.0, 1.0, true);
+    exampleSprite.animate(1.0);
   }
 }

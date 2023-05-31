@@ -1,0 +1,140 @@
+{
+  "frames": [
+    {
+      "filename": "Majin_Sonic_Down_3.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 109,
+        "h": 97
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 109,
+        "h": 97
+      },
+      "sourceSize": {
+        "w": 109,
+        "h": 97
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Down_4.png",
+      "frame": {
+        "x": 109,
+        "y": 0,
+        "w": 108,
+        "h": 96
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 108,
+        "h": 96
+      },
+      "sourceSize": {
+        "w": 108,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Down_0.png",
+      "frame": {
+        "x": 217,
+        "y": 0,
+        "w": 108,
+        "h": 86
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 108,
+        "h": 86
+      },
+      "sourceSize": {
+        "w": 108,
+        "h": 86
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Down_1.png",
+      "frame": {
+        "x": 325,
+        "y": 0,
+        "w": 108,
+        "h": 86
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 108,
+        "h": 86
+      },
+      "sourceSize": {
+        "w": 108,
+        "h": 86
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Down_2.png",
+      "frame": {
+        "x": 433,
+        "y": 0,
+        "w": 106,
+        "h": 91
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 106,
+        "h": 91
+      },
+      "sourceSize": {
+        "w": 106,
+        "h": 91
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Majin_Sonic_Down_Animation.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 539,
+      "h": 97
+    },
+    "scale": 1
+  }
+}
