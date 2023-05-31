@@ -299,6 +299,6 @@ public void exampleAnimationSetup()
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
   if(doAnimation){
-    exampleSprite.animate(1.0);
+    exampleSprite.animate(1.5);
   }
 }
