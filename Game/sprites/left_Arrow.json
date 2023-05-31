@@ -1,0 +1,40 @@
+{
+  "frames": [
+    {
+      "filename": "leftArrow.jpg",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 54
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 53,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 53,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "texture.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 53,
+      "h": 54
+    },
+    "scale": 1
+  }
+}

@@ -53,7 +53,7 @@ public class AnimatedSprite extends Sprite{
       // this.h = this.animation.get(0).height;
       this.len = this.animation.size();
       this.iBucket = 0.0;
-      this.aSpeed = 0.0;
+      this.aSpeed = 1.0;
     }
     super.setW(this.animation.get(0).width);
     super.setH(this.animation.get(0).height);

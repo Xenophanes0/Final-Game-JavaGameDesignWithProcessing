@@ -10,7 +10,11 @@ Grid grid = new Grid(12,7); //Screen
 //PImage player1Legs; //BF's waist and below
 PImage player1;
 
-PImage player1example;
+//Arrow Icons (Animated)
+AnimatedSprite leftSprite;
+PImage downArrow;
+PImage upArrow;
+PImage rightArrow;
 
 PImage endScreen;
 PImage firstBG; //Intro Background
@@ -56,7 +60,8 @@ void setup() {
   // Load a soundfile from the /data folder of the sketch and play it back
   
   //Animation & Sprite setup
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50, 150, "sprites/Majin_Sonic_Idle_Animation.json");
+  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
 
   //exampleAnimationSetup();
 
@@ -102,7 +107,7 @@ void keyPressed(){
 
   //What to do when a key is pressed?
 
-  //set "d" key to move left arrow 2
+  //set "d" key to move left arrow 2 column
   if (keyCode == 68){
     
     //Store old GridLocation
@@ -210,15 +215,17 @@ public void updateScreen(){
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
   
-  //What is the index for the last column?
-  
-
+  for (int c = 2; c < 6; c++){
   //Loop through all the rows in the last column
   
     //Generate a random number
-    
+    double rand = Math.random();
 
     //10% of the time, decide to add an enemy image to a Tile
+    if (rand < 0.1){
+      grid.setTileSprite(new GridLocation(0, c), leftSprite);
+    }
+  }
     
 
 }
@@ -246,35 +253,33 @@ public void moveSprites(){
       }
     }
   }
-  
-      //Store the 2 tile locations to move
-
-      //Check if the current tile has an image that is not player1      
-
-
-        //Get image/sprite from current location
-
-
-        //CASE 1: Collision with player1
-
-
-        //CASE 2: Move enemy over to new location
-
-        
-        //Erase image/sprite from old location
-        
-        //System.out.println(loc + " " + grid.hasTileImage(loc));
-
-
-      //CASE 3: Enemy leaves screen at first column
-
 }
 
-//Method to handle the collisions between Sprites on the Screen
-public void handleCollisions(){
+//Method to check if there's a collision between player and sprite
+public boolean checkCollision(GridLocation loc, GridLocation nextLoc){
 
+  //Check current location
+  PImage image = grid.getTileImage(loc);
+  AnimatedSprite sprite = grid.getTileSprite(loc);
 
+  if (image == null && sprite == null){
+    return false;
+  }
+
+  //Check next location
+  PImage imageNext = grid.getTileImage(nextLoc);
+  AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
+  if (imageNext == null && nextSprite == null){
+    return false;
+  }
+
+  return true;
+
+  //check if arrows hits player
+  //if (arrowSprite.equals(exampleSprite))
 }
+
+
 
 //method to indicate when the main game is over
 public boolean isGameOver(){
