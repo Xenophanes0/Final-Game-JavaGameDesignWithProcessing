@@ -19,7 +19,6 @@ String extraText = "Have a Good Day.";
 //PImage sonicEXE;
 String titleText = "Too Far";
 AnimatedSprite exampleSprite;
-AnimatedSprite majinCharacter;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
@@ -56,9 +55,8 @@ void setup() {
   // Load a soundfile from the /data folder of the sketch and play it back
   
   //Animation & Sprite setup
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50, 150, "sprites/Majin_Sonic_Idle_Animation.json");
 
-  //exampleAnimationSetup();
+  exampleAnimationSetup();
 
 
   imageMode(CORNER);    //Set Images to read coordinates at corners
@@ -84,11 +82,7 @@ void draw() {
   if(isGameOver()){
     endGame();
   }
-
-  majinCharacter.show();
-  majinCharacter.animate(20.0);
-
-  //checkExampleAnimation();
+  checkExampleAnimation();
   
   msElapsed +=100;
   grid.pause(100);
