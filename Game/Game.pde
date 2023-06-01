@@ -11,7 +11,7 @@ Grid grid = new Grid(12,7); //Screen
 PImage player1;
 
 //Arrow Icons (Animated)
-AnimatedSprite leftSprite;
+//AnimatedSprite leftSprite;
 PImage downArrow;
 PImage upArrow;
 PImage rightArrow;
@@ -60,7 +60,7 @@ void setup() {
   // Load a soundfile from the /data folder of the sketch and play it back
   
   //Animation & Sprite setup
-  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  //leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
   majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
 
   //exampleAnimationSetup();
@@ -122,33 +122,26 @@ void keyPressed(){
 
   //set "f" key to move down column 3
   if (keyCode == 70){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 3;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
 
   //set "j" key to move up column 4
   if (keyCode == 74){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 4;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
   
   //set "k" key to move right column 5
   if(keyCode == 75){
-    //check case where out of bounds
-    
+    //shift the player1 picture up in the 2D array
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    //eliminate the picture from the old location
+    grid.clearTileImage(oldLoc);
     //change the field for player1Row
     player1Col = 5;
-
-    //shift the player1 picture up in the 2D array
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-
-    //eliminate the picture from the old location
-    grid.clearTileImage(loc);
-
   }
 }
 //Known Processing method that automatically will run when a mouse click triggers it
@@ -207,17 +200,17 @@ public void updateScreen(){
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
   
-  for (int c = 2; c < 6; c++){
-  //Loop through all the rows in the last column
+  // for (int c = 2; c < 6; c++){
+  // //Loop through all the rows in the last column
   
-    //Generate a random number
-    double rand = Math.random();
+  //   //Generate a random number
+  //   double rand = Math.random();
 
-    //10% of the time, decide to add an enemy image to a Tile
-    if (rand < 0.1){
-      grid.setTileSprite(new GridLocation(0, c), leftSprite);
-    }
-  }
+  //   //10% of the time, decide to add an enemy image to a Tile
+  //   //if (rand < 0.1){
+  //     //grid.setTileSprite(new GridLocation(0, c), leftSprite);
+  //   //}
+  // }
     
 
 }
@@ -299,6 +292,6 @@ public void exampleAnimationSetup()
 //example method that animates the horse Sprites
 public void checkExampleAnimation(){
   if(doAnimation){
-    exampleSprite.animate(1.5);
+    exampleSprite.animate(1.0);
   }
 }
