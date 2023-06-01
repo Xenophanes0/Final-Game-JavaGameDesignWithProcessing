@@ -197,17 +197,9 @@ public void updateScreen(){
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
-  //Loop through all the Tiles and display its images/sprites
-  
-
-      //Store temporary GridLocation
-      
-      //Check if the tile has an image/sprite 
-      //--> Display the tile's image/sprite
-
-
-
-  //Update other screen elements
+  //update other screen elements
+  grid.showImages();
+  grid.showSprites();
 
 
 }
@@ -239,7 +231,7 @@ public void moveSprites(){
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
-      //Don't move if player's loc isn't in first column
+      //Don't move if player's loc isn't in bottom row
       if (c != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
 
