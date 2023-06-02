@@ -36,8 +36,8 @@ Grid grid = new Grid(12,7); //Screen
 //PImage player1Legs; //BF's waist and below
 PImage player1;
 
-//Arrow Icons (Animated)
-//AnimatedSprite leftSprite;
+/*      Arrow Icons (Animated)      */
+AnimatedSprite leftSprite;
 PImage downArrow;
 PImage upArrow;
 PImage rightArrow;
@@ -45,10 +45,9 @@ PImage rightArrow;
 PImage endScreen;
 PImage firstBG; //Intro Background
 PImage songBG;  //Running Banner in Space Background
+
 String extraText = "Have a Good Day.";
-//PImage sonicEXE;
 String titleText = "Too Far";
-AnimatedSprite exampleSprite;
 AnimatedSprite majinCharacter;
 boolean doAnimation;
 
@@ -85,11 +84,9 @@ public void setup() {
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
-  //Animation & Sprite setup
-  //leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  /*      Animation & Sprite setup      */
+  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
   majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
-
-  //exampleAnimationSetup();
 
 
   imageMode(CORNER);    //Set Images to read coordinates at corners
@@ -116,8 +113,7 @@ public void draw() {
     endGame();
   }
 
-  majinCharacter.show();
-  majinCharacter.animate(20.0f);
+  majinCharacter.animate(6.5f);
 
   //checkExampleAnimation();
   
@@ -225,34 +221,43 @@ public void updateScreen(){
 
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
-  
-  // for (int c = 2; c < 6; c++){
-  // //Loop through all the rows in the last column
-  
-  //   //Generate a random number
-  //   double rand = Math.random();
+  //What is the index for the top row ?
+  int topRow = 0;
 
-  //   //10% of the time, decide to add an enemy image to a Tile
-  //   //if (rand < 0.1){
-  //     //grid.setTileSprite(new GridLocation(0, c), leftSprite);
-  //   //}
-  // }
-    
+  //Loop through all the cols in the last column
+  for(int c=0; c<grid.getNumCols(); c++){
+
+    //Generate a random number
+    double rando = Math.random();
+
+    //10% of the time, decide to add an image to a Tile
+    if(rando < 0.1f){
+      //grid.setTileImage(new GridLocation(r,lastCol), enemy);
+      //System.out.println("Populating in row " + r);
+      grid.setTileSprite(new GridLocation(topRow, c), leftSprite);
+    }
+
+  }
 
 }
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
-  //Loop through all of the rows & cols in the grid
+  // Loop through all of the rows & cols in the grid
   for (int r = 0; r < grid.getNumRows(); r++){
     for (int c = 0; c < grid.getNumCols(); c++){
 
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
-      //Don't move if player's loc isn't in bottom row
-      if (c != 0){
-        GridLocation newLoc = new GridLocation(r-1, c);
+      // //clear enemy sprites in last row
+      // if (r != 0){
+      //   grid.clearTileSprite(loc);
+      // }
+
+      //only move if player's loc isn't in bottom row
+      if (r == 0){
+        GridLocation newLoc = new GridLocation(r+1, c);
 
         //Check if there is spirte in r,c
         if (grid.hasTileSprite(loc)){
@@ -308,19 +313,19 @@ public void endGame(){
 
 }
 
-//example method that creates 5 horses along the screen
-public void exampleAnimationSetup()
-{  
-  int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0f, i*75.0f, "sprites/Majin_Sonic_Idle_Animation.json");
-} 
+// //example method that creates 5 horses along the screen
+// public void exampleAnimationSetup()
+// {  
+//   int i = 2;
+//   exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
+// } 
 
-//example method that animates the horse Sprites
-public void checkExampleAnimation(){
-  if(doAnimation){
-    exampleSprite.animate(1.0f);
-  }
-}
+// //example method that animates the horse Sprites
+// public void checkExampleAnimation(){
+//   if(doAnimation){
+//     exampleSprite.animate(1.0);
+//   }
+// }
 /* Animated Sprite class - useful to have Sprites move around
  * Designed to be used with Spritesheets & JSON Array files from TexturePacker software: 
  * https://free-tex-packer.com/app/
