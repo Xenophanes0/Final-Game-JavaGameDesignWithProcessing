@@ -1,7 +1,7 @@
 {
   "frames": [
     {
-      "filename": "sprite (2).png",
+      "filename": "redSprite.jpg",
       "frame": {
         "x": 0,
         "y": 0,
@@ -29,8 +29,8 @@
   "meta": {
     "app": "http://free-tex-packer.com",
     "version": "0.6.7",
-    "image": "texture.jpg",
-    "format": "RGB888",
+    "image": "right_Arrow.png",
+    "format": "RGBA8888",
     "size": {
       "w": 154,
       "h": 157

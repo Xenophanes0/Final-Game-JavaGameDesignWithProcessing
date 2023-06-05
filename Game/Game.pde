@@ -12,9 +12,9 @@ PImage player1;
 
 /*      Arrow Icons (Animated)      */
 AnimatedSprite leftSprite;
-PImage downArrow;
-PImage upArrow;
-PImage rightArrow;
+AnimatedSprite downSprite;
+AnimatedSprite upSprite;
+AnimatedSprite rightSprite;
 
 PImage endScreen;
 PImage firstBG; //Intro Background
@@ -29,7 +29,7 @@ boolean doAnimation;
 import processing.sound.*;
 SoundFile tfSong;
 
-int player1Row = 9;
+int player1Row = 1;
 int player1Col = 3;
 
 
@@ -51,7 +51,7 @@ void setup() {
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
-  player1.resize(200,150);
+  player1.resize(100,50);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
   endScreen = loadImage("images/youwin.png");
@@ -60,6 +60,13 @@ void setup() {
   
   /*      Animation & Sprite setup      */
   leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  leftSprite.resize(75,75);
+  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
+  downSprite.resize(75, 75);
+  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
+  upSprite.resize(75, 75);
+  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
+  rightSprite.resize(75, 75);
   majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
 
 
@@ -196,19 +203,29 @@ public void updateScreen(){
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
   //What is the index for the top row ?
-  int topRow = 0;
+  int bottomRow = 7;
 
   //Loop through all the cols in the last column
-  for(int c=0; c<grid.getNumCols(); c++){
+  for(int c=2; c<6; c++){
 
     //Generate a random number
     double rando = Math.random();
 
     //10% of the time, decide to add an image to a Tile
     if(rando < 0.1){
-      //grid.setTileImage(new GridLocation(r,lastCol), enemy);
-      //System.out.println("Populating in row " + r);
-      grid.setTileSprite(new GridLocation(topRow, c), leftSprite);
+
+      if (c == 2){
+        grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
+      }
+      else if (c == 3){
+        grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
+      }
+      else if (c == 4){
+        grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
+      }
+      else{
+        grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
+      }
     }
 
   }
@@ -218,20 +235,20 @@ public void populateSprites(){
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
   // Loop through all of the rows & cols in the grid
-  for (int r = 0; r < grid.getNumRows(); r++){
-    for (int c = 0; c < grid.getNumCols(); c++){
+  for (int c = 0; c < grid.getNumCols(); c++){
+    for (int r = 0; r < grid.getNumRows(); r++){
 
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
       // //clear enemy sprites in last row
-      // if (r != 0){
-      //   grid.clearTileSprite(loc);
-      // }
+      if (r == 0){
+        grid.clearTileSprite(loc);
+      }
 
       //only move if player's loc isn't in bottom row
-      if (r == 0){
-        GridLocation newLoc = new GridLocation(r+1, c);
+      if (r != 0){
+        GridLocation newLoc = new GridLocation(r-1, c);
 
         //Check if there is spirte in r,c
         if (grid.hasTileSprite(loc)){
