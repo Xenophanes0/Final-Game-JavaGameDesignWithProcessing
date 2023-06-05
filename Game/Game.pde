@@ -10,19 +10,18 @@ Grid grid = new Grid(12,7); //Screen
 //PImage player1Legs; //BF's waist and below
 PImage player1;
 
-//Arrow Icons (Animated)
+/*      Arrow Icons (Animated)      */
 AnimatedSprite leftSprite;
-PImage downArrow;
-PImage upArrow;
-PImage rightArrow;
+AnimatedSprite downSprite;
+AnimatedSprite upSprite;
+AnimatedSprite rightSprite;
 
 PImage endScreen;
 PImage firstBG; //Intro Background
 PImage songBG;  //Running Banner in Space Background
+
 String extraText = "Have a Good Day.";
-//PImage sonicEXE;
 String titleText = "Too Far";
-AnimatedSprite exampleSprite;
 AnimatedSprite majinCharacter;
 boolean doAnimation;
 
@@ -30,7 +29,7 @@ boolean doAnimation;
 import processing.sound.*;
 SoundFile tfSong;
 
-int player1Row = 9;
+int player1Row = 1;
 int player1Col = 3;
 
 
@@ -52,18 +51,23 @@ void setup() {
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
-  player1.resize(200,150);
+  player1.resize(100,50);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
   endScreen = loadImage("images/youwin.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
-  //Animation & Sprite setup
+  /*      Animation & Sprite setup      */
   leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  leftSprite.resize(75,75);
+  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
+  downSprite.resize(75, 75);
+  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
+  upSprite.resize(75, 75);
+  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
+  rightSprite.resize(75, 75);
   majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
-
-  //exampleAnimationSetup();
 
 
   imageMode(CORNER);    //Set Images to read coordinates at corners
@@ -90,8 +94,7 @@ void draw() {
     endGame();
   }
 
-  majinCharacter.show();
-  majinCharacter.animate(20.0);
+  majinCharacter.animate(6.5);
 
   //checkExampleAnimation();
   
@@ -122,33 +125,26 @@ void keyPressed(){
 
   //set "f" key to move down column 3
   if (keyCode == 70){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 3;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
 
   //set "j" key to move up column 4
   if (keyCode == 74){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 4;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
   
   //set "k" key to move right column 5
   if(keyCode == 75){
-    //check case where out of bounds
-    
+    //shift the player1 picture up in the 2D array
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    //eliminate the picture from the old location
+    grid.clearTileImage(oldLoc);
     //change the field for player1Row
     player1Col = 5;
-
-    //shift the player1 picture up in the 2D array
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-
-    //eliminate the picture from the old location
-    grid.clearTileImage(loc);
-
   }
 }
 //Known Processing method that automatically will run when a mouse click triggers it
@@ -206,33 +202,52 @@ public void updateScreen(){
 
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
-  
-  for (int c = 2; c < 6; c++){
-  //Loop through all the rows in the last column
-  
-    //Generate a random number
-    double rand = Math.random();
+  //What is the index for the top row ?
+  int bottomRow = 7;
 
-    //10% of the time, decide to add an enemy image to a Tile
-    if (rand < 0.1){
-      grid.setTileSprite(new GridLocation(0, c), leftSprite);
+  //Loop through all the cols in the last column
+  for(int c=2; c<6; c++){
+
+    //Generate a random number
+    double rando = Math.random();
+
+    //10% of the time, decide to add an image to a Tile
+    if(rando < 0.1){
+
+      if (c == 2){
+        grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
+      }
+      else if (c == 3){
+        grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
+      }
+      else if (c == 4){
+        grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
+      }
+      else{
+        grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
+      }
     }
+
   }
-    
 
 }
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
-  //Loop through all of the rows & cols in the grid
-  for (int r = 0; r < grid.getNumRows(); r++){
-    for (int c = 0; c < grid.getNumCols(); c++){
+  // Loop through all of the rows & cols in the grid
+  for (int c = 0; c < grid.getNumCols(); c++){
+    for (int r = 0; r < grid.getNumRows(); r++){
 
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
-      //Don't move if player's loc isn't in bottom row
-      if (c != 0){
+      // //clear enemy sprites in last row
+      if (r == 0){
+        grid.clearTileSprite(loc);
+      }
+
+      //only move if player's loc isn't in bottom row
+      if (r != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
 
         //Check if there is spirte in r,c
@@ -289,16 +304,16 @@ public void endGame(){
 
 }
 
-//example method that creates 5 horses along the screen
-public void exampleAnimationSetup()
-{  
-  int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
-} 
+// //example method that creates 5 horses along the screen
+// public void exampleAnimationSetup()
+// {  
+//   int i = 2;
+//   exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
+// } 
 
-//example method that animates the horse Sprites
-public void checkExampleAnimation(){
-  if(doAnimation){
-    exampleSprite.animate(1.5);
-  }
-}
+// //example method that animates the horse Sprites
+// public void checkExampleAnimation(){
+//   if(doAnimation){
+//     exampleSprite.animate(1.0);
+//   }
+// }
