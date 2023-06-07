@@ -196,6 +196,7 @@ public void updateScreen(){
   //update other screen elements
   grid.showImages();
   grid.showSprites();
+  grid.showGridSprites();
 
 
 }
