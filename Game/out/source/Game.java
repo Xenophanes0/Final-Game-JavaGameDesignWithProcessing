@@ -80,7 +80,7 @@ public void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+   //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
   tfSong = new SoundFile(this, "sounds/TooFarClip.mp3");
   
   tfSong.play();
@@ -106,8 +106,8 @@ public void setup() {
   upSprite.resize(75, 75);
   rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
   rightSprite.resize(75, 75);
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
-
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinCharacter.resize(200, 200);
 
 
   //exampleAnimationSetup();
@@ -137,8 +137,7 @@ public void draw() {
     endGame();
   }
 
-  majinCharacter.show();
-  majinCharacter.animate(20.0f);
+  majinCharacter.animate(7.0f);
 
   //checkExampleAnimation();
   
@@ -319,8 +318,8 @@ public void moveSprites(){
         else if(checkCollision(loc, newLoc).equals("move")){
           System.out.println("NO Collision at " + loc);
 
-        //Check if there is spirte in r,c
-        if (grid.hasTileSprite(loc)){
+          //Check if there is spirte in r,c
+          if (grid.hasTileSprite(loc)){
           grid.setTileSprite(newLoc, grid.getTileSprite(loc));
           
           //clear sprite from old loc
@@ -364,10 +363,11 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
     return "move";
   }
 
-  return true;
-
   //check if arrows hits player
-  //if (arrowSprite.equals(exampleSprite))
+  //if (arrow.equals(exampleSprite))
+
+  return "hit";
+
 }
 
 

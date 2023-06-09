@@ -54,7 +54,7 @@ void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+   //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
   tfSong = new SoundFile(this, "sounds/TooFarClip.mp3");
   
   tfSong.play();
@@ -80,8 +80,8 @@ void setup() {
   upSprite.resize(75, 75);
   rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
   rightSprite.resize(75, 75);
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
-
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinCharacter.resize(200, 200);
 
 
   //exampleAnimationSetup();
@@ -111,8 +111,7 @@ void draw() {
     endGame();
   }
 
-  majinCharacter.show();
-  majinCharacter.animate(20.0);
+  majinCharacter.animate(7.0);
 
   //checkExampleAnimation();
   
