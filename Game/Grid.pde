@@ -205,6 +205,7 @@ public class Grid extends World{
   //------------------AnimatedSprite Methods ---------------//
   //Method that sets the Sprite at a particular tile in the grid & displays it
   public void setTileSprite(GridLocation loc, AnimatedSprite sprite){
+    //System.out.println("STP"+loc+","+sprite);
     GridTile tile = getTile(loc);
     if(sprite == null){
       tile.setSprite(null);
@@ -237,6 +238,7 @@ public class Grid extends World{
   }
 
   public void showTileSprite(GridLocation loc){
+    //System.out.println("Trying to show arrow sprite");
     GridTile tile = getTile(loc);
     if(tile.hasSprite()){
       tile.getSprite().animate();
