@@ -293,8 +293,8 @@ public void moveSprites(){
         else if(checkCollision(loc, newLoc).equals("move")){
           System.out.println("NO Collision at " + loc);
 
-        //Check if there is spirte in r,c
-        if (grid.hasTileSprite(loc)){
+          //Check if there is spirte in r,c
+          if (grid.hasTileSprite(loc)){
           grid.setTileSprite(newLoc, grid.getTileSprite(loc));
           
           //clear sprite from old loc
@@ -338,10 +338,11 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
     return "move";
   }
 
-  return true;
-
   //check if arrows hits player
-  //if (arrowSprite.equals(exampleSprite))
+  //if (arrow.equals(exampleSprite))
+
+  return "hit";
+
 }
 
 
