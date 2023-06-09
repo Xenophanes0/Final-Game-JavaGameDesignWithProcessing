@@ -34,6 +34,10 @@ int player1Row = 1;
 int player1Col = 3;
 int health = 50;
 
+int bottomRow = grid.getNumRows()-1;
+int leftCol = 2;
+int rightCol = 5;
+
 
 //Required Processing method that gets run once
 void setup() {
@@ -61,8 +65,18 @@ void setup() {
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
-  //Animation & Sprite setup
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50, 150, "sprites/Majin_Sonic_Idle_Animation.json");
+  /*      Animation & Sprite setup      */
+  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  leftSprite.resize(75,75);
+  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
+  downSprite.resize(75, 75);
+  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
+  upSprite.resize(75, 75);
+  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
+  rightSprite.resize(75, 75);
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
+
+
 
   //exampleAnimationSetup();
 
@@ -201,11 +215,9 @@ public void updateScreen(){
 
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
-  //What is the index for the top row ?
-  int bottomRow = 7;
 
-  //Loop through all the cols in the last column
-  for(int c=2; c<6; c++){
+  //Loop through all the cols in the bottom row
+  for(int c=leftCol; c<=rightCol; c++){
 
     //Generate a random number
     double rando = Math.random();
@@ -215,15 +227,19 @@ public void populateSprites(){
 
       if (c == 2){
         grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
+        System.out.println("Left added");
       }
       else if (c == 3){
         grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
+        System.out.println("Up added" + upSprite);
       }
       else if (c == 4){
         grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
+        System.out.println("Down added");
       }
       else{
         grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
+        System.out.println("Right added");
       }
     }
 
@@ -233,8 +249,9 @@ public void populateSprites(){
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
+
   // Loop through all of the rows & cols in the grid
-  for (int c = 0; c < grid.getNumCols(); c++){
+  for (int c = leftCol; c <= rightCol; c++){
     for (int r = 0; r < grid.getNumRows(); r++){
 
       //Store the 2 tile locations to move
@@ -250,6 +267,7 @@ public void moveSprites(){
         GridLocation newLoc = new GridLocation(r-1, c);
         //if there is a collusion
         if (checkCollision(loc, newLoc)){
+          System.out.println("Collision at " + loc);
 
           //clear the arrow
           grid.clearTileSprite(loc);
@@ -261,6 +279,7 @@ public void moveSprites(){
 
         //No collusion
         else{
+          System.out.println("NO Collision at " + loc);
 
           //Check if there is spirte in r,c
           if (grid.hasTileSprite(loc)){
@@ -270,7 +289,7 @@ public void moveSprites(){
           grid.clearTileSprite(loc);
           }
 
-          //If no collusion when expected = miss
+          //If no collision when expected = miss
           if (r == player1Row + 1){
             health -= 3;
           }
