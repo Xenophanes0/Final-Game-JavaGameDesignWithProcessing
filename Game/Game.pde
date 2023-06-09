@@ -9,6 +9,8 @@ Grid grid = new Grid(12,7); //Screen
 //PImage player1Torso; // BF's waist and above
 //PImage player1Legs; //BF's waist and below
 PImage player1;
+PImage p1neutral;
+PImage p1losing;
 
 /*      Arrow Icons (Animated)      */
 AnimatedSprite leftSprite;
@@ -57,8 +59,11 @@ void setup() {
   tfSong.play();
 
   
-  player1 = loadImage("images/BF_Neutral_Icon.png");
-  player1.resize(100,50);
+  p1neutral = loadImage("images/BF_Neutral_Icon.png");
+  p1neutral.resize(100,50);
+  p1losing = loadImage("images/BF_Losing_Icon.png");
+  p1losing.resize(100,50);
+  player1= p1neutral;
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
   endScreen = loadImage("images/youwin.png");
@@ -101,7 +106,7 @@ void draw() {
 
   updateScreen();
   
-  if(isGameOver()){
+  if(!isGameOver().equals("keep playing")){
     endGame();
   }
 
@@ -185,7 +190,7 @@ void mouseClicked(){
 //method to update the Title Bar of the Game
 public void updateTitleBar(){
 
-  if(!isGameOver()) {
+  if(isGameOver().equals("keep playing")) {
     //set the title each loop
     surface.setTitle(titleText + "    " + extraText + health);
 
@@ -202,6 +207,12 @@ public void updateScreen(){
   background(songBG);
 
   //Display the Player1 image
+  if(health <34){
+      player1 = p1losing;
+  } else {
+    player1 = p1neutral;
+  }
+
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
@@ -217,30 +228,29 @@ public void updateScreen(){
 public void populateSprites(){
 
   //Loop through all the cols in the bottom row
-  for(int c=leftCol; c<=rightCol; c++){
+  int c = (int) (Math.random() * (rightCol-leftCol+1))+leftCol;
 
-    //Generate a random number
-    double rando = Math.random();
+  //Generate a random number
+  double rando = Math.random();
 
-    //10% of the time, decide to add an image to a Tile
-    if(rando < 0.1){
+  //10% of the time, decide to add an image to a Tile
+  if(rando < 0.1){
 
-      if (c == 2){
-        grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
-        System.out.println("Left added");
-      }
-      else if (c == 3){
-        grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
-        System.out.println("Up added" + upSprite);
-      }
-      else if (c == 4){
-        grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
-        System.out.println("Down added");
-      }
-      else{
-        grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
-        System.out.println("Right added");
-      }
+    if (c == 2){
+      grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
+      System.out.println("Left added");
+    }
+    else if (c == 3){
+      grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
+      System.out.println("Up added" + upSprite);
+    }
+    else if (c == 4){
+      grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
+      System.out.println("Down added");
+    }
+    else{
+      grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
+      System.out.println("Right added");
     }
 
   }
@@ -265,8 +275,9 @@ public void moveSprites(){
       //only move if player's loc isn't in top row
       if (r != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
+        
         //if there is a collusion
-        if (checkCollision(loc, newLoc)){
+        if (checkCollision(loc, newLoc).equals("hit")){
           System.out.println("Collision at " + loc);
 
           //clear the arrow
@@ -277,8 +288,8 @@ public void moveSprites(){
           //hit.play();
         }
 
-        //No collusion
-        else{
+        //No collision, but a move
+        else if(checkCollision(loc, newLoc).equals("move")){
           System.out.println("NO Collision at " + loc);
 
           //Check if there is spirte in r,c
@@ -292,12 +303,15 @@ public void moveSprites(){
           //If no collision when expected = miss
           if (r == player1Row + 1){
             health -= 3;
+
           }
           
         }
 
-  
+        //No move situation
+        else{
 
+        }
 
 
       }
@@ -306,45 +320,79 @@ public void moveSprites(){
 }
 
 //Method to check if there's a collision between player and sprite
-public boolean checkCollision(GridLocation loc, GridLocation nextLoc){
+public String checkCollision(GridLocation loc, GridLocation nextLoc){
 
   //Check current location
   //PImage image = grid.getTileImage(loc);
   AnimatedSprite arrow = grid.getTileSprite(loc);
 
   if (arrow == null){
-    return false;
+    return "no move";
   }
 
   //Check next location
   PImage imageNext = grid.getTileImage(nextLoc);
   //AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
   if (imageNext == null){
-    return false;
+    return "move";
   }
 
   //check if arrows hits player
   //if (arrow.equals(exampleSprite))
 
-  return true;
+  return "hit";
 
 }
 
 
 
 //method to indicate when the main game is over
-public boolean isGameOver(){
-  return false; //by default, the game is never over
+public String isGameOver(){
+  //when health is under 0
+  if(health <=0){
+    return "lose";
+  }
+
+  //when 4 minutes pass
+  if(grid.getScreenTimeSeconds() > 240){
+    return "win";
+  }
+
+  return "keep playing"; //by default, the game is never over
 }
 
 //method to describe what happens after the game is over
 public void endGame(){
     System.out.println("Game Over!");
 
-    //Update the title bar
+    //if lose...
+    if(isGameOver().equals("lose")){
 
-    //Show any end imagery
-    image(endScreen, 100,100);
+      //Update the title bar
+
+      //Show any end imagery
+
+      //Xenophane
+      image(endScreen, 100,100);
+
+    }
+        
+    //if win...
+    else{
+
+      //Update the title bar
+
+      //Show any end imagery
+
+      //Xenophane
+      image(endScreen, 100,100);
+
+
+
+    }
+
+
+
 
 }
 
