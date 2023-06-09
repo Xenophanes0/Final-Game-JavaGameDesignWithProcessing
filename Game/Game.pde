@@ -251,6 +251,9 @@ public void moveSprites(){
       if (r != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
 
+        //Collision Method
+        checkCollision(loc, newLoc);
+
         //Check if there is spirte in r,c
         if (grid.hasTileSprite(loc)){
           grid.setTileSprite(newLoc, grid.getTileSprite(loc));
@@ -281,10 +284,38 @@ public boolean checkCollision(GridLocation loc, GridLocation nextLoc){
     return false;
   }
 
-  return true;
 
   //check if arrows hits player
-  //if (arrowSprite.equals(exampleSprite))
+  if (leftSprite.equals(sprite) && player1.equals(imageNext)){
+    System.out.println("Left Arrow Hits Player");
+
+    //clear enemy if arrow touches player
+    grid.clearTileSprite(loc);
+  }
+  else if (upSprite.equals(sprite) && player1.equals(imageNext)){
+    System.out.println("Up Arrow Hits Player");
+    grid.clearTileSprite(loc);
+  }
+  else if (downSprite.equals(sprite) && player1.equals(imageNext)){
+    System.out.println("Down Arrow Hits Player");
+    grid.clearTileSprite(loc);
+  }
+  else if (rightSprite.equals(sprite) && player1.equals(imageNext)){
+    System.out.println("Right Arrow Hits Player");
+    grid.clearTileSprite(loc);
+  }
+
+
+  //check if player decides to hit arrows *doesn't work*
+  if (player1.equals(image) && leftSprite.equals(nextSprite)){
+    System.out.println("Player hits Left Arrow");
+
+    //clears arrow where player will next reside
+    grid.clearTileSprite(nextLoc);
+  }
+  
+
+  return true;
 }
 
 
