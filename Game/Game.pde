@@ -32,6 +32,7 @@ SoundFile tfSong;
 
 int player1Row = 1;
 int player1Col = 3;
+int health = 50;
 
 
 //Required Processing method that gets run once
@@ -172,7 +173,7 @@ public void updateTitleBar(){
 
   if(!isGameOver()) {
     //set the title each loop
-    surface.setTitle(titleText + "    " + extraText);
+    surface.setTitle(titleText + "    " + extraText + health);
 
     //adjust the extra text as desired
   
@@ -239,22 +240,47 @@ public void moveSprites(){
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
-      // //clear enemy sprites in last row
+      // //clear enemy sprites in top row
       if (r == 0){
         grid.clearTileSprite(loc);
       }
 
-      //only move if player's loc isn't in bottom row
+      //only move if player's loc isn't in top row
       if (r != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
+        //if there is a collusion
+        if (checkCollision(loc, newLoc)){
 
-        //Check if there is spirte in r,c
-        if (grid.hasTileSprite(loc)){
+          //clear the arrow
+          grid.clearTileSprite(loc);
+
+          health += 3;
+          //"hit" song effect plays
+          //hit.play();
+        }
+
+        //No collusion
+        else{
+
+          //Check if there is spirte in r,c
+          if (grid.hasTileSprite(loc)){
           grid.setTileSprite(newLoc, grid.getTileSprite(loc));
           
           //clear sprite from old loc
           grid.clearTileSprite(loc);
+          }
+
+          //If no collusion when expected = miss
+          if (r == player1Row + 1){
+            health -= 3;
+          }
+          
         }
+
+  
+
+
+
       }
     }
   }
@@ -264,24 +290,25 @@ public void moveSprites(){
 public boolean checkCollision(GridLocation loc, GridLocation nextLoc){
 
   //Check current location
-  PImage image = grid.getTileImage(loc);
-  AnimatedSprite sprite = grid.getTileSprite(loc);
+  //PImage image = grid.getTileImage(loc);
+  AnimatedSprite arrow = grid.getTileSprite(loc);
 
-  if (image == null && sprite == null){
+  if (arrow == null){
     return false;
   }
 
   //Check next location
   PImage imageNext = grid.getTileImage(nextLoc);
-  AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
-  if (imageNext == null && nextSprite == null){
+  //AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
+  if (imageNext == null){
     return false;
   }
 
+  //check if arrows hits player
+  //if (arrow.equals(exampleSprite))
+
   return true;
 
-  //check if arrows hits player
-  //if (arrowSprite.equals(exampleSprite))
 }
 
 
