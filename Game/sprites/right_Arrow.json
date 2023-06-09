@@ -1,0 +1,40 @@
+{
+  "frames": [
+    {
+      "filename": "redSprite.jpg",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 154,
+        "h": 157
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 154,
+        "h": 157
+      },
+      "sourceSize": {
+        "w": 154,
+        "h": 157
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "right_Arrow.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 154,
+      "h": 157
+    },
+    "scale": 1
+  }
+}

@@ -10,22 +10,27 @@ Grid grid = new Grid(12,7); //Screen
 //PImage player1Legs; //BF's waist and below
 PImage player1;
 
-PImage player1example;
+/*      Arrow Icons (Animated)      */
+AnimatedSprite leftSprite;
+AnimatedSprite downSprite;
+AnimatedSprite upSprite;
+AnimatedSprite rightSprite;
 
 PImage endScreen;
 PImage firstBG; //Intro Background
 PImage songBG;  //Running Banner in Space Background
+
 String extraText = "Have a Good Day.";
-//PImage sonicEXE;
 String titleText = "Too Far";
 AnimatedSprite exampleSprite;
+AnimatedSprite majinCharacter;
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
 import processing.sound.*;
 SoundFile tfSong;
 
-int player1Row = 9;
+int player1Row = 1;
 int player1Col = 3;
 
 
@@ -47,7 +52,7 @@ void setup() {
 
   
   player1 = loadImage("images/BF_Neutral_Icon.png");
-  player1.resize(200,150);
+  player1.resize(100,50);
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
   endScreen = loadImage("images/youwin.png");
@@ -55,8 +60,9 @@ void setup() {
   // Load a soundfile from the /data folder of the sketch and play it back
   
   //Animation & Sprite setup
+  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50, 150, "sprites/Majin_Sonic_Idle_Animation.json");
 
-  exampleAnimationSetup();
+  //exampleAnimationSetup();
 
 
   imageMode(CORNER);    //Set Images to read coordinates at corners
@@ -82,7 +88,11 @@ void draw() {
   if(isGameOver()){
     endGame();
   }
-  checkExampleAnimation();
+
+  majinCharacter.show();
+  majinCharacter.animate(20.0);
+
+  //checkExampleAnimation();
   
   msElapsed +=100;
   grid.pause(100);
@@ -96,7 +106,7 @@ void keyPressed(){
 
   //What to do when a key is pressed?
 
-  //set "d" key to move left arrow 2
+  //set "d" key to move left arrow 2 column
   if (keyCode == 68){
     
     //Store old GridLocation
@@ -111,33 +121,26 @@ void keyPressed(){
 
   //set "f" key to move down column 3
   if (keyCode == 70){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 3;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
 
   //set "j" key to move up column 4
   if (keyCode == 74){
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    grid.clearTileImage(oldLoc);
     player1Col = 4;
-
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-    grid.clearTileImage(loc);
   }
   
   //set "k" key to move right column 5
   if(keyCode == 75){
-    //check case where out of bounds
-    
+    //shift the player1 picture up in the 2D array
+    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    //eliminate the picture from the old location
+    grid.clearTileImage(oldLoc);
     //change the field for player1Row
     player1Col = 5;
-
-    //shift the player1 picture up in the 2D array
-    GridLocation loc = new GridLocation(player1Row, player1Col);
-
-    //eliminate the picture from the old location
-    grid.clearTileImage(loc);
-
   }
 }
 //Known Processing method that automatically will run when a mouse click triggers it
@@ -186,48 +189,62 @@ public void updateScreen(){
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
-  //Loop through all the Tiles and display its images/sprites
-  
-
-      //Store temporary GridLocation
-      
-      //Check if the tile has an image/sprite 
-      //--> Display the tile's image/sprite
-
-
-
-  //Update other screen elements
+  //update other screen elements
+  grid.showImages();
+  grid.showSprites();
+  grid.showGridSprites();
 
 
 }
 
 //Method to populate enemies or other sprites on the screen
 public void populateSprites(){
-  
-  //What is the index for the last column?
-  
+  //What is the index for the top row ?
+  int bottomRow = 7;
 
-  //Loop through all the rows in the last column
-  
+  //Loop through all the cols in the last column
+  for(int c=2; c<6; c++){
+
     //Generate a random number
-    
+    double rando = Math.random();
 
-    //10% of the time, decide to add an enemy image to a Tile
-    
+    //10% of the time, decide to add an image to a Tile
+    if(rando < 0.1){
+
+      if (c == 2){
+        grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
+      }
+      else if (c == 3){
+        grid.setTileSprite(new GridLocation(bottomRow, c), upSprite);
+      }
+      else if (c == 4){
+        grid.setTileSprite(new GridLocation(bottomRow, c), downSprite);
+      }
+      else{
+        grid.setTileSprite(new GridLocation(bottomRow, c), rightSprite);
+      }
+    }
+
+  }
 
 }
 
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
-  //Loop through all of the rows & cols in the grid
-  for (int r = 0; r < grid.getNumRows(); r++){
-    for (int c = 0; c < grid.getNumCols(); c++){
+  // Loop through all of the rows & cols in the grid
+  for (int c = 0; c < grid.getNumCols(); c++){
+    for (int r = 0; r < grid.getNumRows(); r++){
 
       //Store the 2 tile locations to move
       GridLocation loc = new GridLocation(r, c);
 
-      //Don't move if player's loc isn't in first column
-      if (c != 0){
+      // //clear enemy sprites in last row
+      if (r == 0){
+        grid.clearTileSprite(loc);
+      }
+
+      //only move if player's loc isn't in bottom row
+      if (r != 0){
         GridLocation newLoc = new GridLocation(r-1, c);
 
         //Check if there is spirte in r,c
@@ -240,35 +257,33 @@ public void moveSprites(){
       }
     }
   }
-  
-      //Store the 2 tile locations to move
-
-      //Check if the current tile has an image that is not player1      
-
-
-        //Get image/sprite from current location
-
-
-        //CASE 1: Collision with player1
-
-
-        //CASE 2: Move enemy over to new location
-
-        
-        //Erase image/sprite from old location
-        
-        //System.out.println(loc + " " + grid.hasTileImage(loc));
-
-
-      //CASE 3: Enemy leaves screen at first column
-
 }
 
-//Method to handle the collisions between Sprites on the Screen
-public void handleCollisions(){
+//Method to check if there's a collision between player and sprite
+public boolean checkCollision(GridLocation loc, GridLocation nextLoc){
 
+  //Check current location
+  PImage image = grid.getTileImage(loc);
+  AnimatedSprite sprite = grid.getTileSprite(loc);
 
+  if (image == null && sprite == null){
+    return false;
+  }
+
+  //Check next location
+  PImage imageNext = grid.getTileImage(nextLoc);
+  AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
+  if (imageNext == null && nextSprite == null){
+    return false;
+  }
+
+  return true;
+
+  //check if arrows hits player
+  //if (arrowSprite.equals(exampleSprite))
 }
+
+
 
 //method to indicate when the main game is over
 public boolean isGameOver(){
@@ -286,16 +301,16 @@ public void endGame(){
 
 }
 
-//example method that creates 5 horses along the screen
-public void exampleAnimationSetup()
-{  
-  int i = 2;
-  exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
-} 
+// //example method that creates 5 horses along the screen
+// public void exampleAnimationSetup()
+// {  
+//   int i = 2;
+//   exampleSprite = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 50.0, i*75.0, "sprites/Majin_Sonic_Idle_Animation.json");
+// } 
 
-//example method that animates the horse Sprites
-public void checkExampleAnimation(){
-  if(doAnimation){
-    exampleSprite.animate(1.5);
-  }
-}
+// //example method that animates the horse Sprites
+// public void checkExampleAnimation(){
+//   if(doAnimation){
+//     exampleSprite.animate(1.0);
+//   }
+// }
