@@ -80,6 +80,8 @@ void setup() {
   upSprite.resize(75, 75);
   rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
   rightSprite.resize(75, 75);
+
+  
   majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Idle_Animation.json");
   majinCharacter.resize(200, 200);
 
