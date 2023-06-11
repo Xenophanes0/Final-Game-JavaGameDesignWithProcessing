@@ -50,8 +50,12 @@ PImage songBG;  //Running Banner in Space Background
 
 String extraText = "Have a Good Day.";
 String titleText = "Too Far";
+
 AnimatedSprite exampleSprite;
-AnimatedSprite majinCharacter;
+
+AnimatedSprite majinSonicUP;
+AnimatedSprite majinSonicIdle;
+
 boolean doAnimation;
 
 //HexGrid hGrid = new HexGrid(3);
@@ -106,8 +110,10 @@ public void setup() {
   upSprite.resize(75, 75);
   rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
   rightSprite.resize(75, 75);
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Idle_Animation.json");
-  majinCharacter.resize(200, 200);
+
+  
+  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinSonicIdle.resize(200, 200);
 
 
   //exampleAnimationSetup();
@@ -137,7 +143,7 @@ public void draw() {
     endGame();
   }
 
-  majinCharacter.animate(7.0f);
+  majinSonicIdle.animate(7.0f);
 
   //checkExampleAnimation();
   
