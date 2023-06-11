@@ -1,0 +1,40 @@
+{
+  "frames": [
+    {
+      "filename": "blueSprite.jpg",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 157,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 157,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 157,
+        "h": 154
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "down_Arrow.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 157,
+      "h": 154
+    },
+    "scale": 1
+  }
+}
