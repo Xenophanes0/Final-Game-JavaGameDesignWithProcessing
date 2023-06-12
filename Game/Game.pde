@@ -263,7 +263,6 @@ public void updateScreen(){
   if(health <34){
       player1 = p1losing;
   } 
-  
   else {
     player1 = p1neutral;
   }
@@ -275,6 +274,10 @@ public void updateScreen(){
   grid.showImages();
   grid.showSprites();
   grid.showGridSprites();
+  textSize(50);
+  text("Health: ", 490, 650);
+  textSize(35);
+  text(health, 660, 650);
 
 
 }
@@ -338,7 +341,12 @@ public void moveSprites(){
           //clear the arrow
           grid.clearTileSprite(loc);
 
-          health += 3;
+          if (health + 3 >= 100){
+            health = 100;
+          }
+          else{
+            health += 3;
+          }
           //"hit" song effect plays
           //hit.play();
         }
