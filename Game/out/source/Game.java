@@ -104,6 +104,7 @@ AnimatedSprite xenophanesRight;
 
 boolean doAnimation;
 private int counter = 0; // 15 sections in total
+private int timer = 0; //Total time within song 12:25        60 per minute
 
 //HexGrid hGrid = new HexGrid(3);
 
@@ -144,22 +145,22 @@ public void setup() {
   player1= p1neutral;
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
-  endScreen = loadImage("images/youwin.png");
+  endScreen = loadImage("images/topMajins.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
   /*      Animation & Sprite setup      */
-  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  leftSprite = new AnimatedSprite("sprites/Arrow_Animations/left_Arrow.png", "sprites/Arrow_Animations/left_Arrow.json");
   leftSprite.resize(75,75);
-  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
+  downSprite = new AnimatedSprite("sprites/Arrow_Animations/down_Arrow.png", "sprites/Arrow_Animations/down_Arrow.json");
   downSprite.resize(75, 75);
-  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
+  upSprite = new AnimatedSprite("sprites/Arrow_Animations/up_Arrow.png", "sprites/Arrow_Animations/up_Arrow.json");
   upSprite.resize(75, 75);
-  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
+  rightSprite = new AnimatedSprite("sprites/Arrow_Animations/right_Arrow.png", "sprites/Arrow_Animations/right_Arrow.json");
   rightSprite.resize(75, 75);
 
   
-  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
 
 
@@ -434,7 +435,8 @@ public String isGameOver(){
     return "lose";
   }
 
-  //when 4 minutes pass
+  //when 4 minutes pass = 240
+  //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
   if(grid.getScreenTimeSeconds() > 240){
     return "win";
   }
