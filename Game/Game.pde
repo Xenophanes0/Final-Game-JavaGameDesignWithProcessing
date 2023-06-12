@@ -78,6 +78,7 @@ AnimatedSprite xenophanesRight;
 
 boolean doAnimation;
 private int counter = 0; // 15 sections in total
+private int timer = 0; //Total time within song 12:25        60 per minute
 
 //HexGrid hGrid = new HexGrid(3);
 import processing.sound.*;
@@ -118,7 +119,7 @@ void setup() {
   player1= p1neutral;
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
-  endScreen = loadImage("images/youwin.png");
+  endScreen = loadImage("images/topMajins.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
@@ -416,7 +417,8 @@ public String isGameOver(){
     return "lose";
   }
 
-  //when 4 minutes pass
+  //when 4 minutes pass = 240
+  //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
   if(grid.getScreenTimeSeconds() > 240){
     return "win";
   }
