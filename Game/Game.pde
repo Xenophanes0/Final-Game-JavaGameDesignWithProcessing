@@ -19,7 +19,10 @@ AnimatedSprite upSprite;
 AnimatedSprite rightSprite;
 
 PImage endScreen;
-PImage firstBG; //Intro Background
+//PImage firstBG; Intro Background
+
+/*      ALL Backgrounds INITIALIZED     */
+PImage death1BG;
 PImage songBG;  //Running Banner in Space Background
 
 String extraText = "Have a Good Day.";
@@ -86,7 +89,7 @@ SoundFile tfSong;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 50;
+int health = 1;
 
 int bottomRow = grid.getNumRows()-1;
 int leftCol = 2;
@@ -119,7 +122,8 @@ void setup() {
   player1= p1neutral;
   //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
 
-  endScreen = loadImage("images/topMajins.png");
+  //endScreen = loadImage("images/topMajins.png");
+  death1BG = loadImage("images/GameOverBG.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
   
@@ -436,9 +440,10 @@ public void endGame(){
       //Update the title bar
 
       //Show any end imagery
+      image(death1BG, 100, 100);
 
       //Xenophane
-      image(endScreen, 100,100);
+      //image(endScreen, 100,100);
 
     }
         
@@ -450,7 +455,7 @@ public void endGame(){
       //Show any end imagery
 
       //Xenophane
-      image(endScreen, 100,100);
+      //image(endScreen, 100,100);
 
 
 
