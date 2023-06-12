@@ -12,7 +12,7 @@ String titleText = "Too Far";
 //Screens
 Screen currentScreen;
 World currentWorld;
-Grid currentGrid;
+Grid currentmainGrid;
 
 //Splash Screen Variables
 Screen splashScreen;
@@ -20,12 +20,17 @@ String splashBgFile = "images/BackgroundFinalEscape.png";
 PImage splashBg;
 //PImage firstBG; //Intro Background
 
+//End Screen Variables
+Screen endScreen;
+String end1File = "images/topMajins.png";
+PImage end1Bg;
+PImage death1BG;
+
 //Main Screen Variables
 Grid mainGrid;
-//Grid grid = new Grid(12,7); //Screen 
-String mainBgFile = "images/BackgroundFinalEscape.png";
-PImage mainBg;
-//PImage songBG;  //Running Banner in Space Background
+String songBgFile = "images/BackgroundFinalEscape.png";
+PImage songBg;
+//PImage songBg;  //Running Banner in Space Background
 
 
 //PImage player1Torso; // BF's waist and above
@@ -42,7 +47,6 @@ int leftCol = 2;
 int rightCol = 5;
 
 //Majin
-AnimatedSprite exampleSprite;
 AnimatedSprite majinCharacter;
 boolean doAnimation;
 
@@ -52,11 +56,6 @@ AnimatedSprite leftSprite;
 AnimatedSprite downSprite;
 AnimatedSprite upSprite;
 AnimatedSprite rightSprite;
-
-PImage endScreen;
-PImage firstBG; //Intro Background
-PImage songBG;  //Running Banner in Space Background
-PImage death1BG;
 
 
 // Majin Sonic Animations
@@ -108,27 +107,12 @@ AnimatedSprite xenophanesDown;
 AnimatedSprite xenophanesLeft;
 AnimatedSprite xenophanesRight;
 
-boolean doAnimation;
 private int counter = 0; // 15 sections in total
 private int timer = 0; //Total time within song 12:25 
 
-String extraText = "Have a Good Day.";
-String titleText = "Too Far";
-AnimatedSprite exampleSprite;
-AnimatedSprite majinCharacter;
-boolean doAnimation;
-
-//HexGrid hGrid = new HexGrid(3);
+//HexmainGrid hmainGrid = new HexmainGrid(3);
 import processing.sound.*;
 SoundFile tfSong;
-
-int player1Row = 1;
-int player1Col = 3;
-int health = 50;
-
-int bottomRow = grid.getNumRows()-1;
-int leftCol = 2;
-int rightCol = 5;
 
 
 //Required Processing method that gets run once
@@ -141,18 +125,21 @@ void setup() {
   surface.setTitle(titleText);
 
   //Load images used
-  songBG = loadImage("images/BackgroundFinalEscape.png");
-  songBG.resize(1200,700);  //BG must be same dims as size()
+  songBg = loadImage("images/BackgroundFinalEscape.png");
+  songBg.resize(1200,700);  //BG must be same dims as size()
+
+  splashBg = loadImage(splashBgFile);
+  splashBg.resize(1200,700);  //BG must be same dims as size()
 
   //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
   tfSong = new SoundFile(this, "sounds/Sega_Moment.mp3");
   tfSong.play();
 
 
-  //setup the screens/worlds/grids in the Game
+  //setup the screens/worlds/mainGrids in the Game
   splashScreen = new Screen("first", splashBg);
-  mainGrid = new Grid("song", mainBg, 12, 7);
-  endScreen = new World("end", endBg);
+  mainGrid = new Grid("song", songBg, 12, 7);
+  endScreen = new World("end", end1Bg);
   currentScreen = splashScreen;
 
     bottomRow = mainGrid.getNumRows()-1;
@@ -163,9 +150,8 @@ void setup() {
   p1losing = loadImage("images/BF_Losing_Icon.png");
   p1losing.resize(100,50);
   player1= p1neutral;
-  //player1.resize(grid.getTileWidthPixels(),grid.getTileHeightPixels());
+  //player1.resize(mainGrid.getTileWidthPixels(),mainGrid.getTileHeightPixels());
 
-  //endScreen = loadImage("images/topMajins.png");
   death1BG = loadImage("images/GameOverBG.png");
   
   // Load a soundfile from the /data folder of the sketch and play it back
@@ -273,7 +259,7 @@ void mouseClicked(){
   
   //check if click was successful
   System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
-  System.out.println("Grid location: " + mainGrid.getGridLocation());
+  System.out.println("mainGrid location: " + mainGrid.getGridLocation());
 
   //what to do if clicked?
   GridLocation clickedLoc = mainGrid.getGridLocation();
@@ -308,16 +294,17 @@ public void updateTitleBar(){
 public void updateScreen(){
 
   //Update the Background
+  // System.out.println("Update"+currentScreen);
   background(currentScreen.getBg());
 
   //splashScreen update
-  if(splashScreen.getScreenTime() > 3000 && splashScreen.getScreenTime() < 5000){
+  if(splashScreen.getScreenTime() > 3000 && splashScreen.getScreenTime() < 15000){
     currentScreen = mainGrid;
   }
 
-  //skyGrid Screen Updates
+  //skymainGrid Screen Updates
   if(currentScreen == mainGrid){
-    currentGrid = mainGrid;
+    currentmainGrid = mainGrid;
 
     //Display the Player1 image
     if(health <34){
@@ -327,17 +314,18 @@ public void updateScreen(){
     }
 
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
-  grid.setTileImage(player1Loc, player1);
+  mainGrid.setTileImage(player1Loc, player1);
   
   //update other screen elements
-  grid.showImages();
-  grid.showSprites();
-  grid.showGridSprites();
+  mainGrid.showImages();
+  mainGrid.showSprites();
+  mainGrid.showGridSprites();
 
   textSize(50);
   text("Health: ", 490, 650);
   textSize(35);
   text(health, 660, 650);
+  }
 
 }
 
@@ -377,7 +365,7 @@ public void populateSprites(){
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
 
-  // Loop through all of the rows & cols in the grid
+  // Loop through all of the rows & cols in the mainGrid
   for (int c = leftCol; c <= rightCol; c++){
     for (int r = 0; r < mainGrid.getNumRows(); r++){
 
@@ -477,7 +465,7 @@ public String isGameOver(){
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 240){
+  if(mainGrid.getScreenTimeSeconds() > 240){
     return "win";
   }
 
