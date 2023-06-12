@@ -109,7 +109,7 @@ void setup() {
   songBG = loadImage("images/BackgroundFinalEscape.png");
   songBG.resize(1200,700);  //BG must be same dims as size()
 
-  segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); 0 - 10                     10 seconds
+  segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
   //openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); 10 - 32             22 seconds
   //xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); 32 - 72        40 seconds
   //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); 72 - 131               59 seconds
