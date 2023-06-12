@@ -78,6 +78,7 @@ AnimatedSprite xenophanesRight;
 
 boolean doAnimation;
 private int counter = 0; // 15 sections in total
+private int timer = 0; //Total time within song 12:25        60 per minute
 
 //HexGrid hGrid = new HexGrid(3);
 import processing.sound.*;
@@ -133,7 +134,7 @@ void setup() {
   rightSprite.resize(75, 75);
 
   
-  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
 
 
@@ -408,7 +409,8 @@ public String isGameOver(){
     return "lose";
   }
 
-  //when 4 minutes pass
+  //when 4 minutes pass = 240
+  //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
   if(grid.getScreenTimeSeconds() > 240){
     return "win";
   }
