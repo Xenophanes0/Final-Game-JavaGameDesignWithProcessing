@@ -25,7 +25,7 @@ import java.io.IOException;
 public class Game extends PApplet {
 
 /* Game Class Starter File
- * Last Edit: 5/22/2023
+ * Last Edit: 6/11/2023
  * Authors: Dean Carabajo & Mikyle O.
  */
 
@@ -102,17 +102,17 @@ public void setup() {
   // Load a soundfile from the /data folder of the sketch and play it back
   
   /*      Animation & Sprite setup      */
-  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
+  leftSprite = new AnimatedSprite("sprites/Arrow_Animations/left_Arrow.png", "sprites/Arrow_Animations/left_Arrow.json");
   leftSprite.resize(75,75);
-  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
+  downSprite = new AnimatedSprite("sprites/Arrow_Animations/down_Arrow.png", "sprites/Arrow_Animations/down_Arrow.json");
   downSprite.resize(75, 75);
-  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
+  upSprite = new AnimatedSprite("sprites/Arrow_Animations/up_Arrow.png", "sprites/Arrow_Animations/up_Arrow.json");
   upSprite.resize(75, 75);
-  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
+  rightSprite = new AnimatedSprite("sprites/Arrow_Animations/right_Arrow.png", "sprites/Arrow_Animations/right_Arrow.json");
   rightSprite.resize(75, 75);
 
   
-  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Idle_Animation.json");
+  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
 
 
