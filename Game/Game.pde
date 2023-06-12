@@ -27,8 +27,54 @@ String titleText = "Too Far";
 
 AnimatedSprite exampleSprite;
 
-AnimatedSprite majinSonicUP;
+// Majin Sonic Animations
 AnimatedSprite majinSonicIdle;
+AnimatedSprite majinSonicUP;
+AnimatedSprite majinSonicDown;
+AnimatedSprite majinSonicLeft;
+AnimatedSprite majinSonicRight;
+
+// Fleetway Animations
+AnimatedSprite fleetwaySonicIdle;
+AnimatedSprite fleetwaySonicUP;
+AnimatedSprite fleetwaySonicDown;
+AnimatedSprite fleetwaySonicLeft;
+AnimatedSprite fleetwaySonicRight;
+
+// EXE Animations
+AnimatedSprite exeIdle;
+AnimatedSprite exeUP;
+AnimatedSprite exeDown;
+AnimatedSprite exeLeft;
+AnimatedSprite exeRight;
+
+// Lord X Animations
+AnimatedSprite lordXIdle;
+AnimatedSprite lordXUP;
+AnimatedSprite lordXDown;
+AnimatedSprite lordXLeft;
+AnimatedSprite lordXRight;
+
+// Sunky Animations
+AnimatedSprite sunkyIdle;
+AnimatedSprite sunkyUP;
+AnimatedSprite sunkyDown;
+AnimatedSprite sunkyLeft;
+AnimatedSprite sunkyRight;
+
+// Tails' Doll Animations
+AnimatedSprite tailsDollIdle;
+AnimatedSprite tailsDollUP;
+AnimatedSprite tailsDollDown;
+AnimatedSprite tailsDollLeft;
+AnimatedSprite tailsDollRight;
+
+// Xenophanes Animations
+AnimatedSprite xenophanesIdle;
+AnimatedSprite xenophanesUP;
+AnimatedSprite xenophanesDown;
+AnimatedSprite xenophanesLeft;
+AnimatedSprite xenophanesRight;
 
 boolean doAnimation;
 
