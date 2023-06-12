@@ -77,6 +77,7 @@ AnimatedSprite xenophanesLeft;
 AnimatedSprite xenophanesRight;
 
 boolean doAnimation;
+private int counter = 0; // 15 sections in total
 
 //HexGrid hGrid = new HexGrid(3);
 import processing.sound.*;
@@ -261,7 +262,9 @@ public void updateScreen(){
   //Display the Player1 image
   if(health <34){
       player1 = p1losing;
-  } else {
+  } 
+  
+  else {
     player1 = p1neutral;
   }
 
