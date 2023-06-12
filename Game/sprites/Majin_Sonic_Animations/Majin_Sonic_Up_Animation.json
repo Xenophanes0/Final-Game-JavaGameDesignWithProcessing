@@ -1,0 +1,140 @@
+{
+  "frames": [
+    {
+      "filename": "Majin_Sonic_Up_1.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 135
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Up_0.png",
+      "frame": {
+        "x": 0,
+        "y": 135,
+        "w": 94,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 94,
+        "h": 134
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Up_2.png",
+      "frame": {
+        "x": 0,
+        "y": 269,
+        "w": 98,
+        "h": 127
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 98,
+        "h": 127
+      },
+      "sourceSize": {
+        "w": 98,
+        "h": 127
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Up_4.png",
+      "frame": {
+        "x": 94,
+        "y": 135,
+        "w": 90,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 90,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 120
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Majin_Sonic_Up_3.png",
+      "frame": {
+        "x": 96,
+        "y": 0,
+        "w": 89,
+        "h": 119
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 89,
+        "h": 119
+      },
+      "sourceSize": {
+        "w": 89,
+        "h": 119
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Majin_Sonic_Up_Animation.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 185,
+      "h": 396
+    },
+    "scale": 1
+  }
+}

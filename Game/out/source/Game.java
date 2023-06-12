@@ -25,7 +25,7 @@ import java.io.IOException;
 public class Game extends PApplet {
 
 /* Game Class Starter File
- * Last Edit: 5/22/2023
+ * Last Edit: 6/11/2023
  * Authors: Dean Carabajo & Mikyle O.
  */
 
@@ -38,7 +38,7 @@ String titleText = "Too Far";
 //Screens
 Screen currentScreen;
 World currentWorld;
-Grid currentGrid;
+Grid currentmainGrid;
 
 //Splash Screen Variables
 Screen splashScreen;
@@ -46,12 +46,17 @@ String splashBgFile = "images/BackgroundFinalEscape.png";
 PImage splashBg;
 //PImage firstBG; //Intro Background
 
+//End Screen Variables
+Screen endScreen;
+String end1File = "images/topMajins.png";
+PImage end1Bg;
+PImage death1BG;
+
 //Main Screen Variables
 Grid mainGrid;
-//Grid grid = new Grid(12,7); //Screen 
-String mainBgFile = "images/chess.jpg";
-PImage mainBg;
-//PImage songBG;  //Running Banner in Space Background
+String songBgFile = "images/BackgroundFinalEscape.png";
+PImage songBg;
+//PImage songBg;  //Running Banner in Space Background
 
 
 //PImage player1Torso; // BF's waist and above
@@ -68,7 +73,6 @@ int leftCol = 2;
 int rightCol = 5;
 
 //Majin
-AnimatedSprite exampleSprite;
 AnimatedSprite majinCharacter;
 boolean doAnimation;
 
@@ -79,16 +83,62 @@ AnimatedSprite downSprite;
 AnimatedSprite upSprite;
 AnimatedSprite rightSprite;
 
-//EndScreen variables
-World endScreen;
-PImage endBg;
-String endBgFile = "images/youwin.png";
-//PImage endScreen;
 
-//Sound vars
+// Majin Sonic Animations
+AnimatedSprite majinSonicIdle;
+AnimatedSprite majinSonicUP;
+AnimatedSprite majinSonicDown;
+AnimatedSprite majinSonicLeft;
+AnimatedSprite majinSonicRight;
+
+// Fleetway Animations
+AnimatedSprite fleetwaySonicIdle;
+AnimatedSprite fleetwaySonicUP;
+AnimatedSprite fleetwaySonicDown;
+AnimatedSprite fleetwaySonicLeft;
+AnimatedSprite fleetwaySonicRight;
+
+// EXE Animations
+AnimatedSprite exeIdle;
+AnimatedSprite exeUP;
+AnimatedSprite exeDown;
+AnimatedSprite exeLeft;
+AnimatedSprite exeRight;
+
+// Lord X Animations
+AnimatedSprite lordXIdle;
+AnimatedSprite lordXUP;
+AnimatedSprite lordXDown;
+AnimatedSprite lordXLeft;
+AnimatedSprite lordXRight;
+
+// Sunky Animations
+AnimatedSprite sunkyIdle;
+AnimatedSprite sunkyUP;
+AnimatedSprite sunkyDown;
+AnimatedSprite sunkyLeft;
+AnimatedSprite sunkyRight;
+
+// Tails' Doll Animations
+AnimatedSprite tailsDollIdle;
+AnimatedSprite tailsDollUP;
+AnimatedSprite tailsDollDown;
+AnimatedSprite tailsDollLeft;
+AnimatedSprite tailsDollRight;
+
+// Xenophanes Animations
+AnimatedSprite xenophanesIdle;
+AnimatedSprite xenophanesUP;
+AnimatedSprite xenophanesDown;
+AnimatedSprite xenophanesLeft;
+AnimatedSprite xenophanesRight;
+
+private int counter = 0; // 15 sections in total
+private int timer = 0; //Total time within song 12:25 
+
+//HexmainGrid hmainGrid = new HexmainGrid(3);
 
 SoundFile tfSong;
-
 
 
 //Required Processing method that gets run once
@@ -100,19 +150,22 @@ SoundFile tfSong;
   //Set the title on the title bar
   surface.setTitle(titleText);
 
-  //Load BG images used
+  //Load images used
+  songBg = loadImage("images/BackgroundFinalEscape.png");
+  songBg.resize(1200,700);  //BG must be same dims as size()
+
   splashBg = loadImage(splashBgFile);
-  splashBg.resize(1200, 700);
-  mainBg = loadImage(mainBgFile);
-  mainBg.resize(1200, 700);
-  endBg = loadImage(endBgFile);
-  endBg.resize(1200, 700);
+  splashBg.resize(1200,700);  //BG must be same dims as size()
+
+  //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  tfSong = new SoundFile(this, "sounds/Sega_Moment.mp3");
+  tfSong.play();
 
 
-  //setup the screens/worlds/grids in the Game
+  //setup the screens/worlds/mainGrids in the Game
   splashScreen = new Screen("first", splashBg);
-  mainGrid = new Grid("song", mainBg, 12, 7);
-  endScreen = new World("end", endBg);
+  mainGrid = new Grid("song", songBg, 12, 7);
+  endScreen = new World("end", end1Bg);
   currentScreen = splashScreen;
 
     bottomRow = mainGrid.getNumRows()-1;
@@ -122,22 +175,29 @@ SoundFile tfSong;
   p1neutral.resize(100,50);
   p1losing = loadImage("images/BF_Losing_Icon.png");
   p1losing.resize(100,50);
-  player1= p1neutral;  
+  player1= p1neutral;
+  //player1.resize(mainGrid.getTileWidthPixels(),mainGrid.getTileHeightPixels());
 
-  /*      Animation & Sprite setup      */
-  leftSprite = new AnimatedSprite("sprites/left_Arrow.png", "sprites/left_Arrow.json");
-  leftSprite.resize(75,75);
-  downSprite = new AnimatedSprite("sprites/down_Arrow.png", "sprites/down_Arrow.json");
-  downSprite.resize(75, 75);
-  upSprite = new AnimatedSprite("sprites/up_Arrow.png", "sprites/up_Arrow.json");
-  upSprite.resize(75, 75);
-  rightSprite = new AnimatedSprite("sprites/right_Arrow.png", "sprites/right_Arrow.json");
-  rightSprite.resize(75, 75);
-  majinCharacter = new AnimatedSprite("sprites/Majin_Sonic_Idle_Animation.png", "sprites/Majin_Sonic_Idle_Animation.json");
-
+  death1BG = loadImage("images/GameOverBG.png");
+  
   // Load a soundfile from the /data folder of the sketch and play it back
-  tfSong = new SoundFile(this, "sounds/TooFarClip.mp3");
-  tfSong.play();
+  
+  /*      Animation & Sprite setup      */
+  leftSprite = new AnimatedSprite("sprites/Arrow_Animations/left_Arrow.png", "sprites/Arrow_Animations/left_Arrow.json");
+  leftSprite.resize(75,75);
+  downSprite = new AnimatedSprite("sprites/Arrow_Animations/down_Arrow.png", "sprites/Arrow_Animations/down_Arrow.json");
+  downSprite.resize(75, 75);
+  upSprite = new AnimatedSprite("sprites/Arrow_Animations/up_Arrow.png", "sprites/Arrow_Animations/up_Arrow.json");
+  upSprite.resize(75, 75);
+  rightSprite = new AnimatedSprite("sprites/Arrow_Animations/right_Arrow.png", "sprites/Arrow_Animations/right_Arrow.json");
+  rightSprite.resize(75, 75);
+
+  
+  majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
+  majinSonicIdle.resize(200, 200);
+  // Load a soundfile from the /data folder of the sketch and play it back
+  // tfSong = new SoundFile(this, "sounds/TooFarClip.mp3");
+  // tfSong.play();
 
 
   //exampleAnimationSetup();
@@ -167,8 +227,7 @@ SoundFile tfSong;
     endGame();
   }
 
-  majinCharacter.show();
-  majinCharacter.animate(20.0f);
+  majinSonicIdle.animate(7.0f);
 
   //checkExampleAnimation();
   
@@ -226,7 +285,7 @@ SoundFile tfSong;
   
   //check if click was successful
   System.out.println("Mouse was clicked at (" + mouseX + "," + mouseY + ")");
-  System.out.println("Grid location: " + mainGrid.getGridLocation());
+  System.out.println("mainGrid location: " + mainGrid.getGridLocation());
 
   //what to do if clicked?
   GridLocation clickedLoc = mainGrid.getGridLocation();
@@ -261,16 +320,17 @@ public void updateTitleBar(){
 public void updateScreen(){
 
   //Update the Background
+  // System.out.println("Update"+currentScreen);
   background(currentScreen.getBg());
 
   //splashScreen update
-  if(splashScreen.getScreenTime() > 3000 && splashScreen.getScreenTime() < 5000){
+  if(splashScreen.getScreenTime() > 3000 && splashScreen.getScreenTime() < 15000){
     currentScreen = mainGrid;
   }
 
-  //skyGrid Screen Updates
+  //skymainGrid Screen Updates
   if(currentScreen == mainGrid){
-    currentGrid = mainGrid;
+    currentmainGrid = mainGrid;
 
     //Display the Player1 image
     if(health <34){
@@ -279,15 +339,19 @@ public void updateScreen(){
       player1 = p1neutral;
     }
 
-    GridLocation player1Loc = new GridLocation(player1Row,player1Col);
-    mainGrid.setTileImage(player1Loc, player1);
-    
-    //update other screen elements
-    mainGrid.showImages();
-    mainGrid.showSprites();
-    mainGrid.showGridSprites();
-  }
+  GridLocation player1Loc = new GridLocation(player1Row,player1Col);
+  mainGrid.setTileImage(player1Loc, player1);
+  
+  //update other screen elements
+  mainGrid.showImages();
+  mainGrid.showSprites();
+  mainGrid.showGridSprites();
 
+  textSize(50);
+  text("Health: ", 490, 650);
+  textSize(35);
+  text(health, 660, 650);
+  }
 
 }
 
@@ -327,7 +391,7 @@ public void populateSprites(){
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
 
-  // Loop through all of the rows & cols in the grid
+  // Loop through all of the rows & cols in the mainGrid
   for (int c = leftCol; c <= rightCol; c++){
     for (int r = 0; r < mainGrid.getNumRows(); r++){
 
@@ -350,7 +414,12 @@ public void moveSprites(){
           //clear the arrow
           mainGrid.clearTileSprite(loc);
 
-          health += 3;
+          if (health + 3 >= 100){
+            health = 100;
+          }
+          else{
+            health += 3;
+          }
           //"hit" song effect plays
           //hit.play();
         }
@@ -420,7 +489,8 @@ public String isGameOver(){
     return "lose";
   }
 
-  //when 4 minutes pass
+  //when 4 minutes pass = 240
+  //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
   if(mainGrid.getScreenTimeSeconds() > 240){
     return "win";
   }
@@ -438,6 +508,7 @@ public void endGame(){
       //Update the title bar
 
       //Show any end imagery
+      image(death1BG, 100, 100);
 
       //Xenophane
       currentScreen = endScreen;
