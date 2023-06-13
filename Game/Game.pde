@@ -20,12 +20,12 @@ Screen currentScreen;
 World currentWorld;
 Grid grid;
 
-//Main Screen (Song Screen)
-String openingBackground = "images/BackGrounds/Opening_Section/Beginning_BG.png";
-PImage openingBackground;
+// //Main Screen (Song Screen)
+// PImage openingBackground;
+// String openingBackground = "images/BackGrounds/Opening_Section/Beginning_BG.png";
 
+PImage segaBackground;
 String segaImage = "images/BackGrounds/Opening_Section/Sega_BG";
-PImage segaBackground
 
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
@@ -124,7 +124,7 @@ SoundFile sonicSection;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 1;
+int health = 10;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -204,7 +204,7 @@ void setup() {
   majinSonicIdle.resize(200, 200);
 
   //SOUND SETUP
-  endTimes = new int[soundTimes.length];
+  int[] endTimes = new int[soundTimes.length];
   for(int i=0;i<soundTimes.length; i++){
     endTimes[i] += soundTimes[i];
   }
@@ -351,7 +351,7 @@ public void updateScreen(){
 
 public void updateSound()
 {
-  if (grid.getScreenTimeSeconds() <= endTimes[0];)
+  if (grid.getScreenTimeSeconds() <= endTimes[0])
   {
     if(!segaSection.isPlaying())
     {
@@ -360,7 +360,7 @@ public void updateSound()
     }
   }
 
-  else if (grid.getScreenTimeSeconds() <= endTimes[1];)
+  else if (grid.getScreenTimeSeconds() <= endTimes[1])
   {
     if(!openingSection.isPlaying())
     {
@@ -369,7 +369,7 @@ public void updateSound()
     }
   }
 
-  else if(grid.getScreenTimeSeconds() <= endTimes[2];)
+  else if(grid.getScreenTimeSeconds() <= endTimes[2])
   {
     if(!xenoSectionOne.isPlaying())
     {
@@ -629,7 +629,7 @@ public String isGameOver(){
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 15){
+  if(grid.getScreenTimeSeconds() > 60){
     return "win";
   }
 
@@ -648,7 +648,7 @@ public void endGame(){
       //Show any end imagery
       currentScreen.setBg(death1BG); //Updating the Backgrounds
       //Xenophane 
-      image(endScreen, 0,0);
+      //image(endScreen, 0,0);
 
       //No PLAY function (Gameplay STOP)
       gameStatus = "stop";
