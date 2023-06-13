@@ -435,6 +435,168 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
 //method to indicate when the main game is over
 public String isGameOver(){
   //when health is under 0
+
+  /*
+  while(grid.getScreenTimeSeconds() < 750)
+  {
+    
+    if (grd.getScreenTimeSeconds() <= 32)
+    {
+      openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
+      segaSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+
+    else if(grid.getScreenTimeSeconds() > 32 && grid.getScreenTimeSeconds() <= 72)
+    {
+      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      xenoSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 72 && grid.getScreenTimeSeconds() <= 131)
+    {
+      lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3");
+      lordXSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 131 && grid.getScreenTimeSeconds() <= 170)
+    {
+      xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");
+      xenoSectionTwo.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 170 && grid.getScreenTimeSeconds() <= 229)
+    {
+      majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3");
+      majinSonicSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 229 && grid.getScreenTimeSeconds() <= 370)
+    {
+      xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3");
+      xenoSectionThree.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 370 && grid.getScreenTimeSeconds() <= 496)
+    {
+      fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3");
+      fleetwaySection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 496 && grid.getScreenTimeSeconds() <= 555)
+    {
+      sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3");
+      sunkySection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 555 && grid.getScreenTimeSeconds() <= 597)
+    {
+      tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3");
+      tailsDollSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 597 && grid.getScreenTimeSeconds() <= 636)
+    {
+      xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3");
+      xenoSectionFour.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 636 && grid.getScreenTimeSeconds() <= 757)
+    {
+      exeSection = new SoundFile(this, "sounds/EXE_Section.mp3");
+      exeSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 757 && grid.getScreenTimeSeconds() <= 767)
+    {
+      angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");
+      angryXenoSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 767 && grid.getScreenTimeSeconds() <= 825)
+    {
+      teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");
+      teamEXESection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 825 && grid.getScreenTimeSeconds() <= 861)
+    {
+      sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");
+      sonicSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+  }
+  */
+
   if(health <=0){
     return "lose";
   }
