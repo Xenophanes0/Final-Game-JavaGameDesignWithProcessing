@@ -55,6 +55,10 @@ PImage death1BG;
 String death1BGFile = "images/GameOverBG.png";
 PImage endScreen;
 String endScreenFile = "images/topMajins.png";
+PImage winScreen;
+String winScreenFile = "images/sonic-bg.jpg";
+PImage youWin;
+String youWinFile = "images/youWin.jpg";
 //...continue later
 
 /*      Arrow Icons (Animated)      */
@@ -116,8 +120,24 @@ boolean doAnimation;
 private int counter = 0; // 15 sections in total
 private int timer = 0; //Total time within song 12:25        60 per minute
 
-SoundFile tfSong;
+
+
+//Song  INITALIZATION
 SoundFile segaSection;
+SoundFile openingSection;
+SoundFile xenoSectionOne;
+SoundFile lordXSection;
+SoundFile xenoSectionTwo;
+SoundFile majinSonicSection;
+SoundFile xenoSectionThree;
+SoundFile fleetwaySection;
+SoundFile sunkySection;
+SoundFile tailsDollSection;
+SoundFile xenoSectionFour;
+SoundFile exeSection;
+SoundFile angryXenoSection;
+SoundFile teamEXESection;
+SoundFile sonicSection;
 
 int player1Row = 1;
 int player1Col = 3;
@@ -143,34 +163,38 @@ public void setup() {
   death1BG.resize(1200,700);  
   endScreen = loadImage(endScreenFile);
   endScreen.resize(1200,700);  
+  winScreen = loadImage(winScreenFile);
+  winScreen.resize(1200, 700);
+  youWin = loadImage(youWinFile);
+  youWin.resize(900, 600);
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  /*Interchanging Screens BEGINS HERE*/
+  /*Interchanging Screens INITIALIZES HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   grid = new Grid("song", songBG, 12, 7);
   currentScreen = grid;
+  //SoundFile[] songs = new SoundFile[2];
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*TOO FAR REMIX BEGINS HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~*/
   segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
-  //openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); 10 - 32             22 seconds
-  //xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); 32 - 72        40 seconds
-  //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); 72 - 131               59 seconds
-  //xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");  131 - 170     39 seconds
-  //majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3"); 170 - 229    59 seconds
-  //xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3"); 229 - 370    141 seconds
-  //fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3"); 370 - 496         126 seconds
-  //sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3"); 496 - 555               59 seconds
-  //tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3"); 555 - 597     42 seconds
-  //xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3"); 597 - 636     39 seconds
-  //exeSection = new SoundFile(this, "sounds/EXE_Section.mp3"); 636 - 757                   121 seconds
-  //angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3"); 757 - 767          10 seconds
-  //teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3"); 767 - 825    58 seconds
-  //sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3"); 825 - 861               36 seconds
+  openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); //10 - 32             22 seconds
+  //xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); //32 - 72        40 seconds
+  //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); //72 - 131               59 seconds
+  //xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");  //131 - 170     39 seconds
+  //majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3"); //170 - 229    59 seconds
+  //xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3"); //229 - 370    141 seconds
+  //fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3"); //370 - 496         126 seconds
+  //sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3"); //496 - 555               59 seconds
+  //tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3"); //555 - 597     42 seconds
+  //xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3"); //597 - 636     39 seconds
+  //exeSection = new SoundFile(this, "sounds/EXE_Section.mp3"); //636 - 757                   121 seconds
+  //angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3"); //757 - 767          10 seconds
+  //teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3"); //767 - 825    58 seconds
+  //sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3"); //825 - 861               36 seconds
 
   //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
-  //tfSong = new SoundFile(this, "sounds/Sega_Moment.mp3");
   
   segaSection.play();
 
@@ -311,6 +335,12 @@ public void updateScreen(){
   } 
   else {
     player1 = p1neutral;
+  }
+
+  //Change SONG IF PLAYED SONG ENDS
+  if (!segaSection.isPlaying()){
+    //segaSection.stop(); 
+    //openingSection.play();
   }
 
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
@@ -516,7 +546,7 @@ public String isGameOver(){
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 240){
+  if(grid.getScreenTimeSeconds() > 15){
     return "win";
   }
 
@@ -547,9 +577,10 @@ public void endGame(){
       //Update the title bar
 
       //Show any end imagery
+      currentScreen.setBg(winScreen);
 
       //Xenophane
-      //image(endScreen, 100,100);
+      image(youWin, 50,50);
 
 
 
