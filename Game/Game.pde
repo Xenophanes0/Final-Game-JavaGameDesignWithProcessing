@@ -186,12 +186,6 @@ void setup() {
   teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");// 767 - 825    58 seconds
   sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");// 825 - 861               36 seconds
 
-  //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
-  //tfSong = new SoundFile(this, "sounds/Sega_Moment.mp3");
-
-  //segaSection.play();
-
-  
   p1neutral = loadImage("images/BF_Neutral_Icon.png");
   p1neutral.resize(100,50);
   p1losing = loadImage("images/BF_Losing_Icon.png");
@@ -211,10 +205,19 @@ void setup() {
   /*      OTHER SPRITES AND THEIR COUNTERPARTS      */
   majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
+  majinSonicUp = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Up_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Up_Animation.json");
+  majinSonicUp.resize(200,200);
+  majinSonicDown = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Down_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Down_Animation.json");
+  majinSonicDown.resize(200,200);
+  majinSonicLeft = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Left_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Left_Animation.json");
+  majinSonicLeft.resize(200,200);
+  majinSonicRight = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.json");
+  majinSonicRight.resize(200,200);
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0;i<soundTimes.length; i++){
+  for(int i=0;i<soundTimes.length; i++)
+  {
     endTimes[i] += soundTimes[i];
   }
 
@@ -631,11 +634,9 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
 
 
 //method to indicate when the main game is over
-public String isGameOver(){
+public String isGameOver()
+{
   //when health is under 0
-
-  
-
   if(health <=0){
     return "lose";
   }
@@ -654,13 +655,13 @@ public void endGame(){
     System.out.println("Game Over!");
 
     //if lose...
-    if(isGameOver().equals("lose")){
-
+    if(isGameOver().equals("lose"))
+    {
       //Update the title bar
 
       //Show any end imagery
       currentScreen.setBg(death1BG); //Updating the Backgrounds
-      //Xenophane 
+      //Xenophanes 
       image(endScreen, 0,0);
 
       //No PLAY function (Gameplay STOP)
