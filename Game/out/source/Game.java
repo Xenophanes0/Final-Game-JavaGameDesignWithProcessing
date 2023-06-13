@@ -491,6 +491,55 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
 //method to indicate when the main game is over
 public String isGameOver(){
   //when health is under 0
+
+  /*
+  while(grid.getScreenTimeSeconds() < 750)
+  {
+    
+    if (grd.getScreenTimeSeconds() <= 32)
+    {
+      openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
+      segaSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+
+    else if(grid.getScreenTimeSeconds() > 32 && grid.getScreenTimeSeconds() <= 72)
+    {
+      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      xenoSection.play();
+
+      if(health <= 0)
+      {
+        return "lose";
+      }
+    }
+
+    else if(grid.getScreenTimeSeconds() > 72 && grid.getScreenTimeSeconds())
+
+      
+  }
+
+  //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); 72 - 131               59 seconds
+  //xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");  131 - 170     39 seconds
+  //majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3"); 170 - 229    59 seconds
+  //xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3"); 229 - 370    141 seconds
+  //fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3"); 370 - 496         126 seconds
+  //sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3"); 496 - 555               59 seconds
+  //tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3"); 555 - 597     42 seconds
+  //xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3"); 597 - 636     39 seconds
+  //exeSection = new SoundFile(this, "sounds/EXE_Section.mp3"); 636 - 757                   121 seconds
+  //angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3"); 757 - 767          10 seconds
+  //teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3"); 767 - 825    58 seconds
+  //sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3"); 825 - 861               36 seconds
+
+  }
+  */
+
   if(health <=0){
     return "lose";
   }
