@@ -15,12 +15,18 @@ String extraText = "Shall we play...?";
 String titleText = "Too Far";
 
 
-/*      Screens     */
+/*Screens*/
 Screen currentScreen;
 World currentWorld;
 Grid grid;
 
 //Main Screen (Song Screen)
+String openingBackground = "images/BackGrounds/Opening_Section/Beginning_BG.png";
+PImage openingBackground;
+
+String segaImage = "images/BackGrounds/Opening_Section/Sega_BG";
+PImage segaBackground
+
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
 
