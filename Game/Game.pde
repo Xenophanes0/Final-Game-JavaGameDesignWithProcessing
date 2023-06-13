@@ -15,12 +15,18 @@ String extraText = "Shall we play...?";
 String titleText = "Too Far";
 
 
-/*      Screens     */
+/*Screens*/
 Screen currentScreen;
 World currentWorld;
 Grid grid;
 
 //Main Screen (Song Screen)
+String openingBackground = "images/BackGrounds/Opening_Section/Beginning_BG.png";
+PImage openingBackground;
+
+String segaImage = "images/BackGrounds/Opening_Section/Sega_BG";
+PImage segaBackground
+
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
 
@@ -153,23 +159,26 @@ void setup() {
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*TOO FAR REMIX BEGINS HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+  /*
   segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
-  openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); //10 - 32             22 seconds
-  //xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); //32 - 72        40 seconds
-  //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); //72 - 131               59 seconds
-  //xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");  //131 - 170     39 seconds
-  //majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3"); //170 - 229    59 seconds
-  //xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3"); //229 - 370    141 seconds
-  //fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3"); //370 - 496         126 seconds
-  //sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3"); //496 - 555               59 seconds
-  //tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3"); //555 - 597     42 seconds
-  //xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3"); //597 - 636     39 seconds
-  //exeSection = new SoundFile(this, "sounds/EXE_Section.mp3"); //636 - 757                   121 seconds
-  //angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3"); //757 - 767          10 seconds
-  //teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3"); //767 - 825    58 seconds
-  //sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3"); //825 - 861               36 seconds
+  //openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); 10 - 32             22 seconds
+  //xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); 32 - 72        40 seconds
+  //lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3"); 72 - 131               59 seconds
+  //xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");  131 - 170     39 seconds
+  //majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3"); 170 - 229    59 seconds
+  //xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3"); 229 - 370    141 seconds
+  //fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3"); 370 - 496         126 seconds
+  //sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3"); 496 - 555               59 seconds
+  //tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3"); 555 - 597     42 seconds
+  //xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3"); 597 - 636     39 seconds
+  //exeSection = new SoundFile(this, "sounds/EXE_Section.mp3"); 636 - 757                   121 seconds
+  //angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3"); 757 - 767          10 seconds
+  //teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3"); 767 - 825    58 seconds
+  //sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3"); 825 - 861               36 seconds
 
   //tfSong = new SoundFile(this, "sounds/Too_Far_Final_Escape_Remix.mp3");
+  //tfSong = new SoundFile(this, "sounds/Sega_Moment.mp3");
   
   segaSection.play();
 
@@ -194,6 +203,12 @@ void setup() {
   majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
 
+  //SOUND SETUP
+  endTimes = new int[soundTimes.length];
+  for(int i=0;i<soundTimes.length; i++){
+    endTimes[i] += soundTimes[i];
+  }
+
 
   imageMode(CORNER);    //Set Images to read coordinates at corners
   //fullScreen();   //only use if not using a specfic bg image
@@ -214,6 +229,7 @@ void draw() {
   }
 
   updateScreen();
+  updateSound();
   
   if(!isGameOver().equals("keep playing")){
     endGame();
@@ -331,6 +347,144 @@ public void updateScreen(){
   text(health, 660, 650);
 
 
+}
+
+public void updateSound()
+{
+  if (grid.getScreenTimeSeconds() <= endTimes[0];)
+  {
+    if(!segaSection.isPlaying())
+    {
+      segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3");
+      segaSection.play();
+    }
+  }
+
+  else if (grid.getScreenTimeSeconds() <= endTimes[1];)
+  {
+    if(!openingSection.isPlaying())
+    {
+      openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
+      segaSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[2];)
+  {
+    if(!xenoSectionOne.isPlaying())
+    {
+      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      xenoSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[3])
+  {
+    if(!lordXSection.isPlaying())
+    {
+      lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3");
+      lordXSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[4])
+  {
+    if(!xenoSectionTwo.isPlaying())
+    {
+      xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");
+      xenoSectionTwo.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[5])
+  {
+    if(!majinSonicSection.isPlaying())
+    {
+      majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3");
+      majinSonicSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[6])
+  {
+    if(!xenoSectionThree.isPlaying())
+    {
+      xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3");
+      xenoSectionThree.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[7])
+  {
+    if(!fleetwaySection.isPlaying())
+    {
+      fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3");
+      fleetwaySection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[8])
+  {
+    if(!sunkySection.isPlaying())
+    {
+      sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3");
+      sunkySection.play();       
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[9])
+  {
+    if(!tailsDollSection.isPlaying())
+    {
+      tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3");
+      tailsDollSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[10])
+  {
+    if(!xenoSectionFour.isPlaying())
+    {
+      xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3");
+      xenoSectionFour.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[11])
+  {
+    if(!exeSection.isPlaying())
+    {
+      exeSection = new SoundFile(this, "sounds/EXE_Section.mp3");
+      exeSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[12])
+  {
+    if(!angryXenoSection.isPlaying())
+    {
+      angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");
+      angryXenoSection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[13])
+  {
+    if(!teamEXESection.isPlaying())
+    {
+      teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");
+      teamEXESection.play();
+    }
+  }
+
+  else if(grid.getScreenTimeSeconds() <= endTimes[14])
+  {
+    if(!sonicSection.isPlaying())
+    {
+      sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");
+      sonicSection.play();
+    }
+  }
 }
 
 //Method to populate enemies or other sprites on the screen
@@ -467,166 +621,7 @@ public String checkCollision(GridLocation loc, GridLocation nextLoc){
 public String isGameOver(){
   //when health is under 0
 
-  /*
-  while(grid.getScreenTimeSeconds() < 750)
-  {
-    
-    if (grd.getScreenTimeSeconds() <= 32)
-    {
-      openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
-      segaSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-
-    else if(grid.getScreenTimeSeconds() > 32 && grid.getScreenTimeSeconds() <= 72)
-    {
-      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
-      xenoSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 72 && grid.getScreenTimeSeconds() <= 131)
-    {
-      lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3");
-      lordXSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 131 && grid.getScreenTimeSeconds() <= 170)
-    {
-      xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");
-      xenoSectionTwo.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 170 && grid.getScreenTimeSeconds() <= 229)
-    {
-      majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3");
-      majinSonicSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 229 && grid.getScreenTimeSeconds() <= 370)
-    {
-      xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3");
-      xenoSectionThree.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 370 && grid.getScreenTimeSeconds() <= 496)
-    {
-      fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3");
-      fleetwaySection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 496 && grid.getScreenTimeSeconds() <= 555)
-    {
-      sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3");
-      sunkySection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 555 && grid.getScreenTimeSeconds() <= 597)
-    {
-      tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section,mp3");
-      tailsDollSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 597 && grid.getScreenTimeSeconds() <= 636)
-    {
-      xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3");
-      xenoSectionFour.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 636 && grid.getScreenTimeSeconds() <= 757)
-    {
-      exeSection = new SoundFile(this, "sounds/EXE_Section.mp3");
-      exeSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 757 && grid.getScreenTimeSeconds() <= 767)
-    {
-      angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");
-      angryXenoSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 767 && grid.getScreenTimeSeconds() <= 825)
-    {
-      teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");
-      teamEXESection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-
-    else if(grid.getScreenTimeSeconds() > 825 && grid.getScreenTimeSeconds() <= 861)
-    {
-      sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");
-      sonicSection.play();
-
-      if(health <= 0)
-      {
-        return "lose";
-      }
-    }
-  }
-  */
+  
 
   if(health <=0){
     return "lose";
@@ -651,7 +646,7 @@ public void endGame(){
       //Update the title bar
 
       //Show any end imagery
-      currentScreen.setBg(death1BG);
+      currentScreen.setBg(death1BG); //Updating the Backgrounds
       //Xenophane 
       image(endScreen, 0,0);
 
