@@ -35,15 +35,18 @@ PImage sonicLogoBackground;
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
 
-//End Screen (TONS OF END SCREENS IN FUTURE)
+
+//ONGOING SCREENS THROUGHOUT THE SONG
+PImage startScreen;
+String startScreenFile = "images/Opening_Section/Glitching_out_logo.png";
+
+//End Screen (TONS OF END SCREENS)
 PImage death1BG;
 String death1BGFile = "images/GameOverBG.png";
 PImage endScreen;
 String endScreenFile = "images/topMajins.png";
-PImage winScreen;
-String winScreenFile = "images/sonic-bg.jpg";
-PImage youWin;
-String youWinFile = "images/youWin.jpg";
+PImage endBG;
+String endBGFile = "images/BackGrounds/Sonic_Section/End_BG.png";
 //...continue later
 
 /*      Arrow Icons (Animated)      */
@@ -152,10 +155,8 @@ void setup() {
   death1BG.resize(1200,700);  
   endScreen = loadImage(endScreenFile);
   endScreen.resize(1200,700);  
-  winScreen = loadImage(winScreenFile);
-  winScreen.resize(1200, 700);
-  youWin = loadImage(youWinFile);
-  youWin.resize(900, 600);
+  endBG = loadImage(endBGFile);
+  endBG.resize(1200, 700);
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
@@ -672,10 +673,10 @@ public void endGame(){
       //Update the title bar
 
       //Show any end imagery
-      currentScreen.setBg(winScreen);
+      currentScreen.setBg(endBG);
 
       //Xenophane
-      image(youWin, 50,50);
+      //image(youWin, 50,50);
 
 
 
