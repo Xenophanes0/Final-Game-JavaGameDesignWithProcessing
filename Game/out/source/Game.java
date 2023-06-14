@@ -510,8 +510,8 @@ public void updateSections()
     if(!xenoSectionOne.isPlaying())
     {
       System.out.println("Section 2");
-      currentBg = xenoBackground;
-      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      //currentBg = xenoBackground;
+      // xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
       xenoSectionOne.play();
     }
   }

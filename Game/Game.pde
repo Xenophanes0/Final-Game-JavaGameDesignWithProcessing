@@ -211,7 +211,7 @@ void setup() {
   //ALL IMAGES LOCKED AND LOADED IN USE (LOTS OF SCREENS HAPPEN HERE)
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   songBG = loadImage(songBGFile);
-  songBG.resize(1200,700);  //BG must be same dims as size()
+  songBG.resize(width, height);  //BG must be same dims as size()
   death1BG = loadImage(death1BGFile);
   death1BG.resize(1200,700);  
   deathBySonicHands = loadImage(deathBySonicHandsFile);
@@ -484,8 +484,8 @@ public void updateSections()
     if(!xenoSectionOne.isPlaying())
     {
       System.out.println("Section 2");
-      currentBg = xenoBackground;
-      xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      //currentBg = xenoBackground;
+      // xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
       xenoSectionOne.play();
     }
   }
