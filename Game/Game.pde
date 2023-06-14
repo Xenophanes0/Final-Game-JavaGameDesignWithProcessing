@@ -6,14 +6,12 @@
 //GAME VARIABLES
 private int msElapsed = 0;
 String gameStatus = "start";
-//PImage player1Torso; // BF's waist and above
-//PImage player1Legs; //BF's waist and below
+
 PImage player1;
-PImage p1neutral;
+PImage p1neutral; 
 PImage p1losing;
 String extraText = "Shall we play...?";
 String titleText = "Too Far";
-
 
 /*Screens*/
 Screen currentScreen;
@@ -30,7 +28,10 @@ PImage segaBackground;
 String sonicLogoBackFile = "images/BackGrounds/Opening_Section/Logo2.png";
 PImage sonicLogoBackground;
 
+String sonicThirdGlitchLogoBackFile = "images/BackGrounds/Opening_Section/Glitching_out_logo_3.png"
+PImage sonicThirdGlitchLogoBackground;
 
+String xenoRing
 
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
@@ -314,8 +315,8 @@ void mouseClicked(){
 //------------------ CUSTOM  METHODS --------------------//
 
 //method to update the Title Bar of the Game
-public void updateTitleBar(){
-
+public void updateTitleBar()
+{
   if(isGameOver().equals("keep playing")) {
     //set the title each loop
     surface.setTitle(titleText + "    " + extraText + health);
@@ -661,7 +662,7 @@ public void endGame(){
 
       //Show any end imagery
       currentScreen.setBg(death1BG); //Updating the Backgrounds
-      
+
       //Xenophane 
       //image(endScreen, 0,0);
 
