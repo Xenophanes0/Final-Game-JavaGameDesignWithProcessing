@@ -378,7 +378,7 @@ public void moveSprites(){
 
           //No collision, but a move
           else if(checkCollision(loc, newLoc).equals("move")){
-            System.out.println("NO Collision at " + loc);
+            //System.out.println("NO Collision at " + loc);
 
             //Check if there is spirte in r,c
             if (grid.hasTileSprite(loc)){
