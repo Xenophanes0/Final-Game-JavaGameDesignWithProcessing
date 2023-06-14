@@ -31,7 +31,7 @@ String segaFile = "images/BackGrounds/Opening_Section/Sega_BG.png";
 PImage segaBackground;
 String sonicLogoBackFile = "images/BackGrounds/Opening_Section/Logo2.png";
 PImage sonicLogoBackground;
-String sonicThirdGlitchLogoBackFile = "images/BackGrounds/Opening_Section/Glitching_out_logo_3.png"
+String sonicThirdGlitchLogoBackFile = "images/BackGrounds/Opening_Section/Glitching_out_logo_3.png";
 PImage sonicThirdGlitchLogoBackground;
 String xenoSecondRingFile = "images/BackGrounds/Opening_Section/Xeno_ring_2.png";
 PImage xenoSecondRingBackground;
@@ -87,49 +87,49 @@ AnimatedSprite rightSprite;
 
 // Majin Sonic Animations
 AnimatedSprite majinSonicIdle;
-AnimatedSprite majinSonicUP;
+AnimatedSprite majinSonicUp;
 AnimatedSprite majinSonicDown;
 AnimatedSprite majinSonicLeft;
 AnimatedSprite majinSonicRight;
 
 // Fleetway Animations
 AnimatedSprite fleetwaySonicIdle;
-AnimatedSprite fleetwaySonicUP;
+AnimatedSprite fleetwaySonicUp;
 AnimatedSprite fleetwaySonicDown;
 AnimatedSprite fleetwaySonicLeft;
 AnimatedSprite fleetwaySonicRight;
 
 // EXE Animations
 AnimatedSprite exeIdle;
-AnimatedSprite exeUP;
+AnimatedSprite exeUp;
 AnimatedSprite exeDown;
 AnimatedSprite exeLeft;
 AnimatedSprite exeRight;
 
 // Lord X Animations
 AnimatedSprite lordXIdle;
-AnimatedSprite lordXUP;
+AnimatedSprite lordXUp;
 AnimatedSprite lordXDown;
 AnimatedSprite lordXLeft;
 AnimatedSprite lordXRight;
 
 // Sunky Animations
 AnimatedSprite sunkyIdle;
-AnimatedSprite sunkyUP;
+AnimatedSprite sunkyUp;
 AnimatedSprite sunkyDown;
 AnimatedSprite sunkyLeft;
 AnimatedSprite sunkyRight;
 
 // Tails' Doll Animations
 AnimatedSprite tailsDollIdle;
-AnimatedSprite tailsDollUP;
+AnimatedSprite tailsDollUp;
 AnimatedSprite tailsDollDown;
 AnimatedSprite tailsDollLeft;
 AnimatedSprite tailsDollRight;
 
 // Xenophanes Animations
 AnimatedSprite xenophanesIdle;
-AnimatedSprite xenophanesUP;
+AnimatedSprite xenophanesUp;
 AnimatedSprite xenophanesDown;
 AnimatedSprite xenophanesLeft;
 AnimatedSprite xenophanesRight;
