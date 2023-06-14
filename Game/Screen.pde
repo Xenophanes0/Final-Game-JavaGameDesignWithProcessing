@@ -46,6 +46,11 @@ public class Screen {
     public PImage getBg(){
         return bg;
     }
+    public void showBg(){
+        if(bg != null){
+           background(bg);        
+        }
+    }
     
     public void setX(float x) {
         this.x = x;

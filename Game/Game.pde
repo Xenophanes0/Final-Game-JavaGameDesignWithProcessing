@@ -6,6 +6,7 @@
 //GAME VARIABLES
 private int msElapsed = 0;
 String gameStatus = "start";
+boolean arrowTime = false;
 
 PImage player1;
 PImage p1neutral; 
@@ -14,8 +15,8 @@ String extraText = "Shall we play...?";
 String titleText = "Too Far";
 
 /*Screens*/
-Screen currentScreen;
-World currentWorld;
+// Screen grid;
+// World currentWorld;
 Grid grid;
 
 /*Main Screen (Song Screen)*/
@@ -39,6 +40,7 @@ String xenoThirdRingFile = "images/BackGrounds/Opening_Section/Xeno_ring_3.png";
 PImage xenoThirdRingBackground;
 String secondGlitchingRingFile = "images/BackGrounds/Opening_Section/Glitching_ring_2.png";
 PImage secondGlitchingRingBackground;
+PImage currentBg = openingBackground;
 
 //Xenophanes Section(s) Background Images
 String xenoBackFile = "images/BackGrounds/Xenophanes_Sections/xeno_BG.png";
@@ -189,7 +191,7 @@ String[] bgChangeTime;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 1;
+int health = 15;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -235,7 +237,7 @@ void setup() {
   /*Interchanging Screens INITIALIZES HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   grid = new Grid("song", songBG, 12, 7);
-  currentScreen = grid;
+  //grid = grid;
   //SoundFile[] songs = new SoundFile[2];
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -309,7 +311,7 @@ void setup() {
   println("Game started...");
 
   //reset timer
-  currentScreen.resetTimer();
+  grid.resetTimer();
 }
 
 
@@ -320,26 +322,34 @@ void draw() {
 
 System.out.println(grid.getScreenTimeSeconds());
   updateTitleBar();
-
-  if (msElapsed % 300 == 0) {
-    populateSprites();
-    moveSprites();
-  }
-
-  updateScreen();
-  updateSound();
+  updateSections();
   updateBG();
-  
+
+
   if(!isGameOver().equals("keep playing")){
     endGame();
   }
 
-  majinSonicIdle.animate(7.0);
+  else{
+    if (arrowTime && msElapsed % 300 == 0) {
+      populateSprites();
+      moveSprites();
+    }
+
+    if(arrowTime){
+      updateScreen();
+    }
+
+
+
+  }
+
+  
 
   //checkExampleAnimation();
   
   msElapsed +=100;
-  currentScreen.pause(100);
+  grid.pause(100);
 }
 
 //Known Processing method that automatically will run whenever a key is pressed
@@ -349,9 +359,14 @@ void keyPressed(){
   //check what key was pressed
   System.out.println("Key pressed: " + keyCode); //keyCode gives you an integer for the key
 
-  //What to do when a key is pressed?
-  if (currentScreen == grid && gameStatus.equals("start")){
-    if (keyCode == 68){
+  int left = 37;
+  int up = 38;
+  int right = 39;
+  int down = 40;
+
+  //What to do when a key is pressed? 68 = ???
+  if (grid == grid && gameStatus.equals("start")){
+    if (keyCode == left){
     //Store old GridLocation
     GridLocation oldLoc = new GridLocation(player1Row, player1Col);
     
@@ -362,22 +377,22 @@ void keyPressed(){
     player1Col = 2;
     }
 
-    //set "f" key to move down column 3
-    if (keyCode == 70){
+    //set "f" 70 key to move down column 3 LEFT
+    if (keyCode == up){
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       grid.clearTileImage(oldLoc);
       player1Col = 3;
     }
 
-    //set "j" key to move up column 4
-    if (keyCode == 74){
+    //set "j" 74 key to move up column 4
+    if (keyCode == down){
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       grid.clearTileImage(oldLoc);
       player1Col = 4;
     }
   
-    //set "k" key to move right column 5
-    if(keyCode == 75){
+    //set "k" 75 key to move right column 5
+    if(keyCode == right){
       //shift the player1 picture up in the 2D array
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       //eliminate the picture from the old location
@@ -411,12 +426,9 @@ public void updateTitleBar()
 //method to update what is drawn on the screen each frame
 public void updateScreen(){
 
-  //update the background
-  background(currentScreen.getBg());
-
-  if (currentScreen == grid){
-    currentWorld = grid;
-  }
+  // if (grid == grid){
+  //   currentWorld = grid;
+  // }
 
 
   //Display the Player1 (BF's) image
@@ -426,7 +438,6 @@ public void updateScreen(){
   else {
     player1 = p1neutral;
   }
-
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
@@ -442,12 +453,14 @@ public void updateScreen(){
 
 }
 
-public void updateSound()
+public void updateSections()
 {
   if (grid.getScreenTimeSeconds() <= endTimes[0])
   {
     if(!segaSection.isPlaying())
     {
+      System.out.println("Section 0");
+      currentBg = segaBackground;
       segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3");
       segaSection.play();
     }
@@ -457,6 +470,9 @@ public void updateSound()
   {
     if(!openingSection.isPlaying())
     {
+      System.out.println("Section 1");
+      arrowTime = true;
+      currentBg = xenoThirdRingBackground;
       openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
       openingSection.play();
     }
@@ -464,26 +480,39 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[2])
   {
+    //majinSonicIdle.animate(7.0);
     if(!xenoSectionOne.isPlaying())
     {
+      System.out.println("Section 2");
+      currentBg = xenoBackground;
       xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
       xenoSectionOne.play();
     }
   }
 
-  else if(grid.getScreenTimeSeconds() <= endTimes[3])
+  else if(grid.getScreenTimeSeconds() <= endTimes[3] -3)
   {
+    //majinSonicIdle.animate(7.0);
     if(!lordXSection.isPlaying())
     {
+      System.out.println("Section 3");
+      currentBg = lordXBackground;
       lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3");
       lordXSection.play();
     }
   }
+  else if(grid.getScreenTimeSeconds() <= endTimes[3])
+  {
+      currentBg = thirdGlitchingLordXBackground;
+  }
 
   else if(grid.getScreenTimeSeconds() <= endTimes[4])
   {
+    //majinSonicIdle.animate(7.0);
     if(!xenoSectionTwo.isPlaying())
     {
+      System.out.println("Section 4");
+      currentBg = xenoBackground;
       xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");
       xenoSectionTwo.play();
     }
@@ -491,8 +520,11 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[5])
   {
+    majinSonicIdle.animate(7.0);
     if(!majinSonicSection.isPlaying())
     {
+      System.out.println("Section 5");
+      currentBg = majinSonicBackground;
       majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3");
       majinSonicSection.play();
     }
@@ -500,8 +532,11 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[6])
   {
+    //majinSonicIdle.animate(7.0);
     if(!xenoSectionThree.isPlaying())
     {
+      System.out.println("Section 6");
+      currentBg = xenoBackground;
       xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3");
       xenoSectionThree.play();
     }
@@ -509,8 +544,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[7])
   {
+    //majinSonicIdle.animate(7.0);
     if(!fleetwaySection.isPlaying())
     {
+      currentBg = fleetwayBackground;
       fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3");
       fleetwaySection.play();
     }
@@ -518,8 +555,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[8])
   {
+    //majinSonicIdle.animate(7.0);
     if(!sunkySection.isPlaying())
     {
+      //currentBg = segaBackground;
       sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3");
       sunkySection.play();       
     }
@@ -527,8 +566,11 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[9])
   {
+
+    //majinSonicIdle.animate(7.0);
     if(!tailsDollSection.isPlaying())
     {
+      //currentBg = segaBackground;
       tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section.mp3");
       tailsDollSection.play();
     }
@@ -536,8 +578,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[10])
   {
+    //majinSonicIdle.animate(7.0);
     if(!xenoSectionFour.isPlaying())
     {
+      currentBg = xenoBackground;
       xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3");
       xenoSectionFour.play();
     }
@@ -545,8 +589,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[11])
   {
+    //majinSonicIdle.animate(7.0);
     if(!exeSection.isPlaying())
     {
+      currentBg = exeBackground;
       exeSection = new SoundFile(this, "sounds/EXE_Section.mp3");
       exeSection.play();
     }
@@ -554,8 +600,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[12])
   {
+    //majinSonicIdle.animate(7.0);
     if(!angryXenoSection.isPlaying())
     {
+      currentBg = xenoBackground;
       angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");
       angryXenoSection.play();
     }
@@ -563,8 +611,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[13])
   {
+    majinSonicIdle.animate(7.0);
     if(!teamEXESection.isPlaying())
     {
+      //currentBg = xenoBackground;
       teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");
       teamEXESection.play();
     }
@@ -572,8 +622,10 @@ public void updateSound()
 
   else if(grid.getScreenTimeSeconds() <= endTimes[14])
   {
+    //majinSonicIdle.animate(7.0);
     if(!sonicSection.isPlaying())
     {
+      //currentBg = segaBackground;
       sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");
       sonicSection.play();
     }
@@ -581,27 +633,10 @@ public void updateSound()
 }
 
 public void updateBG(){
-  if (grid.getScreenTimeSeconds() <= 1){
-    currentScreen.setBg(openingBackground);
-  }
-  else if (grid.getScreenTimeSeconds() <= 2){
-    currentScreen.setBg(segaBackground);
-  }
-  else if (grid.getScreenTimeSeconds() <= 3){
-  currentScreen.setBg(sonicLogoBackground);
-  }
-  else if (grid.getScreenTimeSeconds() <= 4){
-  currentScreen.setBg(sonicThirdGlitchLogoBackground);
-  } 
-  else if (grid.getScreenTimeSeconds() <= 5){
-  currentScreen.setBg(xenoSecondRingBackground);
-  } 
-  else if (grid.getScreenTimeSeconds() <= 6){
-  currentScreen.setBg(xenoThirdRingBackground);
-  } 
-  else if (grid.getScreenTimeSeconds() <= 7){
-  currentScreen.setBg(secondGlitchingRingBackground);
-  } 
+
+  grid.setBg(currentBg);
+  grid.showBg();
+  
 }
 
 //Method to populate enemies or other sprites on the screen
@@ -753,7 +788,7 @@ public String isGameOver()
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 60){
+  if(grid.getScreenTimeSeconds() > 12*60+25){
     return "win";
   }
 
@@ -763,15 +798,18 @@ public String isGameOver()
 //method to describe what happens after the game is over
 public void endGame(){
   System.out.println("Game Over!");
+  
+  //Stop the arrows
+  arrowTime = false;
+
+  //Kill all Sprites
+  exterminate();
 
   //if lose...
   if(isGameOver().equals("lose"))
   {
-    //Kill all Sprites
-    exerminate();
-
     //Show any end imagery
-    currentScreen.setBg(death1BG); //Updating the Backgrounds
+    grid.setBg(death1BG); //Updating the Backgrounds
 
     //Dead BF 
     image(deathBySonicHands, 0,0);
@@ -786,7 +824,7 @@ public void endGame(){
     //Update the title bar
 
     //Show any end imagery
-    currentScreen.setBg(endBG);
+    grid.setBg(endBG);
 
     //Xenophane
     //image(youWin, 50,50);
@@ -796,7 +834,7 @@ public void endGame(){
   }
 }
 
-public void exerminate(){
+public void exterminate(){
   
   //Remove ALL Arrow Icons on Grid
   for (int r = 0; r < grid.getNumRows(); r++){
