@@ -31,11 +31,11 @@ PImage sonicLogoBackground;
 String sonicThirdGlitchLogoBackFile = "images/BackGrounds/Opening_Section/Glitching_out_logo_3.png"
 PImage sonicThirdGlitchLogoBackground;
 
-String xenoRing
+String xenoSecondRingFile = "images/BackGrounds/Opening_Section/Xeno_ring_2.png";
+PImage xenoSecondRingBackground;
 
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
-
 
 //ONGOING SCREENS THROUGHOUT THE SONG
 PImage startScreen;
