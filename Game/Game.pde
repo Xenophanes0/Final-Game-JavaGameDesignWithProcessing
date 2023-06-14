@@ -41,11 +41,17 @@ String secondGlitchingRingFile = "images/BackGrounds/Opening_Section/Glitching_r
 PImage secondGlitchingRingBackground;
 
 //Xenophanes Section(s) Background Images
-
+String xenoBackFile = "images/BackGrounds/Xenophanes_Sections/xeno_BG.png";
+PImage xenoBackground;
 
 //Lord X Section Background Images
+String lordXBackFile = "images/BackGrounds/Lord_X_Section/Lord_X_BG.png";
+PImage lordXBackground;
+String thridGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitching_Lord_X_BG_3.png";
+PImage thridGlitchingLordXBackground;
 
 //Majin Sonic Section Background Images
+
 
 //Fleetway Section Background Images
 
