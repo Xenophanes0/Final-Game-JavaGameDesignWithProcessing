@@ -215,7 +215,7 @@ int[] endTimes;
 String[] bgChange = {openingFile, segaFile, sonicLogoBackFile, sonicThirdGlitchLogoBackFile, xenoSecondRingFile, xenoThirdRingFile, secondGlitchingRingFile};
 String[] bgChangeTime;
 
-int player1Row = 1;
+int player1Row = 2;
 int player1Col = 3;
 int health = 15;
 
@@ -237,7 +237,7 @@ int rightCol = 5;
   //ALL IMAGES LOCKED AND LOADED IN USE (LOTS OF SCREENS HAPPEN HERE)
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   songBG = loadImage(songBGFile);
-  songBG.resize(1200,700);  //BG must be same dims as size()
+  songBG.resize(width, height);  //BG must be same dims as size()
   death1BG = loadImage(death1BGFile);
   death1BG.resize(1200,700);  
   deathBySonicHands = loadImage(deathBySonicHandsFile);
@@ -391,11 +391,20 @@ System.out.println(grid.getScreenTimeSeconds());
   int down = 40;
 
   //What to do when a key is pressed? 68 = ???
-  if (grid == grid && gameStatus.equals("start")){
+  if (gameStatus.equals("start")){
+
     if (keyCode == left){
     //Store old GridLocation
     GridLocation oldLoc = new GridLocation(player1Row, player1Col);
     
+    //Check if you collided into a arrow
+    GridLocation nextLoc = new GridLocation(player1Row, 2);
+    if (checkCollision(oldLoc, nextLoc).equals("hit")){
+      System.out.println("You ran into arrow at " + nextLoc);
+      grid.clearTileSprite(nextLoc);
+      health+=3;
+    }
+
     //Erase image from previous location
     grid.clearTileImage(oldLoc);
 
@@ -785,17 +794,17 @@ public void moveSprites(){
 public String checkCollision(GridLocation loc, GridLocation nextLoc){
 
   //Check current location
-  //PImage image = grid.getTileImage(loc);
-  AnimatedSprite arrow = grid.getTileSprite(loc);
+  PImage imageOld = grid.getTileImage(loc);
+  AnimatedSprite spriteOld = grid.getTileSprite(loc);
 
-  if (arrow == null){
+  if (imageOld == null && spriteOld==null){
     return "no move";
   }
 
   //Check next location
   PImage imageNext = grid.getTileImage(nextLoc);
-  //AnimatedSprite nextSprite = grid.getTileSprite(nextLoc);
-  if (imageNext == null){
+  AnimatedSprite spriteNext = grid.getTileSprite(nextLoc);
+  if (imageNext == null && spriteNext == null){
     return "move";
   }
 
