@@ -251,7 +251,7 @@ void setup() {
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0;i<soundTimes.length; i++)
+  for(int i=0; i<soundTimes.length; i++)
   {
     endTimes[i] = soundTimes[i];
   }
