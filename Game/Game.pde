@@ -19,20 +19,43 @@ World currentWorld;
 Grid grid;
 
 //Main Screen (Song Screen)
+
+//Universal Background Images
+String blackBackFile = "images/BlackBG.png";
+PImage blackBackground;
+
+//Opening Section of "Too Far"
 String openingFile = "images/BackGrounds/Opening_Section/Beginning_BG.png";
 PImage openingBackground;
-
 String segaFile = "images/BackGrounds/Opening_Section/Sega_BG.png";
 PImage segaBackground;
-
 String sonicLogoBackFile = "images/BackGrounds/Opening_Section/Logo2.png";
 PImage sonicLogoBackground;
-
 String sonicThirdGlitchLogoBackFile = "images/BackGrounds/Opening_Section/Glitching_out_logo_3.png"
 PImage sonicThirdGlitchLogoBackground;
-
 String xenoSecondRingFile = "images/BackGrounds/Opening_Section/Xeno_ring_2.png";
 PImage xenoSecondRingBackground;
+String xenoThirdRingFile = "images/BackGrounds/Opening_Section/Xeno_ring_3.png";
+PImage xenoThirdRingBackground;
+String secondGlitchingRingFile = "images/BackGrounds/Opening_Section/Glitching_ring_2.png";
+PImage secondGlitchingRingBackground;
+
+//Xenophanes Section(s) Background Images
+
+
+//Lord X Section Background Images
+
+//Majin Sonic Section Background Images
+
+//Fleetway Section Background Images
+
+//Sunky Section Background Images
+
+//Tails' Doll Background Image
+
+//Angry/ Vs. Team Sonic.exe Section Background Image
+
+//Sonic Section Background Images
 
 String songBGFile = "images/BackgroundFinalEscape.png";
 PImage songBG;
@@ -168,9 +191,7 @@ void setup() {
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*TOO FAR REMIX BEGINS HERE*/
-  /*~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-  
+  /*~~~~~~~~~~~~~~~~~~~~~~~~*/  
   segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
   openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); //10 - 32             22 seconds
   xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); //32 - 72        40 seconds
@@ -186,7 +207,6 @@ void setup() {
   angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");// 757 - 767          10 seconds
   teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");// 767 - 825    58 seconds
   sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");// 825 - 861               36 seconds
-
 
   p1neutral = loadImage("images/BF_Neutral_Icon.png");
   p1neutral.resize(100,50);
