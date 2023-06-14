@@ -77,18 +77,34 @@ String thirdGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitchin
 PImage thirdGlitchingLordXBackground;
 
 //Majin Sonic Section Background Images
-String fadeInMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
+String fadeInMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
 PImage fadeInMajinBackground;
-String majinSonicBackFile = "image/Backgrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
+String majinSonicBackFile = "image/BackGrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
 PImage majinSonicBackground;
-String thirdGlitchingMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
+String thirdGlitchingMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
 PImage thirdGlitchingMajinBackground;
 
 //Fleetway Section Background Images
+String fadeInFleetwayBackFile = "images/BackGrounds/Fleetway_Section/Fade_In_Fleetway_BG.png";
+PImage fadeInFleetwayBackground;
+String fleetwayBackFile = "images/BackGrounds/Fleetway_Section/Fleetway_BG.png";
+PImage fleetwayBackground;
+String thirdGlitchingFleetwayBackFile = "images/BackGrounds/Fleetway_Section/Glitching_Out_Fleetway_BG_3.png";
+PImage thirdGlitchingFleetwayBackground;
 
 //Sunky Section Background Images
 
 //Tails' Doll Background Image
+
+//EXE Background Images
+String fadeInEXEBackFile = "images/BackGrounds/EXE_Section/Fade_In_EXE_BG.png";
+PImage fadeInEXEBackground;
+String exeBackFile = "images/BackGrounds/EXE_Section/EXE_BG.png";
+PImage exeBackground;
+String thirdCloseInEXEBackFile = "images/BackGrounds/EXE_Section/Close_In_EXE_BG_3.png";
+PImage thirdCloseInEXEBackground;
+String fifthGlitchingOutEXEBackFile = "images/BackGrounds/EXE_Section/Glitching_Out_EXE_BG_5.png";
+PImage fifthGlitchingOutEXEBackground;
 
 //Angry/ Vs. Team Sonic.exe Section Background Image
 
@@ -299,7 +315,7 @@ public void setup() {
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0;i<soundTimes.length; i++)
+  for(int i=0; i<soundTimes.length; i++)
   {
     endTimes[i] = soundTimes[i];
   }
@@ -430,7 +446,7 @@ public void updateScreen(){
 
 
   //Display the Player1 (BF's) image
-  if(health <34){
+  if(health < 34){
       player1 = p1losing;
   } 
   else {
@@ -654,10 +670,16 @@ public void populateSprites(){
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
 
+  //Generate random arrow speeds
+  double rando = Math.random();
+
   // Loop through all of the rows & cols in the grid
   if (gameStatus.equals("start")){
     for (int c = leftCol; c <= rightCol; c++){
       for (int r = 0; r < grid.getNumRows(); r++){
+
+        //Testing Random Speed Variable
+        int moveRowUp = r-1;
 
         //Store the 2 tile locations to move
         GridLocation loc = new GridLocation(r, c);
@@ -667,9 +689,18 @@ public void moveSprites(){
           grid.clearTileSprite(loc);
         }
 
+        if (r - 2 > 1 && rando < 0.1f){
+          moveRowUp -= 1;
+        }
+        if (r - 3 > 1 && rando < 0.9f){
+          moveRowUp -= 2;
+        }
+
         //only move if player's loc isn't in top row
         if (r != 0){
-          GridLocation newLoc = new GridLocation(r-1, c);
+
+          GridLocation newLoc = new GridLocation(moveRowUp,c);
+           
         
           //if there is a collusion
           if (checkCollision(loc, newLoc).equals("hit")){
@@ -797,15 +828,14 @@ public void endGame(){
 public void exerminate(){
   
   //Remove ALL Arrow Icons on Grid
-  // for (int r = 0; r < grid.getNumRows(); r++){
-  //     for (int c = 0; c < grid.getNumCols(); c++){
+  for (int r = 0; r < grid.getNumRows(); r++){
+    for (int c = 0; c < grid.getNumCols(); c++){
 
-  //       GridLocation remove = new GridLocation(r, c);
+      GridLocation remove = new GridLocation(r, c);
 
-  //       grid.clearTileSprite(remove);
-  //     }
-  // }
-  majinSonicIdle.remove();
+      grid.clearTileSprite(remove);
+    }
+  }
 }
 /* Animated Sprite class - useful to have Sprites move around
  * Designed to be used with Spritesheets & JSON Array files from TexturePacker software: 
@@ -2471,12 +2501,6 @@ public class Sprite {
   // method to display the Sprite image on the screen
   public void show() {
       image(spriteImg, getLeft(), getTop(), w, h);
-  }
-
-  //method to remove the Sprite image on the screen
-  public void remove(){
-    this.spriteImg = null;
-    show();
   }
 
   // method to move Sprite image on the screen to a specific coordinate

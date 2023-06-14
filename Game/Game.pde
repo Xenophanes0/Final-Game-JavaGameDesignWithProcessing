@@ -644,10 +644,16 @@ public void populateSprites(){
 //Method to move around the enemies/sprites on the screen
 public void moveSprites(){
 
+  //Generate random arrow speeds
+  double rando = Math.random();
+
   // Loop through all of the rows & cols in the grid
   if (gameStatus.equals("start")){
     for (int c = leftCol; c <= rightCol; c++){
       for (int r = 0; r < grid.getNumRows(); r++){
+
+        //Testing Random Speed Variable
+        int moveRowUp = r-1;
 
         //Store the 2 tile locations to move
         GridLocation loc = new GridLocation(r, c);
@@ -657,9 +663,15 @@ public void moveSprites(){
           grid.clearTileSprite(loc);
         }
 
+        if (r - 2 > 1 && rando < 0.1){
+          moveRowUp -= 1;
+        }
+
         //only move if player's loc isn't in top row
         if (r != 0){
-          GridLocation newLoc = new GridLocation(r-1, c);
+
+          GridLocation newLoc = new GridLocation(moveRowUp,c);
+           
         
           //if there is a collusion
           if (checkCollision(loc, newLoc).equals("hit")){
@@ -788,11 +800,11 @@ public void exerminate(){
   
   //Remove ALL Arrow Icons on Grid
   for (int r = 0; r < grid.getNumRows(); r++){
-      for (int c = 0; c < grid.getNumCols(); c++){
+    for (int c = 0; c < grid.getNumCols(); c++){
 
-        GridLocation remove = new GridLocation(r, c);
+      GridLocation remove = new GridLocation(r, c);
 
-        grid.clearTileSprite(remove);
-      }
+      grid.clearTileSprite(remove);
+    }
   }
 }
