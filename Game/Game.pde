@@ -128,8 +128,8 @@ SoundFile teamEXESection;
 SoundFile sonicSection;
 
 
-  int[] soundTimes = {10,22,40,59,39,59,141,126,59,42,39,121,10,58,36}; //Index of 14
-  int[] endTimes;
+int[] soundTimes = {10,22,40,59,39,59,141,126,59,42,39,121,10,58,36}; //Index of 14
+int[] endTimes;
 
 int player1Row = 1;
 int player1Col = 3;
@@ -186,6 +186,7 @@ void setup() {
   teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");// 767 - 825    58 seconds
   sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");// 825 - 861               36 seconds
 
+
   p1neutral = loadImage("images/BF_Neutral_Icon.png");
   p1neutral.resize(100,50);
   p1losing = loadImage("images/BF_Losing_Icon.png");
@@ -216,8 +217,7 @@ void setup() {
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0;i<soundTimes.length; i++)
-  {
+  for(int i=0;i<soundTimes.length; i++){
     endTimes[i] += soundTimes[i];
   }
 
@@ -643,7 +643,7 @@ public String isGameOver()
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 15){
+  if(grid.getScreenTimeSeconds() > 60){
     return "win";
   }
 
@@ -661,8 +661,9 @@ public void endGame(){
 
       //Show any end imagery
       currentScreen.setBg(death1BG); //Updating the Backgrounds
-      //Xenophanes 
-      image(endScreen, 0,0);
+      
+      //Xenophane 
+      //image(endScreen, 0,0);
 
       //No PLAY function (Gameplay STOP)
       gameStatus = "stop";
