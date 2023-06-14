@@ -51,18 +51,34 @@ String thirdGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitchin
 PImage thirdGlitchingLordXBackground;
 
 //Majin Sonic Section Background Images
-String fadeInMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
+String fadeInMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
 PImage fadeInMajinBackground;
-String majinSonicBackFile = "image/Backgrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
+String majinSonicBackFile = "image/BackGrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
 PImage majinSonicBackground;
-String thirdGlitchingMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
+String thirdGlitchingMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
 PImage thirdGlitchingMajinBackground;
 
 //Fleetway Section Background Images
+String fadeInFleetwayBackFile = "images/BackGrounds/Fleetway_Section/Fade_In_Fleetway_BG.png";
+PImage fadeInFleetwayBackground;
+String fleetwayBackFile = "images/BackGrounds/Fleetway_Section/Fleetway_BG.png";
+PImage fleetwayBackground;
+String thirdGlitchingFleetwayBackFile = "images/BackGrounds/Fleetway_Section/Glitching_Out_Fleetway_BG_3.png";
+PImage thirdGlitchingFleetwayBackground;
 
 //Sunky Section Background Images
 
 //Tails' Doll Background Image
+
+//EXE Background Images
+String fadeInEXEBackFile = "images/BackGrounds/EXE_Section/Fade_In_EXE_BG.png";
+PImage fadeInEXEBackground;
+String exeBackFile = "images/BackGrounds/EXE_Section/EXE_BG.png";
+PImage exeBackground;
+String thirdCloseInEXEBackFile = "images/BackGrounds/EXE_Section/Close_In_EXE_BG_3.png";
+PImage thirdCloseInEXEBackground;
+String fifthGlitchingOutEXEBackFile = "images/BackGrounds/EXE_Section/Glitching_Out_EXE_BG_5.png";
+PImage fifthGlitchingOutEXEBackground;
 
 //Angry/ Vs. Team Sonic.exe Section Background Image
 
@@ -404,7 +420,7 @@ public void updateScreen(){
 
 
   //Display the Player1 (BF's) image
-  if(health <34){
+  if(health < 34){
       player1 = p1losing;
   } 
   else {
