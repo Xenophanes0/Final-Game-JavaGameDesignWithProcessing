@@ -199,7 +199,7 @@ String[] bgChangeTime;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 70;
+int health = 1;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -214,7 +214,10 @@ public void setup() {
   //Set the title on the title bar
   surface.setTitle(titleText);
 
-  //Load images used
+
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  //ALL IMAGES LOCKED AND LOADED IN USE (LOTS OF SCREENS HAPPEN HERE)
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   songBG = loadImage(songBGFile);
   songBG.resize(1200,700);  //BG must be same dims as size()
   death1BG = loadImage(death1BGFile);
@@ -245,9 +248,9 @@ public void setup() {
   currentScreen = grid;
   //SoundFile[] songs = new SoundFile[2];
 
-  /*~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  /*TOO FAR REMIX BEGINS HERE*/
-  /*~~~~~~~~~~~~~~~~~~~~~~~~*/  
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  /*TOO FAR REMIX FORMAT BEGINS HERE*/
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/  
   segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
   openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); //10 - 32             22 seconds
   xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); //32 - 72        40 seconds
@@ -713,9 +716,6 @@ public void moveSprites(){
       } 
     }
   }
-  else{
-    //OR CLEAR THE SPRITES FROM THE GRID HERE????
-  }
 }
 
 //Method to check if there's a collision between player and sprite
@@ -760,41 +760,52 @@ public String isGameOver()
 
 //method to describe what happens after the game is over
 public void endGame(){
-    System.out.println("Game Over!");
+  System.out.println("Game Over!");
 
-    //if lose...
-    if(isGameOver().equals("lose"))
-    {
-      //Update the title bar
+  //if lose...
+  if(isGameOver().equals("lose"))
+  {
+    //Kill all Sprites
+    exerminate();
 
-      //Show any end imagery
-      currentScreen.setBg(death1BG); //Updating the Backgrounds
+    //Show any end imagery
+    currentScreen.setBg(death1BG); //Updating the Backgrounds
 
-      //Dead BF 
-      image(deathBySonicHands, 0,0);
+    //Dead BF 
+    image(deathBySonicHands, 0,0);
 
-      //No PLAY function (Gameplay STOP)
-      gameStatus = "stop";
-    }
+    //No PLAY function (Gameplay STOP)
+    gameStatus = "stop";
+  }
         
-    //if win...
-    else{
+  //if win...
+  else{
 
-      //Update the title bar
+    //Update the title bar
 
-      //Show any end imagery
-      currentScreen.setBg(endBG);
+    //Show any end imagery
+    currentScreen.setBg(endBG);
 
-      //Xenophane
-      //image(youWin, 50,50);
-
-
-
-    }
+    //Xenophane
+    //image(youWin, 50,50);
 
 
 
+  }
+}
 
+public void exerminate(){
+  
+  //Remove ALL Arrow Icons on Grid
+  // for (int r = 0; r < grid.getNumRows(); r++){
+  //     for (int c = 0; c < grid.getNumCols(); c++){
+
+  //       GridLocation remove = new GridLocation(r, c);
+
+  //       grid.clearTileSprite(remove);
+  //     }
+  // }
+  majinSonicIdle.remove();
 }
 /* Animated Sprite class - useful to have Sprites move around
  * Designed to be used with Spritesheets & JSON Array files from TexturePacker software: 
@@ -2460,6 +2471,12 @@ public class Sprite {
   // method to display the Sprite image on the screen
   public void show() {
       image(spriteImg, getLeft(), getTop(), w, h);
+  }
+
+  //method to remove the Sprite image on the screen
+  public void remove(){
+    this.spriteImg = null;
+    show();
   }
 
   // method to move Sprite image on the screen to a specific coordinate

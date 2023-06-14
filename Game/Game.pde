@@ -173,7 +173,7 @@ String[] bgChangeTime;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 70;
+int health = 1;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -188,7 +188,10 @@ void setup() {
   //Set the title on the title bar
   surface.setTitle(titleText);
 
-  //Load images used (LOTS OF SCREENS HAPPEN HERE)
+
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  //ALL IMAGES LOCKED AND LOADED IN USE (LOTS OF SCREENS HAPPEN HERE)
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   songBG = loadImage(songBGFile);
   songBG.resize(1200,700);  //BG must be same dims as size()
   death1BG = loadImage(death1BGFile);
@@ -687,9 +690,6 @@ public void moveSprites(){
       } 
     }
   }
-  else{
-    //OR CLEAR THE SPRITES FROM THE GRID HERE????
-  }
 }
 
 //Method to check if there's a collision between player and sprite
@@ -734,39 +734,49 @@ public String isGameOver()
 
 //method to describe what happens after the game is over
 public void endGame(){
-    System.out.println("Game Over!");
+  System.out.println("Game Over!");
 
-    //if lose...
-    if(isGameOver().equals("lose"))
-    {
-      //Update the title bar
+  //if lose...
+  if(isGameOver().equals("lose"))
+  {
+    //Kill all Sprites
+    exerminate();
 
-      //Show any end imagery
-      currentScreen.setBg(death1BG); //Updating the Backgrounds
+    //Show any end imagery
+    currentScreen.setBg(death1BG); //Updating the Backgrounds
 
-      //Dead BF 
-      image(deathBySonicHands, 0,0);
+    //Dead BF 
+    image(deathBySonicHands, 0,0);
 
-      //No PLAY function (Gameplay STOP)
-      gameStatus = "stop";
-    }
+    //No PLAY function (Gameplay STOP)
+    gameStatus = "stop";
+  }
         
-    //if win...
-    else{
+  //if win...
+  else{
 
-      //Update the title bar
+    //Update the title bar
 
-      //Show any end imagery
-      currentScreen.setBg(endBG);
+    //Show any end imagery
+    currentScreen.setBg(endBG);
 
-      //Xenophane
-      //image(youWin, 50,50);
-
-
-
-    }
+    //Xenophane
+    //image(youWin, 50,50);
 
 
 
+  }
+}
 
+public void exerminate(){
+  
+  //Remove ALL Arrow Icons on Grid
+  for (int r = 0; r < grid.getNumRows(); r++){
+      for (int c = 0; c < grid.getNumCols(); c++){
+
+        GridLocation remove = new GridLocation(r, c);
+
+        grid.clearTileSprite(remove);
+      }
+  }
 }
