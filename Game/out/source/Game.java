@@ -44,7 +44,7 @@ Screen currentScreen;
 World currentWorld;
 Grid grid;
 
-//Main Screen (Song Screen)
+/*Main Screen (Song Screen)*/
 
 //Universal Background Images
 String blackBackFile = "images/BlackBG.png";
@@ -73,11 +73,16 @@ PImage xenoBackground;
 //Lord X Section Background Images
 String lordXBackFile = "images/BackGrounds/Lord_X_Section/Lord_X_BG.png";
 PImage lordXBackground;
-String thridGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitching_Lord_X_BG_3.png";
-PImage thridGlitchingLordXBackground;
+String thirdGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitching_Lord_X_BG_3.png";
+PImage thirdGlitchingLordXBackground;
 
 //Majin Sonic Section Background Images
-
+String fadeInMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
+PImage fadeInMajinBackground;
+String majinSonicBackFile = "image/Backgrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
+PImage majinSonicBackground;
+String thirdGlitchingMajinBackFile = "image/Backgrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
+PImage thirdGlitchingMajinBackground;
 
 //Fleetway Section Background Images
 
@@ -105,7 +110,7 @@ PImage endBG;
 String endBGFile = "images/BackGrounds/Sonic_Section/End_BG.png";
 //...continue later
 
-/*      Arrow Icons (Animated)      */
+/*Arrow Icons (Animated)*/
 AnimatedSprite leftSprite;
 AnimatedSprite downSprite;
 AnimatedSprite upSprite;
@@ -257,6 +262,8 @@ public void setup() {
   rightSprite.resize(75, 75);
 
   /*      OTHER SPRITES AND THEIR COUNTERPARTS      */
+
+  //Majin Sonic Animations
   majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
   majinSonicIdle.resize(200, 200);
   majinSonicUp = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Up_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Up_Animation.json");
@@ -270,8 +277,9 @@ public void setup() {
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0;i<soundTimes.length; i++){
-    endTimes[i] += soundTimes[i];
+  for(int i=0;i<soundTimes.length; i++)
+  {
+    endTimes[i] = soundTimes[i];
   }
 
   System.out.println(endTimes);
