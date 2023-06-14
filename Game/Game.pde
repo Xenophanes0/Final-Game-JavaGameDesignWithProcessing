@@ -78,11 +78,13 @@ String startScreenFile = "images/Opening_Section/Glitching_out_logo.png";
 //End Screen (TONS OF END SCREENS)
 PImage death1BG;
 String death1BGFile = "images/GameOverBG.png";
-PImage endScreen;
-String endScreenFile = "images/topMajins.png";
+PImage deathBySonicHands;
+String deathBySonicHandsFile = "images/bf dead.png";
 PImage endBG;
-String endBGFile = "images/BackGrounds/Sonic_Section/End_BG.png";
+String endBGFile = "images/You_Win.png";
 //...continue later
+
+/*      Animated Sprites Present and Initialized HERE     */
 
 /*Arrow Icons (Animated)*/
 AnimatedSprite leftSprite;
@@ -163,12 +165,15 @@ SoundFile teamEXESection;
 SoundFile sonicSection;
 
 
-int[] soundTimes = {10,22,40,59,39,59,141,126,59,42,39,121,10,58,36}; //Index of 14
+int[] soundTimes = {10,32,72,131,170,229,370,496,555,597,636,757,767,825,861}; //Index of 14
 int[] endTimes;
+
+String[] bgChange = {openingFile, segaFile, sonicLogoBackFile, sonicThirdGlitchLogoBackFile, xenoSecondRingFile, xenoThirdRingFile, secondGlitchingRingFile};
+String[] bgChangeTime;
 
 int player1Row = 1;
 int player1Col = 3;
-int health = 50;
+int health = 70;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -183,15 +188,29 @@ void setup() {
   //Set the title on the title bar
   surface.setTitle(titleText);
 
-  //Load images used
+  //Load images used (LOTS OF SCREENS HAPPEN HERE)
   songBG = loadImage(songBGFile);
   songBG.resize(1200,700);  //BG must be same dims as size()
   death1BG = loadImage(death1BGFile);
   death1BG.resize(1200,700);  
-  endScreen = loadImage(endScreenFile);
-  endScreen.resize(1200,700);  
+  deathBySonicHands = loadImage(deathBySonicHandsFile);
+  deathBySonicHands.resize(1200,700);  
   endBG = loadImage(endBGFile);
   endBG.resize(1200, 700);
+  openingBackground = loadImage(openingFile);
+  openingBackground.resize(1200, 700);
+  segaBackground = loadImage(segaFile);
+  segaBackground.resize(1200, 700);
+  sonicLogoBackground = loadImage(sonicLogoBackFile);
+  sonicLogoBackground.resize(1200, 700);
+  sonicThirdGlitchLogoBackground = loadImage(sonicThirdGlitchLogoBackFile);
+  sonicThirdGlitchLogoBackground.resize(1200, 700);
+  xenoSecondRingBackground = loadImage(xenoSecondRingFile);
+  xenoSecondRingBackground.resize(1200, 700);
+  xenoThirdRingBackground = loadImage(xenoThirdRingFile);
+  xenoThirdRingBackground.resize(1200, 700);
+  secondGlitchingRingBackground = loadImage(secondGlitchingRingFile);
+  secondGlitchingRingBackground.resize(1200, 700);
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
@@ -200,9 +219,9 @@ void setup() {
   currentScreen = grid;
   //SoundFile[] songs = new SoundFile[2];
 
-  /*~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  /*TOO FAR REMIX BEGINS HERE*/
-  /*~~~~~~~~~~~~~~~~~~~~~~~~*/  
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  /*TOO FAR REMIX FORMAT BEGINS HERE*/
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/  
   segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3"); // 0 - 10                   10 seconds
   openingSection = new SoundFile(this, "sounds/Opening_Section.mp3"); //10 - 32             22 seconds
   xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3"); //32 - 72        40 seconds
@@ -256,6 +275,12 @@ void setup() {
     endTimes[i] = soundTimes[i];
   }
 
+  //IMAGE SETUP
+  bgChangeTime = new String[bgChange.length];
+  for (int i = 0; i < bgChange.length; i++){
+    bgChangeTime[i] = bgChange[i];
+  }
+
   System.out.println(endTimes);
 
 
@@ -263,6 +288,9 @@ void setup() {
   //fullScreen();   //only use if not using a specfic bg image
   
   println("Game started...");
+
+  //reset timer
+  currentScreen.resetTimer();
 }
 
 
@@ -281,6 +309,7 @@ System.out.println(grid.getScreenTimeSeconds());
 
   updateScreen();
   updateSound();
+  updateBG();
   
   if(!isGameOver().equals("keep playing")){
     endGame();
@@ -379,12 +408,6 @@ public void updateScreen(){
     player1 = p1neutral;
   }
 
-  //Change SONG IF PLAYED SONG ENDS
-  if (!segaSection.isPlaying()){
-    //segaSection.stop(); 
-    //openingSection.play();
-  }
-
   GridLocation player1Loc = new GridLocation(player1Row,player1Col);
   grid.setTileImage(player1Loc, player1);
   
@@ -416,7 +439,7 @@ public void updateSound()
     if(!openingSection.isPlaying())
     {
       openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
-      segaSection.play();
+      openingSection.play();
     }
   }
 
@@ -536,6 +559,30 @@ public void updateSound()
       sonicSection.play();
     }
   }
+}
+
+public void updateBG(){
+  if (grid.getScreenTimeSeconds() <= 1){
+    currentScreen.setBg(openingBackground);
+  }
+  else if (grid.getScreenTimeSeconds() <= 2){
+    currentScreen.setBg(segaBackground);
+  }
+  else if (grid.getScreenTimeSeconds() <= 3){
+  currentScreen.setBg(sonicLogoBackground);
+  }
+  else if (grid.getScreenTimeSeconds() <= 4){
+  currentScreen.setBg(sonicThirdGlitchLogoBackground);
+  } 
+  else if (grid.getScreenTimeSeconds() <= 5){
+  currentScreen.setBg(xenoSecondRingBackground);
+  } 
+  else if (grid.getScreenTimeSeconds() <= 6){
+  currentScreen.setBg(xenoThirdRingBackground);
+  } 
+  else if (grid.getScreenTimeSeconds() <= 7){
+  currentScreen.setBg(secondGlitchingRingBackground);
+  } 
 }
 
 //Method to populate enemies or other sprites on the screen
@@ -697,8 +744,8 @@ public void endGame(){
       //Show any end imagery
       currentScreen.setBg(death1BG); //Updating the Backgrounds
 
-      //Xenophane 
-      //image(endScreen, 0,0);
+      //Dead BF 
+      image(deathBySonicHands, 0,0);
 
       //No PLAY function (Gameplay STOP)
       gameStatus = "stop";
