@@ -218,20 +218,46 @@ void setup() {
   deathBySonicHands.resize(1200,700);  
   endBG = loadImage(endBGFile);
   endBG.resize(1200, 700);
+
+  /*Background Images Being Loaded*/
+
+  //Sega Section
   openingBackground = loadImage(openingFile);
-  openingBackground.resize(1200, 700);
-  segaBackground = loadImage(segaFile);
-  segaBackground.resize(1200, 700);
+  openingBackground.resize(width, height);
+  segaBackground = loadImage(segaFile);                                       //used for Section 0
+  segaBackground.resize(width, height);
+
   sonicLogoBackground = loadImage(sonicLogoBackFile);
-  sonicLogoBackground.resize(1200, 700);
+  sonicLogoBackground.resize(width, height);
+
   sonicThirdGlitchLogoBackground = loadImage(sonicThirdGlitchLogoBackFile);
-  sonicThirdGlitchLogoBackground.resize(1200, 700);
+  sonicThirdGlitchLogoBackground.resize(width, height);
+
   xenoSecondRingBackground = loadImage(xenoSecondRingFile);
-  xenoSecondRingBackground.resize(1200, 700);
-  xenoThirdRingBackground = loadImage(xenoThirdRingFile);
-  xenoThirdRingBackground.resize(1200, 700);
+  xenoSecondRingBackground.resize(width, height);
+
+  //Opening Section
+  xenoThirdRingBackground = loadImage(xenoThirdRingFile);                   //used for Section 1
+  xenoThirdRingBackground.resize(width, height);
+
   secondGlitchingRingBackground = loadImage(secondGlitchingRingFile);
-  secondGlitchingRingBackground.resize(1200, 700);
+  secondGlitchingRingBackground.resize(width, height);
+
+  //Xenophanes Section 1, 2, 3, 4
+  xenoBackground = loadImage(xenoBackFile);
+  xenoBackgroung.resize(width, height);
+
+  //Lord X Section
+  lordXBackground = loadImage(lordXBackFile);
+  lordXBackground.resize(width, height);
+
+  //Majin Sonic Section
+  majinSonicBackground = loadImage(majinSonicBackFile);
+  majinSonicBackground.resize(width, height);
+
+  //Fleetway Section
+  fleetwayBackground = loadImage(fleetwayBackFile);
+  fleetwayBackground.resize(width, height);
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
@@ -364,45 +390,55 @@ void keyPressed(){
   int right = 39;
   int down = 40;
 
-  //What to do when a key is pressed? 68 = ???
-  if (gameStatus.equals("start")){
+  if (gameStatus.equals("start"))
+  {
 
-    if (keyCode == left){
-    //Store old GridLocation
-    GridLocation oldLoc = new GridLocation(player1Row, player1Col);
-    
-    //Check if you collided into a arrow
-    GridLocation nextLoc = new GridLocation(player1Row, 2);
-    if (checkCollision(oldLoc, nextLoc).equals("hit")){
-      System.out.println("You ran into arrow at " + nextLoc);
-      grid.clearTileSprite(nextLoc);
-      health+=3;
-    }
-
-    //Erase image from previous location
-    grid.clearTileImage(oldLoc);
-
-    //change the field for player1Row
-    player1Col = 2;
-    }
-
-    //set "f" 70 key to move down column 3 LEFT
-    if (keyCode == up){
+    //set LEFT key to move down column 2
+    if (keyCode == left)
+    {
+      //Store old GridLocation
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    
+      //Check if you collided into a arrow
+      GridLocation nextLoc = new GridLocation(player1Row, 2);
+      if (checkCollision(oldLoc, nextLoc).equals("hit"))
+      {
+        System.out.println("You ran into arrow at " + nextLoc);
+        grid.clearTileSprite(nextLoc);
+        health+=3;
+      }
+
+      //Erase image from previous location
+      grid.clearTileImage(oldLoc);
+
+      //change the field for player1Row
+      player1Col = 2;
+    }
+
+    //set UP key to move down column 3
+    if (keyCode == up)
+    {
+      //shift the player1 picture up in the 2D array
+      GridLocation oldLoc = new GridLocation(player1Row, player1Col)
+      //eliminate the picture from the old location
       grid.clearTileImage(oldLoc);
       player1Col = 3;
     }
 
-    //set "j" 74 key to move up column 4
-    if (keyCode == down){
-      GridLocation oldLoc = new GridLocation(player1Row, player1Col);
+    //set DOWN key to move up column 4
+    if (keyCode == down)
+    {
+      //shift the player1 picture down in the 2D array
+      GridLocation oldLoc = new GridLocation(player1Row, player1Col)
+      //eliminate the picture from the old location
       grid.clearTileImage(oldLoc);
       player1Col = 4;
     }
   
-    //set "k" 75 key to move right column 5
-    if(keyCode == right){
-      //shift the player1 picture up in the 2D array
+    //set RIGHT to move right column 5
+    if(keyCode == right)
+    {
+      //shift the player1 picture right in the 2D array
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       //eliminate the picture from the old location
       grid.clearTileImage(oldLoc);
@@ -464,41 +500,42 @@ public void updateScreen(){
 
 public void updateSections()
 {
+  //Sega Section
   if (grid.getScreenTimeSeconds() <= endTimes[0])
   {
     if(!segaSection.isPlaying())
     {
       System.out.println("Section 0");
       currentBg = segaBackground;
-      segaSection = new SoundFile(this, "sounds/Sega_Moment.mp3");
       segaSection.play();
     }
   }
 
-  else if (grid.getScreenTimeSeconds() <= endTimes[1])
+  //Opening Section
+  else if (grid.getScreenTimeSeconds() <= endTimes[1]) 
   {
     if(!openingSection.isPlaying())
     {
       System.out.println("Section 1");
       arrowTime = true;
       currentBg = xenoThirdRingBackground;
-      openingSection = new SoundFile(this, "sounds/Opening_Section.mp3");
       openingSection.play();
     }
   }
 
+  //Xenophanes Section 1
   else if(grid.getScreenTimeSeconds() <= endTimes[2])
   {
     //majinSonicIdle.animate(7.0);
     if(!xenoSectionOne.isPlaying())
     {
       System.out.println("Section 2");
-      //currentBg = xenoBackground;
-      // xenoSectionOne = new SoundFile(this, "sounds/Xenophanes_Section_1.mp3");
+      currentBg = xenoBackground;
       xenoSectionOne.play();
     }
   }
 
+  //Lord X Section
   else if(grid.getScreenTimeSeconds() <= endTimes[3] -3)
   {
     //majinSonicIdle.animate(7.0);
@@ -506,7 +543,6 @@ public void updateSections()
     {
       System.out.println("Section 3");
       currentBg = lordXBackground;
-      lordXSection = new SoundFile(this, "sounds/Lord_X_Section.mp3");
       lordXSection.play();
     }
   }
@@ -515,6 +551,7 @@ public void updateSections()
       currentBg = thirdGlitchingLordXBackground;
   }
 
+  //Xenophanes Section 2
   else if(grid.getScreenTimeSeconds() <= endTimes[4])
   {
     //majinSonicIdle.animate(7.0);
@@ -522,11 +559,11 @@ public void updateSections()
     {
       System.out.println("Section 4");
       currentBg = xenoBackground;
-      xenoSectionTwo = new SoundFile(this, "sounds/Xenophanes_Section_2.mp3");
       xenoSectionTwo.play();
     }
   }
 
+  //Majin Sonic Section
   else if(grid.getScreenTimeSeconds() <= endTimes[5])
   {
     majinSonicIdle.animate(7.0);
@@ -534,11 +571,11 @@ public void updateSections()
     {
       System.out.println("Section 5");
       currentBg = majinSonicBackground;
-      majinSonicSection = new SoundFile(this, "sounds/Majin_Sonic_Section.mp3");
       majinSonicSection.play();
     }
   }
 
+  //Xenophanes Section 3
   else if(grid.getScreenTimeSeconds() <= endTimes[6])
   {
     //majinSonicIdle.animate(7.0);
@@ -546,22 +583,22 @@ public void updateSections()
     {
       System.out.println("Section 6");
       currentBg = xenoBackground;
-      xenoSectionThree = new SoundFile(this, "sounds/Xenophanes_Section_3.mp3");
       xenoSectionThree.play();
     }
   }
 
+  //Fleetway Section
   else if(grid.getScreenTimeSeconds() <= endTimes[7])
   {
     //majinSonicIdle.animate(7.0);
     if(!fleetwaySection.isPlaying())
     {
       currentBg = fleetwayBackground;
-      fleetwaySection = new SoundFile(this, "sounds/Fleetway_Section.mp3");
       fleetwaySection.play();
     }
   }
-
+  
+  //Sunky Section
   else if(grid.getScreenTimeSeconds() <= endTimes[8])
   {
     //majinSonicIdle.animate(7.0);
@@ -573,69 +610,68 @@ public void updateSections()
     }
   }
 
+  //Tails' Doll Section
   else if(grid.getScreenTimeSeconds() <= endTimes[9])
   {
-
     //majinSonicIdle.animate(7.0);
     if(!tailsDollSection.isPlaying())
     {
       //currentBg = segaBackground;
-      tailsDollSection = new SoundFile(this, "sounds/Tails'_Doll_Section.mp3");
       tailsDollSection.play();
     }
   }
 
+  //Xenophanes Section 4
   else if(grid.getScreenTimeSeconds() <= endTimes[10])
   {
     //majinSonicIdle.animate(7.0);
     if(!xenoSectionFour.isPlaying())
     {
       currentBg = xenoBackground;
-      xenoSectionFour = new SoundFile(this, "sounds/Xenophanes_Section_4.mp3");
       xenoSectionFour.play();
     }
   }
 
+  //EXE Section
   else if(grid.getScreenTimeSeconds() <= endTimes[11])
   {
     //majinSonicIdle.animate(7.0);
     if(!exeSection.isPlaying())
     {
       currentBg = exeBackground;
-      exeSection = new SoundFile(this, "sounds/EXE_Section.mp3");
       exeSection.play();
     }
   }
 
+  //Angry Xenophanes Section
   else if(grid.getScreenTimeSeconds() <= endTimes[12])
   {
     //majinSonicIdle.animate(7.0);
     if(!angryXenoSection.isPlaying())
     {
       currentBg = xenoBackground;
-      angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");
       angryXenoSection.play();
     }
   }
 
+  //Vs. Team Sonic.exe 2.0
   else if(grid.getScreenTimeSeconds() <= endTimes[13])
   {
     majinSonicIdle.animate(7.0);
     if(!teamEXESection.isPlaying())
     {
       //currentBg = xenoBackground;
-      teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");
       teamEXESection.play();
     }
   }
 
+  //Sonic Section
   else if(grid.getScreenTimeSeconds() <= endTimes[14])
   {
     //majinSonicIdle.animate(7.0);
     if(!sonicSection.isPlaying())
     {
       //currentBg = segaBackground;
-      sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");
       sonicSection.play();
     }
   }
@@ -835,7 +871,7 @@ public void endGame(){
     //Show any end imagery
     grid.setBg(endBG);
 
-    //Xenophane
+    //Xenophanes
     //image(youWin, 50,50);
 
 
