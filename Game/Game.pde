@@ -78,7 +78,7 @@ PImage sunkyBackground;
 
 //Tails' Doll Background Image
 String tailsDollFile = "images/BackGrounds/BlackBG.png";
-PImage tailsDollBaclground;
+PImage tailsDollBackground;
 
 //EXE Background Images
 String fadeInEXEBackFile = "images/BackGrounds/EXE_Section/Fade_In_EXE_BG.png";
@@ -282,10 +282,15 @@ void setup() {
   sunkyBackground.resize(width, height);
 
   //Tails' Doll Section
-
+  tailsDollBackground = loadImage(tailsDollFile);
+  tailsDollBackground.resize(width, height);
+  
   //EXE Section
+  exeBackground = loadImage(exeBackFile);
+  exeBackground.resize(width, height);
 
-  //Sonic Section
+  transformedEXEBackground = loadImage(transformedEXEFile);
+  transformedEXEBackground.resize(width, height);
 
   //VS EXE Team Section
   angryXenoBackground = loadImage(angryXenoFile);
@@ -305,6 +310,10 @@ void setup() {
 
   fifthEXEUniteBackground = loadImage(fifthEXEUniteFile);
   fifthEXEUniteBackground.resize(width, height);
+
+  //Sonic Section
+  sonicBackground = loadImage(sonicFile);
+  sonicBackground.resize(width, height);
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
