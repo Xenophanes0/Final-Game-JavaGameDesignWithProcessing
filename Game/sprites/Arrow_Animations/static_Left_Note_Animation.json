@@ -1,0 +1,590 @@
+{
+  "frames": [
+    {
+      "filename": "Static_Left_Arrow_Note_0.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_1.png",
+      "frame": {
+        "x": 0,
+        "y": 163,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_10.png",
+      "frame": {
+        "x": 0,
+        "y": 326,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_11.png",
+      "frame": {
+        "x": 0,
+        "y": 489,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_12.png",
+      "frame": {
+        "x": 0,
+        "y": 652,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_13.png",
+      "frame": {
+        "x": 0,
+        "y": 815,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_15.png",
+      "frame": {
+        "x": 0,
+        "y": 978,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_16.png",
+      "frame": {
+        "x": 0,
+        "y": 1141,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_17.png",
+      "frame": {
+        "x": 0,
+        "y": 1304,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_18.png",
+      "frame": {
+        "x": 0,
+        "y": 1467,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_19.png",
+      "frame": {
+        "x": 0,
+        "y": 1630,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_20.png",
+      "frame": {
+        "x": 0,
+        "y": 1793,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_21.png",
+      "frame": {
+        "x": 162,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_22.png",
+      "frame": {
+        "x": 325,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_3.png",
+      "frame": {
+        "x": 488,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_4.png",
+      "frame": {
+        "x": 651,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_5.png",
+      "frame": {
+        "x": 814,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_6.png",
+      "frame": {
+        "x": 977,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_7.png",
+      "frame": {
+        "x": 1140,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_8.png",
+      "frame": {
+        "x": 1303,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_9.png",
+      "frame": {
+        "x": 1466,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 162,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_14.png",
+      "frame": {
+        "x": 1629,
+        "y": 0,
+        "w": 160,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 160,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Left_Arrow_Note_2.png",
+      "frame": {
+        "x": 1792,
+        "y": 0,
+        "w": 160,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 160,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 163
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "static_Left_Note_Animation.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1955,
+      "h": 1956
+    },
+    "scale": 1
+  }
+}
