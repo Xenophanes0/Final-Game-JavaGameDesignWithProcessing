@@ -151,11 +151,26 @@ String endBGFile = "images/You_Win.png";        //"The End" Picture
 //...continue later
 
 /*      Animated Sprites Present and Initialized HERE     */
-/*Arrow Icons (Animated)*/
+//Arrow Icons (Animated)
 AnimatedSprite leftSprite;
 AnimatedSprite downSprite;
 AnimatedSprite upSprite;
 AnimatedSprite rightSprite;
+
+AnimatedSprite leftStaticNote; // Play During Xenophanes' Sections; Miss a note -- health -= 10;
+AnimatedSprite downStaticNote;
+AnimatedSprite upStaticNote;
+AnimatedSprite rightStaticNote;
+
+AnimatedSprite leftMajinNote; //Play during Majin Sonic's Section; just a color change
+AnimatedSprite downMajinNote;
+AnimatedSprite upMajinNote;
+AnimatedSprite rightMajinNote;
+
+AnimatedSprite leftPhantomNote;  //Play during Lord X's Sections
+AnimatedSprite downPhantomNote;
+AnimatedSprite upPhantomNote;
+AnimatedSprite rightPhantomNote;
 
 // Majin Sonic Animations
 AnimatedSprite majinSonicIdle;
@@ -237,7 +252,7 @@ String[] bgChangeTime;
 
 int player1Row = 2;
 int player1Col = 3;
-int health = 15;
+int health = 50;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -384,7 +399,21 @@ public void setup() {
   rightSprite = new AnimatedSprite("sprites/Arrow_Animations/right_Arrow.png", "sprites/Arrow_Animations/right_Arrow.json");
   rightSprite.resize(75, 75);
 
+  rightStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Right_Note_Animation.png", "sprites/Arrow_Animations/static_Right_Note_Animation.json");
+  rightStaticNote.resize(75, 75);
+  downStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Down_Note_Animation.png", "sprites/Arrow_Animations/static_Down_Note_Animation.json");
+  downStaticNote.resize(75, 75);
+  upStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Up_Note_Animation.png", "sprites/Arrow_Animations/static_Up_Note_Animation.json");
+  upStaticNote.resize(75, 75);
+  leftStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Left_Note_Animation.png", "sprites/Arrow_Animations/static_Left_Note_Animation.json");
+  leftStaticNote.resize(75, 75);
+
+
   /*      OTHER SPRITES AND THEIR COUNTERPARTS      */
+
+  //Xenophanes Animations
+
+  //Lord X Animations 
 
   //Majin Sonic Animations
   majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
@@ -398,9 +427,19 @@ public void setup() {
   majinSonicRight = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.png", 112.0f, 283.0f, "sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.json");
   majinSonicRight.resize(200,200);
 
+  //Fleetway Super Sonic Animations
+
+  //Sunky Animations
+
+  //Tails' Doll Animations
+
+  //EXE Animations
+
+  //BF Animations
+
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
-  for(int i=0; i<soundTimes.length; i++)
+  for(int i=0; i < soundTimes.length; i++)
   {
     endTimes[i] = soundTimes[i];
   }
@@ -488,7 +527,7 @@ public void keyPressed(){
       {
         System.out.println("You ran into arrow at " + nextLoc);
         grid.clearTileSprite(nextLoc);
-        health+=3;
+        health+=2;
       }
 
       //Erase image from previous location
@@ -501,30 +540,65 @@ public void keyPressed(){
     //set UP key to move down column 3
     if (keyCode == up)
     {
-      //shift the player1 picture up in the 2D array
+      //Store old GridLocation
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
-      //eliminate the picture from the old location
+    
+      //Check if you collided into a arrow
+      GridLocation nextLoc = new GridLocation(player1Row, 3);
+      if (checkCollision(oldLoc, nextLoc).equals("hit"))
+      {
+        System.out.println("You ran into arrow at " + nextLoc);
+        grid.clearTileSprite(nextLoc);
+        health+=2;
+      }
+
+      //Erase image from previous location
       grid.clearTileImage(oldLoc);
+
+      //change the field for player1Row
       player1Col = 3;
     }
 
     //set DOWN key to move up column 4
     if (keyCode == down)
     {
-      //shift the player1 picture down in the 2D array
+      //Store old GridLocation
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
-      //eliminate the picture from the old location
+    
+      //Check if you collided into a arrow
+      GridLocation nextLoc = new GridLocation(player1Row, 4);
+      if (checkCollision(oldLoc, nextLoc).equals("hit"))
+      {
+        System.out.println("You ran into arrow at " + nextLoc);
+        grid.clearTileSprite(nextLoc);
+        health+=2;
+      }
+
+      //Erase image from previous location
       grid.clearTileImage(oldLoc);
+
+      //change the field for player1Row
       player1Col = 4;
     }
   
     //set RIGHT to move right column 5
     if(keyCode == right)
     {
-      //shift the player1 picture right in the 2D array
+      //Store old GridLocation
       GridLocation oldLoc = new GridLocation(player1Row, player1Col);
-      //eliminate the picture from the old location
+    
+      //Check if you collided into a arrow
+      GridLocation nextLoc = new GridLocation(player1Row, 5);
+      if (checkCollision(oldLoc, nextLoc).equals("hit"))
+      {
+        System.out.println("You ran into arrow at " + nextLoc);
+        grid.clearTileSprite(nextLoc);
+        health+=2;
+      }
+
+      //Erase image from previous location
       grid.clearTileImage(oldLoc);
+
       //change the field for player1Row
       player1Col = 5;
     }
@@ -544,7 +618,7 @@ public void updateTitleBar()
 {
   if(isGameOver().equals("keep playing")) {
     //set the title each loop
-    surface.setTitle(titleText + "    " + extraText + health);
+    surface.setTitle(titleText + "    " + extraText);
 
     //adjust the extra text as desired
   }
@@ -619,7 +693,7 @@ public void updateSections()
   }
 
   //Lord X Section
-  else if(grid.getScreenTimeSeconds() <= endTimes[3] -3)
+  else if(grid.getScreenTimeSeconds() <= endTimes[3]) //add "-3" at the end of the endTimes
   {
     //majinSonicIdle.animate(7.0);
     if(!lordXSection.isPlaying())
@@ -629,10 +703,11 @@ public void updateSections()
       lordXSection.play();
     }
   }
-  else if(grid.getScreenTimeSeconds() <= endTimes[3])
-  {
-      currentBg = thirdGlitchingLordXBackground;
-  }
+
+  //else if(grid.getScreenTimeSeconds() <= endTimes[3])
+  //{
+  //    currentBg = thirdGlitchingLordXBackground;
+  //}
 
   //Xenophanes Section 2
   else if(grid.getScreenTimeSeconds() <= endTimes[4])
@@ -649,11 +724,13 @@ public void updateSections()
   //Majin Sonic Section
   else if(grid.getScreenTimeSeconds() <= endTimes[5])
   {
-    majinSonicIdle.animate(7.0f);
+    
+
     if(!majinSonicSection.isPlaying())
     {
       System.out.println("Section 5");
       currentBg = majinSonicBackground;
+      majinSonicIdle.animate(7.0f);
       majinSonicSection.play();
     }
   }
@@ -783,8 +860,8 @@ public void populateSprites(){
   double rando = Math.random();
 
   //10% of the time, decide to add an image to a Tile
-  if(rando < 0.1f && gameStatus.equals("start")){
-
+  if(rando < 0.2f && gameStatus.equals("start"))
+  {
     if (c == 2){
       grid.setTileSprite(new GridLocation(bottomRow, c), leftSprite);
       System.out.println("Left added");
@@ -852,7 +929,7 @@ public void moveSprites(){
               health = 100;
             }
             else{
-              health += 3;
+              health += 2;
             }
             //"hit" song effect plays
             //hit.play();
@@ -921,7 +998,7 @@ public String isGameOver()
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 12*60+25){
+  if(grid.getScreenTimeSeconds() > 865){
     return "win";
   }
 
@@ -929,7 +1006,8 @@ public String isGameOver()
 }
 
 //method to describe what happens after the game is over
-public void endGame(){
+public void endGame()
+{
   System.out.println("Game Over!");
   
   //Stop the arrows
