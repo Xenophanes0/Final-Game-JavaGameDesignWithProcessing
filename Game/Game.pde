@@ -277,6 +277,20 @@ void setup() {
   fleetwayBackground = loadImage(fleetwayBackFile);
   fleetwayBackground.resize(width, height);
 
+  //Sunky Section
+  sunkyBackground = loadImage(sunkyFile);
+  sunkyBackground.resize(width, height);
+
+  //Tails' Doll Section
+
+  //EXE Section
+
+  //Sonic Section
+
+  //VS EXE Team Section
+  angryXenoBackground = loadImage(angryXenoFile);
+  angryXenoBackground.resize(width, height);
+
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
