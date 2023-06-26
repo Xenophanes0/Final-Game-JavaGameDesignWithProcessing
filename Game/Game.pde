@@ -291,6 +291,21 @@ void setup() {
   angryXenoBackground = loadImage(angryXenoFile);
   angryXenoBackground.resize(width, height);
 
+  firstEXEUniteBackground = loadImage(firstExeUniteFile);
+  firstEXEUniteBackground.resize(width, height);
+
+  secondEXEUniteBackground = loadImage(secondEXEUniteFile);
+  secondEXEUniteBackground.resize(width, height);
+
+  thirdEXEUniteBackground = loadImage(thirdEXEUniteFile);
+  thirdCloseInEXEBackground.resize(width, height);
+
+  fourthEXEUNiteBackground = loadImage(fourthEXEUniteFile);
+  fourthEXEUNiteBackground.resize(width, height);
+
+  fifthEXEUniteBackground = loadImage(fifthEXEUniteFile);
+  fifthEXEUniteBackground.resize(width, height);
+
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   /*Interchanging Screens INITIALIZES HERE*/
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
