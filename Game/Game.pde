@@ -70,7 +70,9 @@ PImage thirdGlitchingFleetwayBackground;
 
 //Sunky Section Background Images
 
+
 //Tails' Doll Background Image
+
 
 //EXE Background Images
 String fadeInEXEBackFile = "images/BackGrounds/EXE_Section/Fade_In_EXE_BG.png";
@@ -82,11 +84,26 @@ PImage thirdCloseInEXEBackground;
 String fifthGlitchingOutEXEBackFile = "images/BackGrounds/EXE_Section/Glitching_Out_EXE_BG_5.png";
 PImage fifthGlitchingOutEXEBackground;
 
-//Angry/ Vs. Team Sonic.exe Section Background Image
+//Angry/Vs. Team Sonic.exe Section Background Image
+String angryXenoBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/angry_Xeno_BG.png";
+PImage angryXenoFile;
+String firstExeUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_1.png";
+PImage firstEXEUniteFile;
+String secondEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_2.png";
+PImage secondEXEUniteFile;
+String thirdEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_3.png";
+PImage thirdEXEUniteFile;
+String fourthEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_4.png";
+PImage fourthEXEUNiteFile;
+
 
 //Sonic Section Background Images
+String sonicBackground = "images/BackGrounds/Sonic_Section/sonic_Section_BG.png";
+PImage sonicFile;
 
-String songBGFile = "images/BackgroundFinalEscape.png";
+
+
+String songBGFile = "images/BackgroundFinalEscape.png"; 
 PImage songBG;
 
 //ONGOING SCREENS THROUGHOUT THE SONG
@@ -95,11 +112,11 @@ String startScreenFile = "images/Opening_Section/Glitching_out_logo.png";
 
 //End Screen (TONS OF END SCREENS)
 PImage death1BG;
-String death1BGFile = "images/GameOverBG.png";
+String death1BGFile = "images/GameOverBG.png";     //FInal Escape Spotlight background
 PImage deathBySonicHands;
 String deathBySonicHandsFile = "images/bf dead.png";
 PImage endBG;
-String endBGFile = "images/You_Win.png";
+String endBGFile = "images/You_Win.png";        //"The End" Picture
 //...continue later
 
 /*      Animated Sprites Present and Initialized HERE     */
