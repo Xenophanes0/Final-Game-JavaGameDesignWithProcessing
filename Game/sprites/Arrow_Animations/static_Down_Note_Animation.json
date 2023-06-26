@@ -1,0 +1,565 @@
+{
+  "frames": [
+    {
+      "filename": "Static_Down_Arrow_Note_1.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_10.png",
+      "frame": {
+        "x": 164,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_11.png",
+      "frame": {
+        "x": 328,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_13.png",
+      "frame": {
+        "x": 492,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_14.png",
+      "frame": {
+        "x": 656,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_15.png",
+      "frame": {
+        "x": 820,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_16.png",
+      "frame": {
+        "x": 984,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_17.png",
+      "frame": {
+        "x": 1148,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_18.png",
+      "frame": {
+        "x": 1312,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_19.png",
+      "frame": {
+        "x": 1476,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_2.png",
+      "frame": {
+        "x": 1640,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_20.png",
+      "frame": {
+        "x": 1804,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_21.png",
+      "frame": {
+        "x": 0,
+        "y": 160,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_3.png",
+      "frame": {
+        "x": 0,
+        "y": 324,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_4.png",
+      "frame": {
+        "x": 0,
+        "y": 488,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_5.png",
+      "frame": {
+        "x": 0,
+        "y": 652,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_6.png",
+      "frame": {
+        "x": 0,
+        "y": 816,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_7.png",
+      "frame": {
+        "x": 0,
+        "y": 980,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_8.png",
+      "frame": {
+        "x": 0,
+        "y": 1144,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_9.png",
+      "frame": {
+        "x": 0,
+        "y": 1308,
+        "w": 164,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 164,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_0.png",
+      "frame": {
+        "x": 0,
+        "y": 1472,
+        "w": 163,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 163,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 163,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Static_Down_Arrow_Note_12.png",
+      "frame": {
+        "x": 0,
+        "y": 1635,
+        "w": 163,
+        "h": 160
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 163,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 163,
+        "h": 160
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "static_Down_Note_Animation.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1968,
+      "h": 1798
+    },
+    "scale": 1
+  }
+}

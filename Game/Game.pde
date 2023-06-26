@@ -125,11 +125,26 @@ String endBGFile = "images/You_Win.png";        //"The End" Picture
 //...continue later
 
 /*      Animated Sprites Present and Initialized HERE     */
-/*Arrow Icons (Animated)*/
+//Arrow Icons (Animated)
 AnimatedSprite leftSprite;
 AnimatedSprite downSprite;
 AnimatedSprite upSprite;
 AnimatedSprite rightSprite;
+
+AnimatedSprite leftStaticNote; // Play During Xenophanes' Sections; Miss a note -- health -= 10;
+AnimatedSprite downStaticNote;
+AnimatedSprite upStaticNote;
+AnimatedSprite rightStaticNote;
+
+AnimatedSprite leftMajinNote; //Play during Majin Sonic's Section; just a color change
+AnimatedSprtie downMajinNote;
+AnimatedSprite upMajinNote;
+AnimatedSprite rightMajinNote;
+
+AmimatedSprite leftPhantomNote;  //Play during Lord X's Sections
+AnimatedSprite downPhantomNote;
+AnimatedSprite upPhantomNote;
+AnimatedSprite rightPhantomNote;
 
 // Majin Sonic Animations
 AnimatedSprite majinSonicIdle;
@@ -211,7 +226,7 @@ String[] bgChangeTime;
 
 int player1Row = 2;
 int player1Col = 3;
-int health = 15;
+int health = 50;
 
 int leftCol = 2;
 int rightCol = 5;
@@ -358,7 +373,16 @@ void setup() {
   rightSprite = new AnimatedSprite("sprites/Arrow_Animations/right_Arrow.png", "sprites/Arrow_Animations/right_Arrow.json");
   rightSprite.resize(75, 75);
 
+  rightStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Right_Note_Animation.png", "sprites/Arrow_Animations/static_Right_Note_Animations.json");
+  rightStaticNote.resize(75, 75);
+  downStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Down_Note_Animation.png", "sprites/Arrow_Animations_Static_Down_Note_Animation.json");
+  downStaticNote.resize(75, 75);
+  
   /*      OTHER SPRITES AND THEIR COUNTERPARTS      */
+
+  //Xenophanes Animations
+
+  //Lord X Animations 
 
   //Majin Sonic Animations
   majinSonicIdle = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Idle_Animation.json");
@@ -371,6 +395,16 @@ void setup() {
   majinSonicLeft.resize(200,200);
   majinSonicRight = new AnimatedSprite("sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.png", 112.0, 283.0, "sprites/Majin_Sonic_Animations/Majin_Sonic_Right_Animation.json");
   majinSonicRight.resize(200,200);
+
+  //Fleetway Super Sonic Animations
+
+  //Sunky Animations
+
+  //Tails' Doll Animations
+
+  //EXE Animations
+
+  //BF Animations
 
   //SOUND SETUP
   endTimes = new int[soundTimes.length];
