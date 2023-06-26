@@ -377,7 +377,12 @@ void setup() {
   rightStaticNote.resize(75, 75);
   downStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Down_Note_Animation.png", "sprites/Arrow_Animations_Static_Down_Note_Animation.json");
   downStaticNote.resize(75, 75);
-  
+  upStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Up_Note_Animation.png", "sprites/Arrow_Animations/static_Up_Note_Animation.json");
+  upStaticNote.resize(75, 75);
+  leftStaticNote = new AnimatedSprite("sprites/Arrow_Animations/static_Left_Note_Animation.png", "sprites/Arrow_Animations/static_Left_Note_Animation.json");
+  leftStaticNote.resize(75, 75);
+
+
   /*      OTHER SPRITES AND THEIR COUNTERPARTS      */
 
   //Xenophanes Animations
