@@ -649,6 +649,7 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!fleetwaySection.isPlaying())
     {
+      System.out.println("Section 7");
       currentBg = fleetwayBackground;
       fleetwaySection.play();
     }
@@ -660,8 +661,8 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!sunkySection.isPlaying())
     {
-      //currentBg = segaBackground;
-      sunkySection = new SoundFile(this, "sounds/Sunky_Section.mp3");
+      System.out.println("Section 8");
+      currentBg = sunkyBackground;
       sunkySection.play();       
     }
   }
@@ -672,7 +673,8 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!tailsDollSection.isPlaying())
     {
-      //currentBg = segaBackground;
+      System.out.println("Section 9");
+      currentBg = tailsDollBackground;
       tailsDollSection.play();
     }
   }
@@ -683,6 +685,7 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!xenoSectionFour.isPlaying())
     {
+      System.out.println("Section 10");
       currentBg = xenoBackground;
       xenoSectionFour.play();
     }
@@ -694,6 +697,7 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!exeSection.isPlaying())
     {
+      System.out.println("Section 11");
       currentBg = exeBackground;
       exeSection.play();
     }
@@ -705,7 +709,8 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!angryXenoSection.isPlaying())
     {
-      currentBg = xenoBackground;
+      System.out.println("Section 12");
+      currentBg = angryXenoBackground;
       angryXenoSection.play();
     }
   }
@@ -716,7 +721,8 @@ public void updateSections()
     majinSonicIdle.animate(7.0);
     if(!teamEXESection.isPlaying())
     {
-      //currentBg = xenoBackground;
+      System.out.println("Section 13");
+      currentBg = fifthEXEUniteBackground;
       teamEXESection.play();
     }
   }
@@ -727,17 +733,16 @@ public void updateSections()
     //majinSonicIdle.animate(7.0);
     if(!sonicSection.isPlaying())
     {
-      //currentBg = segaBackground;
+      System.out.println("Section 14");
+      currentBg = sonicBackground;
       sonicSection.play();
     }
   }
 }
 
 public void updateBG(){
-
   grid.setBg(currentBg);
   grid.showBg();
-  
 }
 
 //Method to populate enemies or other sprites on the screen
