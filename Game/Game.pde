@@ -10,6 +10,7 @@ boolean arrowTime = false;
 
 PImage player1;
 PImage p1neutral; 
+
 PImage p1losing;
 String extraText = "Shall we play...?";
 String titleText = "Too Far";
@@ -57,11 +58,11 @@ String thirdGlitchingLordXBackFile = "images/BackGrounds/Lord_X_Section/Glitchin
 PImage thirdGlitchingLordXBackground;
 
 //Majin Sonic Section Background Images
-String fadeInMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
+String fadeInMajinBackFile = "images/BackGrounds/Majin_Sonic_Section/Fade_In_Majin_BG.png";
 PImage fadeInMajinBackground;
-String majinSonicBackFile = "image/BackGrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
+String majinSonicBackFile = "images/BackGrounds/Majin_Sonic_Section/Majin_Sonic_BG.png";
 PImage majinSonicBackground;
-String thirdGlitchingMajinBackFile = "image/BackGrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
+String thirdGlitchingMajinBackFile = "images/BackGrounds/Majin_Sonic_Section/Glitching_Out_Majin_BG_3.png";
 PImage thirdGlitchingMajinBackground;
 
 //Fleetway Section Background Images
@@ -77,7 +78,7 @@ String sunkyFile = "images/BackGrounds/Sunky_Section/Sunky_BG.png";
 PImage sunkyBackground;
 
 //Tails' Doll Background Image
-String tailsDollFile = "images/BackGrounds/BlackBG.png";
+String tailsDollFile = "images/BlackBG.png";
 PImage tailsDollBackground;
 
 //EXE Background Images
@@ -263,7 +264,7 @@ void setup() {
 
   //Xenophanes Section 1, 2, 3, 4
   xenoBackground = loadImage(xenoBackFile);
-  xenoBackgroung.resize(width, height);
+  xenoBackground.resize(width, height);
 
   //Lord X Section
   lordXBackground = loadImage(lordXBackFile);
@@ -303,7 +304,7 @@ void setup() {
   secondEXEUniteBackground.resize(width, height);
 
   thirdEXEUniteBackground = loadImage(thirdEXEUniteFile);
-  thirdCloseInEXEBackground.resize(width, height);
+  thirdEXEUniteBackground.resize(width, height);
 
   fourthEXEUNiteBackground = loadImage(fourthEXEUniteFile);
   fourthEXEUNiteBackground.resize(width, height);
@@ -475,7 +476,7 @@ void keyPressed(){
     if (keyCode == up)
     {
       //shift the player1 picture up in the 2D array
-      GridLocation oldLoc = new GridLocation(player1Row, player1Col)
+      GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       //eliminate the picture from the old location
       grid.clearTileImage(oldLoc);
       player1Col = 3;
@@ -485,7 +486,7 @@ void keyPressed(){
     if (keyCode == down)
     {
       //shift the player1 picture down in the 2D array
-      GridLocation oldLoc = new GridLocation(player1Row, player1Col)
+      GridLocation oldLoc = new GridLocation(player1Row, player1Col);
       //eliminate the picture from the old location
       grid.clearTileImage(oldLoc);
       player1Col = 4;
@@ -894,7 +895,7 @@ public String isGameOver()
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 12*60+25){
+  if(grid.getScreenTimeSeconds() > 865){
     return "win";
   }
 
@@ -902,7 +903,8 @@ public String isGameOver()
 }
 
 //method to describe what happens after the game is over
-public void endGame(){
+public void endGame()
+{
   System.out.println("Game Over!");
   
   //Stop the arrows
