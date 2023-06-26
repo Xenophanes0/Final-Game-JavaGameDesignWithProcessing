@@ -24,6 +24,10 @@ Grid grid;
 //Universal Background Images
 String blackBackFile = "images/BlackBG.png";
 PImage blackBackground;
+String songBGFile = "images/BackgroundFinalEscape.png"; 
+PImage songBG;
+String endFile = "images/End_BG.png";
+PImage endBackground;
 
 //Opening Section of "Too Far"
 String openingFile = "images/BackGrounds/Opening_Section/Beginning_BG.png";
@@ -69,10 +73,12 @@ String thirdGlitchingFleetwayBackFile = "images/BackGrounds/Fleetway_Section/Gli
 PImage thirdGlitchingFleetwayBackground;
 
 //Sunky Section Background Images
-
+String sunkyFile = "images/BackGrounds/Sunky_Section/Sunky_BG.png";
+PImage sunkyBackground;
 
 //Tails' Doll Background Image
-
+String tailsDollFile = "images/BackGrounds/BlackBG.png";
+PImage tailsDollBaclground;
 
 //EXE Background Images
 String fadeInEXEBackFile = "images/BackGrounds/EXE_Section/Fade_In_EXE_BG.png";
@@ -83,28 +89,26 @@ String thirdCloseInEXEBackFile = "images/BackGrounds/EXE_Section/Close_In_EXE_BG
 PImage thirdCloseInEXEBackground;
 String fifthGlitchingOutEXEBackFile = "images/BackGrounds/EXE_Section/Glitching_Out_EXE_BG_5.png";
 PImage fifthGlitchingOutEXEBackground;
+String transformedEXEFile = "images/BackGrounds/EXE_Section/Transformed_EXE_BG.png";
+PImage transformedEXEBackground;
 
 //Angry/Vs. Team Sonic.exe Section Background Image
-String angryXenoBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/angry_Xeno_BG.png";
-PImage angryXenoFile;
-String firstExeUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_1.png";
-PImage firstEXEUniteFile;
-String secondEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_2.png";
-PImage secondEXEUniteFile;
-String thirdEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_3.png";
-PImage thirdEXEUniteFile;
-String fourthEXEUniteBackground = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_4.png";
-PImage fourthEXEUNiteFile;
-
+String angryXenoFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/angry_Xeno_BG.png";
+PImage angryXenoBackground;
+String firstExeUniteFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_1.png";
+PImage firstEXEUniteBackground;
+String secondEXEUniteFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_2.png";
+PImage secondEXEUniteBackground;
+String thirdEXEUniteFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_3.png";
+PImage thirdEXEUniteBackground;
+String fourthEXEUniteFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_4.png";
+PImage fourthEXEUNiteBackground;
+String fifthEXEUniteFile = "images/BackGrounds/Vs_Team_Sonic.exe_Section/exeTeamUp_5.png";
+PImage fifthEXEUniteBackground;
 
 //Sonic Section Background Images
-String sonicBackground = "images/BackGrounds/Sonic_Section/sonic_Section_BG.png";
-PImage sonicFile;
-
-
-
-String songBGFile = "images/BackgroundFinalEscape.png"; 
-PImage songBG;
+String sonicFile = "images/BackGrounds/Sonic_Section/sonic_Section_BG.png";
+PImage sonicBackground;
 
 //ONGOING SCREENS THROUGHOUT THE SONG
 PImage startScreen;
@@ -120,7 +124,6 @@ String endBGFile = "images/You_Win.png";        //"The End" Picture
 //...continue later
 
 /*      Animated Sprites Present and Initialized HERE     */
-
 /*Arrow Icons (Animated)*/
 AnimatedSprite leftSprite;
 AnimatedSprite downSprite;
@@ -199,7 +202,6 @@ SoundFile angryXenoSection;
 SoundFile teamEXESection;
 SoundFile sonicSection;
 
-
 int[] soundTimes = {10,32,72,131,170,229,370,496,555,597,636,757,767,825,861}; //Index of 14
 int[] endTimes;
 
@@ -237,7 +239,6 @@ void setup() {
   endBG.resize(1200, 700);
 
   /*Background Images Being Loaded*/
-
   //Sega Section
   openingBackground = loadImage(openingFile);
   openingBackground.resize(width, height);
