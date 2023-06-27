@@ -244,6 +244,11 @@ SoundFile angryXenoSection;
 SoundFile teamEXESection;
 SoundFile sonicSection;
 
+//"Miss" Sound Effects
+SoundFile missSoundEffectOne;     
+SoundFile missSoundEffectTwo;
+SoundFile missSoundEffectThree;
+
 int[] soundTimes = {10,32,72,131,170,229,370,496,555,597,636,757,767,825,861}; //Index of 14
 int[] endTimes;
 
@@ -257,9 +262,9 @@ int health = 50;
 int leftCol = 2;
 int rightCol = 5;
 
-
 //Required Processing method that gets run once
-public void setup() {
+public void setup()
+{
 
   //Match the screen size to the background image size
   /* size commented out by preprocessor */;
@@ -382,6 +387,11 @@ public void setup() {
   angryXenoSection = new SoundFile(this, "sounds/Vs._Xenophanes.mp3");// 757 - 767          10 seconds
   teamEXESection = new SoundFile(this, "sounds/Vs._Team_Sonic.exe_2.0.mp3");// 767 - 825    58 seconds
   sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");// 825 - 861               36 seconds
+
+  //Miss & Hit Sound Effects; Player Sounds
+  missSoundEffectOne = new SoundFile(this, "sounds/Player_Sounds/missnote1.ogg");
+  missSoundEffectTwo = new SoundFile(this, "sounds/Player_Sounds/missnote2.ogg");
+  missSoundEffectThree = new SoundFile(this, "sounds/Player_Sounds/missnote3.ogg");
 
   p1neutral = loadImage("images/BF_Neutral_Icon.png");
   p1neutral.resize(100,50);
@@ -865,7 +875,7 @@ public void populateSprites(){
   //Generate a random number
   double rando = Math.random();
 
-  //10% of the time, decide to add an image to a Tile
+  //20% of the time, decide to add an image to a Tile
   if(rando < 0.2f && gameStatus.equals("start"))
   {
     if (c == 2){
@@ -886,6 +896,41 @@ public void populateSprites(){
     }
 
   }
+
+  /*
+  else if (grid.getScreenTimeSeconds() <= endTimes[4])
+  {
+    int bottomRow = grid.getNumRows()-1;
+
+    //Loop through all the cols in the bottom row
+    int c = (int) (Math.random() * (rightCol-leftCol+1))+leftCol;
+
+    //Generate a random number
+    double rando = Math.random();
+
+    //20% of the time, decide to add an image to a Tile
+    if(rando < 0.2 && gameStatus.equals("start"))
+    {
+      if (c == 2){
+        grid.setTileSprite(new GridLocation(bottomRow, c), leftStaticNote);
+       System.out.println("Left added");
+      }
+      else if (c == 3){
+        grid.setTileSprite(new GridLocation(bottomRow, c), upStaticNote);
+        System.out.println("Up added" + upSprite);
+      }
+      else if (c == 4){
+        grid.setTileSprite(new GridLocation(bottomRow, c), downStaticNote);
+        System.out.println("Down added");
+      }
+      else{
+        grid.setTileSprite(new GridLocation(bottomRow, c), rightStaticNote);
+        System.out.println("Right added");
+      }
+
+    }
+  }
+  */
   else{
     //CLEAR ALL SPRITES PRESENT IN THE GRID, TBH HOW DO I DO THAT?
   }
@@ -893,16 +938,19 @@ public void populateSprites(){
 }
 
 //Method to move around the enemies/sprites on the screen
-public void moveSprites(){
+public void moveSprites()
+{
 
   //Generate random arrow speeds
   double rando = Math.random();
 
   // Loop through all of the rows & cols in the grid
-  if (gameStatus.equals("start")){
-    for (int c = leftCol; c <= rightCol; c++){
-      for (int r = 0; r < grid.getNumRows(); r++){
-
+  if (gameStatus.equals("start"))
+  {
+    for (int c = leftCol; c <= rightCol; c++)
+    {
+      for (int r = 0; r < grid.getNumRows(); r++)
+      {
         //Testing Random Speed Variable
         int moveRowUp = r-1;
 
@@ -910,7 +958,8 @@ public void moveSprites(){
         GridLocation loc = new GridLocation(r, c);
 
         // //clear enemy sprites in top row
-        if (r == 0){
+        if (r == 0)
+        {
           grid.clearTileSprite(loc);
         }
 
@@ -919,11 +968,10 @@ public void moveSprites(){
         }
 
         //only move if player's loc isn't in top row
-        if (r != 0){
-
+        if (r != 0)
+        {
           GridLocation newLoc = new GridLocation(moveRowUp,c);
            
-        
           //if there is a collusion
           if (checkCollision(loc, newLoc).equals("hit"))
           {
@@ -932,7 +980,8 @@ public void moveSprites(){
             //clear the arrow
             grid.clearTileSprite(loc);
 
-            if (health + 3 >= 100){
+            if (health + 3 >= 100)
+            {
               health = 100;
             }
             else
@@ -944,23 +993,41 @@ public void moveSprites(){
           }
 
           //No collision, but a move
-          else if(checkCollision(loc, newLoc).equals("move")){
+          else if(checkCollision(loc, newLoc).equals("move"))
+          {
             //System.out.println("NO Collision at " + loc);
 
             //Check if there is spirte in r,c
-            if (grid.hasTileSprite(loc)){
-            grid.setTileSprite(newLoc, grid.getTileSprite(loc));
+            if (grid.hasTileSprite(loc))
+            {
+              grid.setTileSprite(newLoc, grid.getTileSprite(loc));
           
-            //clear sprite from old loc
-            grid.clearTileSprite(loc);
+              //clear sprite from old loc
+              grid.clearTileSprite(loc);
             }
 
             //If no collision when expected = miss
-            if (r == player1Row + 1){
+            if (r == player1Row + 1)
+            {
               health -= 3;
 
+              int randoNum = (int) Math.random() * 3;
+
+              if (randoNum == 0)
+              {
+                missSoundEffectOne.play();
+              }
+
+              else if (randoNum == 1)
+              {
+                missSoundEffectTwo.play();
+              }
+
+              else if(randoNum == 2)
+              {
+                missSoundEffectThree.play();
+              }
             }
-          
           }
 
           //No move situation
