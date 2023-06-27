@@ -439,10 +439,9 @@ void setup() {
 
 //Required Processing method that automatically loops
 //(Anything drawn on the screen should be called from here)
-void draw() {
-
-
-System.out.println(grid.getScreenTimeSeconds());
+void draw() 
+{
+  System.out.println(grid.getScreenTimeSeconds());
   updateTitleBar();
   updateSections();
   updateBG();
@@ -501,7 +500,7 @@ void keyPressed(){
       {
         System.out.println("You ran into arrow at " + nextLoc);
         grid.clearTileSprite(nextLoc);
-        health+=2;
+        health += 2;
       }
 
       //Erase image from previous location
@@ -590,17 +589,24 @@ void mouseClicked(){
 //method to update the Title Bar of the Game
 public void updateTitleBar()
 {
-  if(isGameOver().equals("keep playing")) {
+  if(isGameOver().equals("keep playing")){
     //set the title each loop
     surface.setTitle(titleText + "    " + extraText);
 
     //adjust the extra text as desired
   }
+
+
+  else if(isGameOver().equals("win")){
+    surface.setTitle("You won!");
+
+  }
 }
 
 /*      CRUICAL:    BACKGROUND CHANGE HAPPENS HERE      */
 //method to update what is drawn on the screen each frame
-public void updateScreen(){
+public void updateScreen()
+{
 
   // if (grid == grid){
   //   currentWorld = grid;
@@ -974,7 +980,8 @@ public String isGameOver()
 
   //when 4 minutes pass = 240
   //Total time within song 12:25        60 per minute;   745 + 5 seconds = 750 for endgame portion 
-  if(grid.getScreenTimeSeconds() > 865){
+  if(grid.getScreenTimeSeconds() > 865)
+  {
     return "win";
   }
 
@@ -1009,6 +1016,7 @@ public void endGame()
   else{
 
     //Update the title bar
+    updateTitleBar();
 
     //Show any end imagery
     grid.setBg(endBG);
