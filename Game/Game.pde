@@ -9,7 +9,7 @@ String gameStatus = "start";
 boolean arrowTime = false;
 
 PImage player1;
-PImage p1neutral; 
+PImage p1neutral;
 
 PImage p1losing;
 String extraText = "Shall we play...?";
