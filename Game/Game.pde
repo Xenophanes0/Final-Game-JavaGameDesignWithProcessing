@@ -363,9 +363,9 @@ void setup()
   sonicSection = new SoundFile(this, "sounds/Sonic_Section.mp3");// 825 - 861               36 seconds
 
   //Miss & Hit Sound Effects; Player Sounds
-  missSoundEffectOne = new SoundFile(this, "sounds/Player_Sounds/missnote1.ogg");
-  missSoundEffectTwo = new SoundFile(this, "sounds/Player_Sounds/missnote2.ogg");
-  missSoundEffectThree = new SoundFile(this, "sounds/Player_Sounds/missnote3.ogg");
+  missSoundEffectOne = new SoundFile(this, "sounds/Player_Sounds/missnote1.mp3");
+  missSoundEffectTwo = new SoundFile(this, "sounds/Player_Sounds/missnote2.mp3");
+  missSoundEffectThree = new SoundFile(this, "sounds/Player_Sounds/missnote3.mp3");
 
   p1neutral = loadImage("images/BF_Neutral_Icon.png");
   p1neutral.resize(100,50);
