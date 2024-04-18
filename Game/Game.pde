@@ -682,7 +682,7 @@ public void updateSections()
     }
   }
 
-  //Lord X Section
+  //Lord X Section                                    //Audio from the end of Xeno's section plays again prior to Lord X's starting/ possibly to be how the audio was recorded
   else if(grid.getScreenTimeSeconds() <= endTimes[3]) //add "-3" at the end of the endTimes
   {
     //majinSonicIdle.animate(7.0);
@@ -737,7 +737,7 @@ public void updateSections()
     }
   }
 
-  //Fleetway Section
+  //Fleetway Section                                      //Doesn't get played through properly, causes issues for audio playback during the rest of the sections
   else if(grid.getScreenTimeSeconds() <= endTimes[7])
   {
     //majinSonicIdle.animate(7.0);
@@ -797,7 +797,7 @@ public void updateSections()
     }
   }
 
-  //Angry Xenophanes Section
+  //Angry Xenophanes Section                            //replays EXE's section instead
   else if(grid.getScreenTimeSeconds() <= endTimes[12])
   {
     //majinSonicIdle.animate(7.0);
@@ -809,7 +809,7 @@ public void updateSections()
     }
   }
 
-  //Vs. Team Sonic.exe 2.0
+  //Vs. Team Sonic.exe 2.0                          //plays audio on top of When black sun Faker appears in the last section
   else if(grid.getScreenTimeSeconds() <= endTimes[13])
   {
     majinSonicIdle.animate(7.0);
@@ -821,7 +821,7 @@ public void updateSections()
     }
   }
 
-  //Sonic Section
+  //Sonic Section                               //Audio plays fine, no looping over other files or cutting cut off. game continues a bit more with the audio finishing, before the game over appears. Also add a "Game OVer" screen.
   else if(grid.getScreenTimeSeconds() <= endTimes[14])
   {
     //majinSonicIdle.animate(7.0);
