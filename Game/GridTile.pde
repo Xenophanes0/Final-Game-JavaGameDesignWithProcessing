@@ -2,7 +2,7 @@
  * GridTiles have distinguishable marks that will be printed out to the console for easy visualization of a 2D array
  * GridTiles can indicate if they have been "captured", colored, or are displaying an image
  * Authors: Joel Bianchi, Naomi Gaylor, Ezzeldin Moussa
- * Last Edit: 6/6/2023
+ * Last Edit: 5/1/2023
  * Edited to be superclass of HexTile, included hasImage() function
  */
 
